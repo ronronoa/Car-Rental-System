@@ -1,5 +1,5 @@
-﻿namespace VehicleManagementSystem.Resources {
-    partial class VehManagement {
+﻿namespace VehicleManagementSystem.Forms {
+    partial class MaintenanceManagement {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -24,14 +24,11 @@
         /// </summary>
         private void InitializeComponent() {
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2GradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2GradientPanel1
             // 
             this.guna2GradientPanel1.BorderRadius = 25;
-            this.guna2GradientPanel1.Controls.Add(this.guna2Button1);
             this.guna2GradientPanel1.CustomizableEdges.BottomLeft = false;
             this.guna2GradientPanel1.CustomizableEdges.BottomRight = false;
             this.guna2GradientPanel1.CustomizableEdges.TopRight = false;
@@ -42,32 +39,17 @@
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(1274, 683);
-            this.guna2GradientPanel1.TabIndex = 1;
+            this.guna2GradientPanel1.TabIndex = 0;
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(393, 195);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(181, 45);
-            this.guna2Button1.TabIndex = 0;
-            this.guna2Button1.Text = "guna2Button1";
-            // 
-            // VehManagement
+            // MaintenanceManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1274, 683);
             this.Controls.Add(this.guna2GradientPanel1);
-            this.Name = "VehManagement";
-            this.Text = "VehManagement";
-            this.guna2GradientPanel1.ResumeLayout(false);
+            this.Name = "MaintenanceManagement";
+            this.Text = "MaintenanceManagement";
             this.ResumeLayout(false);
 
         }
@@ -75,6 +57,5 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

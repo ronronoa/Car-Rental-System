@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using VehicleManagementSystem.Resources;
+using VehicleManagementSystem.Forms;
 
 namespace VehicleManagementSystem {
     public partial class Dashboard : Form {
@@ -14,25 +15,41 @@ namespace VehicleManagementSystem {
         private Panel leftBorderButton;
         private Form ActiveForm;
 
+        public static class Theme {
+            public static readonly Color Primary = Color.FromArgb(71, 108, 255);
+            public static readonly Color PrimaryText = Color.FromArgb(44, 44, 44);
+            public static readonly Color SecondaryText = Color.Gray;
+        }
+
+        public static class FormPageTitles {
+            public const string VehManagement = "Vehicle Management";
+            public const string MaintenanceManagement = "Maintenance Management";
+        }
+
+        private void InitializeWindow() {
+            ActivateButton(vehManagementBtn, FormPageTitles.VehManagement);
+            WindowActions = new WindowControls(this);
+            OpenForm(new VehManagement());
+        }
+
         private void InitializedButtonLeftBorder() {
             leftBorderButton = new Panel();
             leftBorderButton.Size = new Size(10, 85);
-            leftBorderButton.BackColor = System.Drawing.Color.White;
+            leftBorderButton.BackColor = Theme.Primary;
             panelMenu.Controls.Add(leftBorderButton);
         }
 
         public Dashboard() {
             InitializeComponent();
             InitializedButtonLeftBorder();
-            ActivateButton(vehManagementBtn);
-            WindowActions = new WindowControls(this);
-            OpenForm(new VehManagement());
+            InitializeWindow();
         }
 
         private void OpenForm(Form childForm) {
             if (ActiveForm != null) {
                 ActiveForm.Close();
             }
+            panelDesktop.Controls.Clear();
             ActiveForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -43,16 +60,19 @@ namespace VehicleManagementSystem {
             childForm.Show();   
         }
 
-        private void ActivateButton(object senderBtn) {
+        private void ActivateButton(object senderBtn, string PageTitle) {
             if (senderBtn != null) {
                 DeactiveButton();
 
+                pageLabel.Text = PageTitle;
                 currentActiveButton = senderBtn as IconButton;
                 currentActiveButton.IconSize = 60;
-                currentActiveButton.BackColor = System.Drawing.Color.FromArgb(67, 74, 81);
+                currentActiveButton.ForeColor = Theme.Primary;
+                currentActiveButton.IconColor = Theme.Primary;
 
                 leftBorderButton.Location = new Point(0, currentActiveButton.Location.Y);
                 leftBorderButton.Visible = true;
+                leftBorderButton.BackColor = Theme.Primary;
                 leftBorderButton.BringToFront();
             }
         }
@@ -60,12 +80,9 @@ namespace VehicleManagementSystem {
         private void DeactiveButton() {
             if (currentActiveButton != null) {
                 currentActiveButton.IconSize = 50;
-                currentActiveButton.BackColor = System.Drawing.Color.Transparent;
+                currentActiveButton.ForeColor = Theme.SecondaryText;
+                currentActiveButton.IconColor = Theme.SecondaryText;
             }
-        }
-
-        private void menuBtn_Click(object sender, EventArgs e) {
-            ActivateButton(sender);
         }
 
         private void CloseButton_Click(object sender, EventArgs e) {
@@ -87,21 +104,14 @@ namespace VehicleManagementSystem {
             WindowActions.Drag(e);
         }
 
-        // Search Bar
-        private void searchBar_TextChanged(object sender, EventArgs e) {
-
+        private void vehManagementBtn_Click(object sender, EventArgs e) {
+            ActivateButton(sender, FormPageTitles.VehManagement);
+            OpenForm(new VehManagement());
         }
 
-        private void searchBar_Enter(object sender, EventArgs e) {
-            searchButton.BorderColor = System.Drawing.Color.FromArgb(94, 148, 255); ;
-        }
-
-        private void searchBar_Leave(object sender, EventArgs e) {
-            searchButton.BorderColor = System.Drawing.Color.FromArgb(213, 218, 223);
-        }
-
-        private void searchButton_Click(object sender, EventArgs e) {
-
+        private void maintenanceMangementBtn_Click(object sender, EventArgs e) {
+            ActivateButton(sender, FormPageTitles.MaintenanceManagement);
+            OpenForm(new MaintenanceManagement());
         }
     }
 }
