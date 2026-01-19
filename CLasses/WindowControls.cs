@@ -41,32 +41,14 @@ public class WindowControls {
     }
 
     public async Task ToggleMaximize(IconButton btn) {
-        int steps = 15;
-        Rectangle start = _form.Bounds;
-        Rectangle target;
-
         if (!_isMaximized) {
-            target = Screen.FromHandle(_form.Handle).WorkingArea;
+            _form.WindowState = FormWindowState.Maximized;
             _isMaximized = true;
             btn.IconChar = IconChar.WindowRestore;
         } else {
-            var screen = Screen.FromHandle(_form.Handle).WorkingArea;
-            int x = (screen.Width - _originalBounds.Width) / 2;
-            int y = (screen.Height - _originalBounds.Height) / 2;
-            target = new Rectangle(x, y, _originalBounds.Width, _originalBounds.Height);
-
+            _form.WindowState&= FormWindowState.Normal;
             _isMaximized = false;
             btn.IconChar = IconChar.WindowMaximize;
-        }
-
-        for (int i = 1; i <= steps; i++) {
-            int nW = start.Width + (target.Width - start.Width) * i / steps;
-            int nH = start.Height + (target.Height - start.Height) * i / steps;
-            int nX = start.X + (target.X - start.X) * i / steps;
-            int nY = start.Y + (target.Y - start.Y) * i / steps;
-
-            _form.SetBounds(nX, nY, nW, nH);
-            await Task.Delay(1);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Drawing;
 
 namespace VehicleManagementSystem.Classes {
-    public static class UIConfig {
+    public static class AppConfig {
         public static class Theme {
             public static readonly Color Primary = Color.FromArgb(71, 108, 255);
             public static readonly Color PrimaryText = Color.FromArgb(44, 44, 44);
@@ -19,6 +19,15 @@ namespace VehicleManagementSystem.Classes {
 
         public static class SubTitles {
             public const string AddNewVehicle = "Adding new car";
+        }
+
+        public enum VehicleType {
+            Economy,
+            Midsize,
+            SUV,
+            Luxury,
+            Van,
+            Truck
         }
     }
 }

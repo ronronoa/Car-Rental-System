@@ -1,24 +1,19 @@
 ﻿using FontAwesome.Sharp;
 using Guna.UI2.WinForms;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VehicleManagementSystem.Classes {
-    public class MenuRenderer {
+    public class UIRenderer {
         private IconButton currentBtn;
         private Guna2GradientPanel leftBorder;
 
-        public MenuRenderer(Panel menuPanel) {
+        public UIRenderer(Panel menuPanel) {
             leftBorder = new Guna2GradientPanel {
                 Size = new Size(10, 85),
                 BorderRadius = 10,
-                FillColor = UIConfig.Theme.Primary,
-                FillColor2 = UIConfig.Theme.Primary,
+                FillColor = AppConfig.Theme.Primary,
+                FillColor2 = AppConfig.Theme.Primary,
                 BackColor = Color.Transparent
             };
             leftBorder.CustomizableEdges.TopLeft = false;
@@ -32,8 +27,8 @@ namespace VehicleManagementSystem.Classes {
                 DeactiveButton();
                 currentBtn = senderBtn as IconButton;
                 currentBtn.IconSize = 60;
-                currentBtn.ForeColor = UIConfig.Theme.Primary;
-                currentBtn.IconColor = UIConfig.Theme.Primary;
+                currentBtn.ForeColor = AppConfig.Theme.Primary;
+                currentBtn.IconColor = AppConfig.Theme.Primary;
 
                 leftBorder.Location = new Point(0, currentBtn.Location.Y);
                 leftBorder.Visible = true;
@@ -45,8 +40,8 @@ namespace VehicleManagementSystem.Classes {
             if (currentBtn != null) {
                 //RemoveHeaderLabel();
                 currentBtn.IconSize = 50;
-                currentBtn.ForeColor = UIConfig.Theme.SecondaryText;
-                currentBtn.IconColor = UIConfig.Theme.SecondaryText;
+                currentBtn.ForeColor = AppConfig.Theme.SecondaryText;
+                currentBtn.IconColor = AppConfig.Theme.SecondaryText;
             }
         }
     }
