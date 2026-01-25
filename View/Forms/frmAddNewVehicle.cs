@@ -45,8 +45,17 @@ namespace VehicleManagementSystem.Forms {
 
         }
 
+        private void saveBtn_Click(object sender, EventArgs e) {
+           
+
+        }
+
         private void cancelBtn_Click(object sender, EventArgs e) {
-            DialogResult cancelConfirmation = MessageBox.Show("Are you sure you want to cancel adding new vehicle?", "Cancelation Confirmation", MessageBoxButtons.YesNo);
+            DialogResult cancelConfirmation = MessageBox.Show(
+                "Are you sure you want to cancel adding new vehicle? This action cannot be undone.", 
+                "Cancelation Confirmation", 
+                MessageBoxButtons.YesNo
+            );
 
             if (cancelConfirmation == DialogResult.Yes) {
                 NavigationHelper.OpenForm(new frmVehicleManagement());
@@ -65,7 +74,9 @@ namespace VehicleManagementSystem.Forms {
 
         private void addImageBtn_Click(object sender, EventArgs e) {
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
-
+                openFileDialog.Title = "Select an image";
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
+                openFileDialog.Multiselect = false;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     if (inputVehicleImage != null) {
@@ -73,7 +84,7 @@ namespace VehicleManagementSystem.Forms {
                     }
 
                     string fullPath = openFileDialog.FileName;
-                    string fileNameOnly = System.IO.Path.GetFileName(fullPath);
+                    string fileNameOnly = Path.GetFileName(fullPath);
 
                     byte[] imageBytes = File.ReadAllBytes(openFileDialog.FileName);
                     using (MemoryStream ms = new MemoryStream(imageBytes)) {
@@ -84,6 +95,5 @@ namespace VehicleManagementSystem.Forms {
                 }
             }
         }
-
     }
 }

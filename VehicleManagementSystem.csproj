@@ -238,6 +238,9 @@
     <Compile Include="Classes\WindowControls.cs" />
     <Compile Include="Data\MySQLConnectionContext.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Presenters\addNewVehiclePresenter.cs" />
+    <Compile Include="Services\Implementations\VehicleServices.cs" />
+    <Compile Include="Services\Interfaces\IVehicleService.cs" />
     <Compile Include="View\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

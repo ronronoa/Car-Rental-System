@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace VehicleManagementSystem.Classes {
     public static class AppConfig {
         public static class Theme {
-            public static readonly Color Primary = Color.FromArgb(29, 129, 140);
+            public static readonly Color Primary = Color.FromArgb(42, 132, 191);
             public static readonly Color PrimaryText = Color.FromArgb(44, 44, 44);
             public static readonly Color SecondaryText = Color.Gray;
         }
