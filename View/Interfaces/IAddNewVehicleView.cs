@@ -8,11 +8,22 @@ using System.Threading.Tasks;
 namespace VehicleManagementSystem.View.Interfaces {
     public interface IAddNewVehicleView {
 
-        int VehicleIdentificationNumber { get; }
+        string VehicleIdentificationNumber { get; }
         string VehiclePlateNum { get; }
         string VehicleModel { get; }
-        int VehicleYearModel { get; }
+        string VehicleYearModel { get; }
         string VehicleManufacturer { get; } 
+        string VehicleCatergory { get; }
+        string VehicleColor { get; }
         Bitmap VehicleImage { get; }
+
+        string VehiclePurchaseDate { get; }
+        string VehiclePurchasePrice { get; }
+        string VehicleCurrentOdometer { get; }
+
+        string VehicleDailyRate { get; }
+        string VehicleFuelType { get; }
+        string VehicleTransmissionType { get; }
+        string VehicleSeatCapacity { get; }
     }
 }

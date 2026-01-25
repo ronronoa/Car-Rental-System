@@ -14,20 +14,36 @@ using VehicleManagementSystem.View.Interfaces;
 namespace VehicleManagementSystem.Forms {
     public partial class frmAddNewVehicle : Form, IAddNewVehicleView {
 
-        public int VehicleIdentificationNumber => int.Parse(inputVehicleIdentificationNumber.Text);
+        // Basic Vehicle Information
+        public string VehicleIdentificationNumber => inputVehicleIdentificationNumber.Text;
         public string VehiclePlateNum => inputPlateNum.Text;
         public string VehicleModel => inputModel.Text;
-        public int VehicleYearModel => int.Parse(inputYearModel.Text);
+        public string VehicleYearModel => inputYearModel.Text;
+        public string VehicleCatergory => inputCategory.Text;
         public string VehicleManufacturer => inputManufacturer.Text;
+        public string VehicleColor => inputColor.Text;
         public Bitmap VehicleImage => inputVehicleImage == null
             ? null
             : new Bitmap(inputVehicleImage);
+
+        // Vehicle Purchase Details
+        public string VehiclePurchaseDate => inputPurchaseDate.Text;
+        public string VehiclePurchasePrice => inputPurchasePrice.Text;
+        public string VehicleCurrentOdometer => InputOdometer.Text;
+
+        // Vehicle Rental Details
+        public string VehicleDailyRate => inputDailyRate.Text;
+        public string VehicleFuelType => inputFuelType.Text;
+        public string VehicleTransmissionType => inputTransmissionType.Text;
+        public string VehicleSeatCapacity => inputSeatCapacity.Text;
 
 
         private Bitmap inputVehicleImage;
 
         public frmAddNewVehicle() {
             InitializeComponent();
+
+           
         }
 
         // Automatically add Double Buffering to the whole form
