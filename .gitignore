@@ -6,6 +6,7 @@
 # dotenv files
 .env
 
+# Ignore App.config (or just the specific secret file)
 App.config
 
 # User-specific files
@@ -484,3 +485,4 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+/App.config
