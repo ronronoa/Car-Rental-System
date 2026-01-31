@@ -756,7 +756,7 @@ namespace VehicleManagementSystem.Forms {
             this.addImageBtn.Location = new System.Drawing.Point(22, 51);
             this.addImageBtn.Name = "addImageBtn";
             this.addImageBtn.Size = new System.Drawing.Size(523, 416);
-            this.addImageBtn.TabIndex = 100;
+            this.addImageBtn.TabIndex = 0;
             this.addImageBtn.Text = "Click here to add vehicle image.";
             this.addImageBtn.Click += new System.EventHandler(this.addImageBtn_Click);
             // 

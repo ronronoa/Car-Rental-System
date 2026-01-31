@@ -34,5 +34,10 @@ namespace VehicleManagementSystem.Classes {
             }
         }
 
+        public static string ApplicationDataFolderName = "CarRental-VehicleManagement";
+
+        public static class ApplicationImagesFolder {
+            public const string Vehicles = "Vehicles";
+        }
     }
 }

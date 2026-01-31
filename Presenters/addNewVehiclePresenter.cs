@@ -3,6 +3,8 @@ using VehicleManagementSystem.Data.Enums;
 using VehicleManagementSystem.Services.Implementations;
 using VehicleManagementSystem.View.Interfaces;
 using VehicleManagementSystem.Models;
+using VehicleManagementSystem.Classes;
+using System.IO;
 
 namespace VehicleManagementSystem.Presentor {
     public class addNewVehiclePresenter {
@@ -29,7 +31,7 @@ namespace VehicleManagementSystem.Presentor {
                 YearModel = int.Parse(_view.VehicleYearModel),
                 Color = _view.VehicleColor,
                 Category = _view.VehicleCatergory,
-               
+
                 // Purchase
                 PurchaseDate = DateTime.Parse(_view.VehiclePurchaseDate),
                 PurchasePrice = decimal.Parse(_view.VehiclePurchasePrice),
@@ -42,7 +44,7 @@ namespace VehicleManagementSystem.Presentor {
                 Transmission = _view.VehicleTransmissionType,
                 SeatingCapacity = int.Parse(_view.VehicleSeatCapacity),
 
-                ImagePath = _view.VehicleImagePath,
+                ImagePath = GetFinalVehicleImagePath(_view.VehicleImagePath, _view.VehicleIdentificationNumber),
 
                 IsActive = true,
                 CreatedDate = DateTime.Now,
@@ -50,12 +52,18 @@ namespace VehicleManagementSystem.Presentor {
             };
             
             try {
-                _vehicleServices.AddVehicle(newVehicle);
+                //_vehicleServices.AddVehicle(newVehicle);
+                _view.ShowError(newVehicle.ImagePath);
                 _view.ShowError("ADDED");
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
             }
             
+        }
+
+        private string GetFinalVehicleImagePath(string imagePath, string vehicleVIN) {
+            string subFolderImagePath = Path.Combine(AppConfig.ApplicationImagesFolder.Vehicles, vehicleVIN);
+            return Helpers.SaveImageToAppData(imagePath, subFolderImagePath);
         }
 
         private bool IsAllInputsValid(IAddNewVehicleView inputs) {

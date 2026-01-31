@@ -25,6 +25,7 @@ namespace VehicleManagementSystem.Forms {
 
         private addNewVehiclePresenter _presenter;
         private Dictionary<AddNewVehicleInputEnums, InputFieldUI> _inputFieldMap;
+        private string _tempSelectedImagePath;
 
         // Basic Vehicle Information
         public string VehicleIdentificationNumber => inputVehicleIdentificationNumber.Text;
@@ -34,7 +35,7 @@ namespace VehicleManagementSystem.Forms {
         public string VehicleCatergory => inputCategory.Text;
         public string VehicleManufacturer => inputManufacturer.Text;
         public string VehicleColor => inputColor.Text;
-        public string VehicleImagePath => "TEST";
+        public string VehicleImagePath => _tempSelectedImagePath;
 
         // Vehicle Purchase Details
         public string VehiclePurchaseDate => inputPurchaseDate.Text;
@@ -144,8 +145,6 @@ namespace VehicleManagementSystem.Forms {
                 openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
                 openFileDialog.Multiselect = false;
 
-                
-
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     if (vehiclePictureBox.Image != null) {
                         vehiclePictureBox.Image.Dispose();
@@ -154,16 +153,13 @@ namespace VehicleManagementSystem.Forms {
                     string fullPath = openFileDialog.FileName;
                     string fileNameOnly = Path.GetFileName(fullPath);
 
-                    //byte[] imageBytes = File.ReadAllBytes(openFileDialog.FileName);
-                    //using (MemoryStream ms = new MemoryStream(imageBytes)) {
-                    //    inputVehicleImage = new Bitmap(ms);
-                    //}
+                    _tempSelectedImagePath = fullPath;
+
                     vehiclePictureBox.Image = Image.FromFile(fullPath);
 
                     closeImageBtn.Visible = true;
                     addImageBtn.Visible = false;
 
-                    //vehicleImageFilename.Text = fileNameOnly;
                 }
             }
         }
