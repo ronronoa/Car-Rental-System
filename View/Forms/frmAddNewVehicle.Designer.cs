@@ -36,6 +36,8 @@ namespace VehicleManagementSystem.Forms {
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLowerInputs = new System.Windows.Forms.TableLayoutPanel();
             this.panelCarRental = new Guna.UI2.WinForms.Guna2Panel();
+            this.errorLabelSeatCapacity = new System.Windows.Forms.Label();
+            this.errorLabelDailyRate = new System.Windows.Forms.Label();
             this.inputTransmissionType = new Guna.UI2.WinForms.Guna2ComboBox();
             this.inputFuelType = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -48,6 +50,8 @@ namespace VehicleManagementSystem.Forms {
             this.guna2CirclePictureBox4 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelPurchaseDetails = new Guna.UI2.WinForms.Guna2Panel();
+            this.errorLabelCurrentOdometer = new System.Windows.Forms.Label();
+            this.errorLabelPurchasePrice = new System.Windows.Forms.Label();
             this.inputPurchaseDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.inputCurrentOdometer = new Guna.UI2.WinForms.Guna2TextBox();
             this.labelCurrentOdometer = new System.Windows.Forms.Label();
@@ -65,6 +69,12 @@ namespace VehicleManagementSystem.Forms {
             this.label7 = new System.Windows.Forms.Label();
             this.vehiclePictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panelBasicInfoRight = new System.Windows.Forms.Panel();
+            this.errorLabelColor = new System.Windows.Forms.Label();
+            this.errorLabelYearModel = new System.Windows.Forms.Label();
+            this.errorLabelManufacturer = new System.Windows.Forms.Label();
+            this.errorLabelModel = new System.Windows.Forms.Label();
+            this.errorLabelPlateNum = new System.Windows.Forms.Label();
+            this.errorLabelVehicleIdentificationNumber = new System.Windows.Forms.Label();
             this.labelModel = new System.Windows.Forms.Label();
             this.inputVehicleIdentificationNumber = new Guna.UI2.WinForms.Guna2TextBox();
             this.inputModel = new Guna.UI2.WinForms.Guna2TextBox();
@@ -84,16 +94,6 @@ namespace VehicleManagementSystem.Forms {
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.errorLabelVehicleIdentificationNumber = new System.Windows.Forms.Label();
-            this.errorLabelPlateNum = new System.Windows.Forms.Label();
-            this.errorLabelModel = new System.Windows.Forms.Label();
-            this.errorLabelManufacturer = new System.Windows.Forms.Label();
-            this.errorLabelYearModel = new System.Windows.Forms.Label();
-            this.errorLabelColor = new System.Windows.Forms.Label();
-            this.errorLabelDailyRate = new System.Windows.Forms.Label();
-            this.errorLabelSeatCapacity = new System.Windows.Forms.Label();
-            this.errorLabelPurchasePrice = new System.Windows.Forms.Label();
-            this.errorLabelCurrentOdometer = new System.Windows.Forms.Label();
             this.panelBg.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -184,7 +184,7 @@ namespace VehicleManagementSystem.Forms {
             this.saveBtn.Location = new System.Drawing.Point(923, 3);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(230, 55);
-            this.saveBtn.TabIndex = 14;
+            this.saveBtn.TabIndex = 16;
             this.saveBtn.Text = "Save Vehicle";
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
@@ -204,7 +204,7 @@ namespace VehicleManagementSystem.Forms {
             this.cancelBtn.Location = new System.Drawing.Point(752, 3);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(147, 55);
-            this.cancelBtn.TabIndex = 16;
+            this.cancelBtn.TabIndex = 15;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
@@ -274,6 +274,30 @@ namespace VehicleManagementSystem.Forms {
             this.panelCarRental.Size = new System.Drawing.Size(557, 341);
             this.panelCarRental.TabIndex = 14;
             // 
+            // errorLabelSeatCapacity
+            // 
+            this.errorLabelSeatCapacity.AutoSize = true;
+            this.errorLabelSeatCapacity.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelSeatCapacity.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelSeatCapacity.Location = new System.Drawing.Point(293, 181);
+            this.errorLabelSeatCapacity.Name = "errorLabelSeatCapacity";
+            this.errorLabelSeatCapacity.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelSeatCapacity.TabIndex = 34;
+            this.errorLabelSeatCapacity.Text = "Required";
+            this.errorLabelSeatCapacity.Visible = false;
+            // 
+            // errorLabelDailyRate
+            // 
+            this.errorLabelDailyRate.AutoSize = true;
+            this.errorLabelDailyRate.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelDailyRate.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelDailyRate.Location = new System.Drawing.Point(42, 179);
+            this.errorLabelDailyRate.Name = "errorLabelDailyRate";
+            this.errorLabelDailyRate.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelDailyRate.TabIndex = 33;
+            this.errorLabelDailyRate.Text = "Required";
+            this.errorLabelDailyRate.Visible = false;
+            // 
             // inputTransmissionType
             // 
             this.inputTransmissionType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -293,7 +317,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputTransmissionType.Margin = new System.Windows.Forms.Padding(10);
             this.inputTransmissionType.Name = "inputTransmissionType";
             this.inputTransmissionType.Size = new System.Drawing.Size(231, 56);
-            this.inputTransmissionType.TabIndex = 24;
+            this.inputTransmissionType.TabIndex = 14;
             // 
             // inputFuelType
             // 
@@ -312,7 +336,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputFuelType.Margin = new System.Windows.Forms.Padding(10);
             this.inputFuelType.Name = "inputFuelType";
             this.inputFuelType.Size = new System.Drawing.Size(227, 56);
-            this.inputFuelType.TabIndex = 23;
+            this.inputFuelType.TabIndex = 13;
             // 
             // label20
             // 
@@ -347,7 +371,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputSeatCapacity.PlaceholderText = "";
             this.inputSeatCapacity.SelectedText = "";
             this.inputSeatCapacity.Size = new System.Drawing.Size(229, 55);
-            this.inputSeatCapacity.TabIndex = 24;
+            this.inputSeatCapacity.TabIndex = 12;
             // 
             // labelSeatCapacity
             // 
@@ -396,7 +420,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputDailyRate.PlaceholderText = "";
             this.inputDailyRate.SelectedText = "";
             this.inputDailyRate.Size = new System.Drawing.Size(227, 55);
-            this.inputDailyRate.TabIndex = 20;
+            this.inputDailyRate.TabIndex = 11;
             // 
             // labelDailyRate
             // 
@@ -476,6 +500,30 @@ namespace VehicleManagementSystem.Forms {
             this.panelPurchaseDetails.Size = new System.Drawing.Size(556, 341);
             this.panelPurchaseDetails.TabIndex = 11;
             // 
+            // errorLabelCurrentOdometer
+            // 
+            this.errorLabelCurrentOdometer.AutoSize = true;
+            this.errorLabelCurrentOdometer.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelCurrentOdometer.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelCurrentOdometer.Location = new System.Drawing.Point(290, 303);
+            this.errorLabelCurrentOdometer.Name = "errorLabelCurrentOdometer";
+            this.errorLabelCurrentOdometer.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelCurrentOdometer.TabIndex = 36;
+            this.errorLabelCurrentOdometer.Text = "Required";
+            this.errorLabelCurrentOdometer.Visible = false;
+            // 
+            // errorLabelPurchasePrice
+            // 
+            this.errorLabelPurchasePrice.AutoSize = true;
+            this.errorLabelPurchasePrice.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelPurchasePrice.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelPurchasePrice.Location = new System.Drawing.Point(32, 303);
+            this.errorLabelPurchasePrice.Name = "errorLabelPurchasePrice";
+            this.errorLabelPurchasePrice.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelPurchasePrice.TabIndex = 35;
+            this.errorLabelPurchasePrice.Text = "Required";
+            this.errorLabelPurchasePrice.Visible = false;
+            // 
             // inputPurchaseDate
             // 
             this.inputPurchaseDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -493,7 +541,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputPurchaseDate.MinDate = new System.DateTime(1925, 1, 1, 0, 0, 0, 0);
             this.inputPurchaseDate.Name = "inputPurchaseDate";
             this.inputPurchaseDate.Size = new System.Drawing.Size(482, 55);
-            this.inputPurchaseDate.TabIndex = 20;
+            this.inputPurchaseDate.TabIndex = 8;
             this.inputPurchaseDate.Value = new System.DateTime(2026, 1, 20, 18, 53, 53, 702);
             // 
             // inputCurrentOdometer
@@ -517,7 +565,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputCurrentOdometer.PlaceholderText = "";
             this.inputCurrentOdometer.SelectedText = "";
             this.inputCurrentOdometer.Size = new System.Drawing.Size(224, 55);
-            this.inputCurrentOdometer.TabIndex = 18;
+            this.inputCurrentOdometer.TabIndex = 10;
             // 
             // labelCurrentOdometer
             // 
@@ -554,7 +602,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputPurchasePrice.PlaceholderText = "";
             this.inputPurchasePrice.SelectedText = "";
             this.inputPurchasePrice.Size = new System.Drawing.Size(227, 56);
-            this.inputPurchasePrice.TabIndex = 16;
+            this.inputPurchasePrice.TabIndex = 9;
             // 
             // labelPurchasePrice
             // 
@@ -770,6 +818,78 @@ namespace VehicleManagementSystem.Forms {
             this.panelBasicInfoRight.Size = new System.Drawing.Size(571, 517);
             this.panelBasicInfoRight.TabIndex = 1;
             // 
+            // errorLabelColor
+            // 
+            this.errorLabelColor.AutoSize = true;
+            this.errorLabelColor.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelColor.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelColor.Location = new System.Drawing.Point(289, 482);
+            this.errorLabelColor.Name = "errorLabelColor";
+            this.errorLabelColor.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelColor.TabIndex = 32;
+            this.errorLabelColor.Text = "Required";
+            this.errorLabelColor.Visible = false;
+            // 
+            // errorLabelYearModel
+            // 
+            this.errorLabelYearModel.AutoSize = true;
+            this.errorLabelYearModel.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelYearModel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelYearModel.Location = new System.Drawing.Point(15, 482);
+            this.errorLabelYearModel.Name = "errorLabelYearModel";
+            this.errorLabelYearModel.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelYearModel.TabIndex = 31;
+            this.errorLabelYearModel.Text = "Required";
+            this.errorLabelYearModel.Visible = false;
+            // 
+            // errorLabelManufacturer
+            // 
+            this.errorLabelManufacturer.AutoSize = true;
+            this.errorLabelManufacturer.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelManufacturer.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelManufacturer.Location = new System.Drawing.Point(15, 359);
+            this.errorLabelManufacturer.Name = "errorLabelManufacturer";
+            this.errorLabelManufacturer.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelManufacturer.TabIndex = 30;
+            this.errorLabelManufacturer.Text = "Required";
+            this.errorLabelManufacturer.Visible = false;
+            // 
+            // errorLabelModel
+            // 
+            this.errorLabelModel.AutoSize = true;
+            this.errorLabelModel.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelModel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelModel.Location = new System.Drawing.Point(289, 359);
+            this.errorLabelModel.Name = "errorLabelModel";
+            this.errorLabelModel.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelModel.TabIndex = 29;
+            this.errorLabelModel.Text = "Required";
+            this.errorLabelModel.Visible = false;
+            // 
+            // errorLabelPlateNum
+            // 
+            this.errorLabelPlateNum.AutoSize = true;
+            this.errorLabelPlateNum.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelPlateNum.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelPlateNum.Location = new System.Drawing.Point(15, 234);
+            this.errorLabelPlateNum.Name = "errorLabelPlateNum";
+            this.errorLabelPlateNum.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelPlateNum.TabIndex = 28;
+            this.errorLabelPlateNum.Text = "Required";
+            this.errorLabelPlateNum.Visible = false;
+            // 
+            // errorLabelVehicleIdentificationNumber
+            // 
+            this.errorLabelVehicleIdentificationNumber.AutoSize = true;
+            this.errorLabelVehicleIdentificationNumber.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabelVehicleIdentificationNumber.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelVehicleIdentificationNumber.Location = new System.Drawing.Point(15, 111);
+            this.errorLabelVehicleIdentificationNumber.Name = "errorLabelVehicleIdentificationNumber";
+            this.errorLabelVehicleIdentificationNumber.Size = new System.Drawing.Size(75, 19);
+            this.errorLabelVehicleIdentificationNumber.TabIndex = 27;
+            this.errorLabelVehicleIdentificationNumber.Text = "Required";
+            this.errorLabelVehicleIdentificationNumber.Visible = false;
+            // 
             // labelModel
             // 
             this.labelModel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -829,7 +949,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputModel.PlaceholderText = "";
             this.inputModel.SelectedText = "";
             this.inputModel.Size = new System.Drawing.Size(250, 55);
-            this.inputModel.TabIndex = 25;
+            this.inputModel.TabIndex = 5;
             // 
             // inputPlateNum
             // 
@@ -852,7 +972,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputPlateNum.PlaceholderText = "";
             this.inputPlateNum.SelectedText = "";
             this.inputPlateNum.Size = new System.Drawing.Size(250, 55);
-            this.inputPlateNum.TabIndex = 10;
+            this.inputPlateNum.TabIndex = 2;
             // 
             // inputManufacturer
             // 
@@ -873,7 +993,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputManufacturer.PlaceholderText = "";
             this.inputManufacturer.SelectedText = "";
             this.inputManufacturer.Size = new System.Drawing.Size(250, 55);
-            this.inputManufacturer.TabIndex = 24;
+            this.inputManufacturer.TabIndex = 4;
             // 
             // labelColor
             // 
@@ -909,7 +1029,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputCategory.Margin = new System.Windows.Forms.Padding(10);
             this.inputCategory.Name = "inputCategory";
             this.inputCategory.Size = new System.Drawing.Size(244, 56);
-            this.inputCategory.TabIndex = 22;
+            this.inputCategory.TabIndex = 3;
             // 
             // labelVehicleIdentificationNumber
             // 
@@ -946,7 +1066,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputColor.PlaceholderText = "";
             this.inputColor.SelectedText = "";
             this.inputColor.Size = new System.Drawing.Size(250, 55);
-            this.inputColor.TabIndex = 24;
+            this.inputColor.TabIndex = 7;
             // 
             // labelPlateNum
             // 
@@ -1025,7 +1145,7 @@ namespace VehicleManagementSystem.Forms {
             this.inputYearModel.PlaceholderText = "";
             this.inputYearModel.SelectedText = "";
             this.inputYearModel.Size = new System.Drawing.Size(250, 55);
-            this.inputYearModel.TabIndex = 23;
+            this.inputYearModel.TabIndex = 6;
             // 
             // panelBasicInfoHeader
             // 
@@ -1093,126 +1213,6 @@ namespace VehicleManagementSystem.Forms {
             this.label8.Size = new System.Drawing.Size(398, 43);
             this.label8.TabIndex = 7;
             this.label8.Text = "Bring in a New Vehicle";
-            // 
-            // errorLabelVehicleIdentificationNumber
-            // 
-            this.errorLabelVehicleIdentificationNumber.AutoSize = true;
-            this.errorLabelVehicleIdentificationNumber.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelVehicleIdentificationNumber.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelVehicleIdentificationNumber.Location = new System.Drawing.Point(15, 111);
-            this.errorLabelVehicleIdentificationNumber.Name = "errorLabelVehicleIdentificationNumber";
-            this.errorLabelVehicleIdentificationNumber.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelVehicleIdentificationNumber.TabIndex = 27;
-            this.errorLabelVehicleIdentificationNumber.Text = "Required";
-            this.errorLabelVehicleIdentificationNumber.Visible = false;
-            // 
-            // errorLabelPlateNum
-            // 
-            this.errorLabelPlateNum.AutoSize = true;
-            this.errorLabelPlateNum.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelPlateNum.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelPlateNum.Location = new System.Drawing.Point(15, 234);
-            this.errorLabelPlateNum.Name = "errorLabelPlateNum";
-            this.errorLabelPlateNum.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelPlateNum.TabIndex = 28;
-            this.errorLabelPlateNum.Text = "Required";
-            this.errorLabelPlateNum.Visible = false;
-            // 
-            // errorLabelModel
-            // 
-            this.errorLabelModel.AutoSize = true;
-            this.errorLabelModel.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelModel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelModel.Location = new System.Drawing.Point(289, 359);
-            this.errorLabelModel.Name = "errorLabelModel";
-            this.errorLabelModel.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelModel.TabIndex = 29;
-            this.errorLabelModel.Text = "Required";
-            this.errorLabelModel.Visible = false;
-            // 
-            // errorLabelManufacturer
-            // 
-            this.errorLabelManufacturer.AutoSize = true;
-            this.errorLabelManufacturer.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelManufacturer.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelManufacturer.Location = new System.Drawing.Point(15, 359);
-            this.errorLabelManufacturer.Name = "errorLabelManufacturer";
-            this.errorLabelManufacturer.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelManufacturer.TabIndex = 30;
-            this.errorLabelManufacturer.Text = "Required";
-            this.errorLabelManufacturer.Visible = false;
-            // 
-            // errorLabelYearModel
-            // 
-            this.errorLabelYearModel.AutoSize = true;
-            this.errorLabelYearModel.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelYearModel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelYearModel.Location = new System.Drawing.Point(15, 482);
-            this.errorLabelYearModel.Name = "errorLabelYearModel";
-            this.errorLabelYearModel.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelYearModel.TabIndex = 31;
-            this.errorLabelYearModel.Text = "Required";
-            this.errorLabelYearModel.Visible = false;
-            // 
-            // errorLabelColor
-            // 
-            this.errorLabelColor.AutoSize = true;
-            this.errorLabelColor.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelColor.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelColor.Location = new System.Drawing.Point(289, 482);
-            this.errorLabelColor.Name = "errorLabelColor";
-            this.errorLabelColor.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelColor.TabIndex = 32;
-            this.errorLabelColor.Text = "Required";
-            this.errorLabelColor.Visible = false;
-            // 
-            // errorLabelDailyRate
-            // 
-            this.errorLabelDailyRate.AutoSize = true;
-            this.errorLabelDailyRate.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelDailyRate.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelDailyRate.Location = new System.Drawing.Point(42, 179);
-            this.errorLabelDailyRate.Name = "errorLabelDailyRate";
-            this.errorLabelDailyRate.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelDailyRate.TabIndex = 33;
-            this.errorLabelDailyRate.Text = "Required";
-            this.errorLabelDailyRate.Visible = false;
-            // 
-            // errorLabelSeatCapacity
-            // 
-            this.errorLabelSeatCapacity.AutoSize = true;
-            this.errorLabelSeatCapacity.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelSeatCapacity.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelSeatCapacity.Location = new System.Drawing.Point(293, 181);
-            this.errorLabelSeatCapacity.Name = "errorLabelSeatCapacity";
-            this.errorLabelSeatCapacity.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelSeatCapacity.TabIndex = 34;
-            this.errorLabelSeatCapacity.Text = "Required";
-            this.errorLabelSeatCapacity.Visible = false;
-            // 
-            // errorLabelPurchasePrice
-            // 
-            this.errorLabelPurchasePrice.AutoSize = true;
-            this.errorLabelPurchasePrice.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelPurchasePrice.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelPurchasePrice.Location = new System.Drawing.Point(32, 303);
-            this.errorLabelPurchasePrice.Name = "errorLabelPurchasePrice";
-            this.errorLabelPurchasePrice.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelPurchasePrice.TabIndex = 35;
-            this.errorLabelPurchasePrice.Text = "Required";
-            this.errorLabelPurchasePrice.Visible = false;
-            // 
-            // errorLabelCurrentOdometer
-            // 
-            this.errorLabelCurrentOdometer.AutoSize = true;
-            this.errorLabelCurrentOdometer.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorLabelCurrentOdometer.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelCurrentOdometer.Location = new System.Drawing.Point(290, 303);
-            this.errorLabelCurrentOdometer.Name = "errorLabelCurrentOdometer";
-            this.errorLabelCurrentOdometer.Size = new System.Drawing.Size(75, 19);
-            this.errorLabelCurrentOdometer.TabIndex = 36;
-            this.errorLabelCurrentOdometer.Text = "Required";
-            this.errorLabelCurrentOdometer.Visible = false;
             // 
             // frmAddNewVehicle
             // 

@@ -1,10 +1,8 @@
 ﻿using System;
 using VehicleManagementSystem.Data.Enums;
 using VehicleManagementSystem.Services.Implementations;
-using VehicleManagementSystem.Services.Interfaces;
 using VehicleManagementSystem.View.Interfaces;
 using VehicleManagementSystem.Models;
-using VehicleManagementSystem.Data;
 
 namespace VehicleManagementSystem.Presentor {
     public class addNewVehiclePresenter {
@@ -30,30 +28,22 @@ namespace VehicleManagementSystem.Presentor {
                 Model = _view.VehicleModel,
                 YearModel = int.Parse(_view.VehicleYearModel),
                 Color = _view.VehicleColor,
-
-                // Classification
                 Category = _view.VehicleCatergory,
-                FuelType = _view.VehicleFuelType,
-                Transmission = _view.VehicleTransmissionType,
-                SeatingCapacity = string.IsNullOrWhiteSpace(_view.VehicleSeatCapacity)
-                    ? (int?)null
-                    : int.Parse(_view.VehicleSeatCapacity),
-
-                // Purchase & Lifecycle
+               
+                // Purchase
                 PurchaseDate = DateTime.Parse(_view.VehiclePurchaseDate),
-                PurchasePrice = string.IsNullOrWhiteSpace(_view.VehiclePurchasePrice)
-                    ? (decimal?)null
-                    : decimal.Parse(_view.VehiclePurchasePrice),
+                PurchasePrice = decimal.Parse(_view.VehiclePurchasePrice),
 
                 // Usage & Status
                 CurrentOdometerReading = int.Parse(_view.VehicleCurrentOdometer),
-                CurrentStatus = "Available", // default business rule
+                CurrentStatus = "Available",
                 DailyRate = decimal.Parse(_view.VehicleDailyRate),
+                FuelType = _view.VehicleFuelType,
+                Transmission = _view.VehicleTransmissionType,
+                SeatingCapacity = int.Parse(_view.VehicleSeatCapacity),
 
-                // Media
                 ImagePath = _view.VehicleImagePath,
 
-                // System fields
                 IsActive = true,
                 CreatedDate = DateTime.Now,
                 LastModifiedDate = DateTime.Now
@@ -61,6 +51,7 @@ namespace VehicleManagementSystem.Presentor {
             
             try {
                 _vehicleServices.AddVehicle(newVehicle);
+                _view.ShowError("ADDED");
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
             }
@@ -81,11 +72,6 @@ namespace VehicleManagementSystem.Presentor {
 
         private bool IsNumericInputsValid(IAddNewVehicleView inputs) {
             bool hadNoError = true;
-
-            if (!Double.TryParse(inputs.VehicleDailyRate, out _)) {
-                _view.SetFieldError(AddNewVehicleInputEnums.VehicleDailyRate, "Invalid Input");
-                hadNoError = false;
-            }
 
             if (!Double.TryParse(inputs.VehiclePurchasePrice, out _)) {
                 _view.SetFieldError(AddNewVehicleInputEnums.VehiclePurchasePrice, "Invalid Input");
