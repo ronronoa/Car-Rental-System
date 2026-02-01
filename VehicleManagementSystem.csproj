@@ -241,6 +241,7 @@
     <Compile Include="Dto\VehicleDto.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Presenters\addNewVehiclePresenter.cs" />
+    <Compile Include="Presenters\vehicleManagementPresenter.cs" />
     <Compile Include="Services\Implementations\VehicleServices.cs" />
     <Compile Include="Services\Interfaces\IVehicleService.cs" />
     <Compile Include="View\Forms\frmMain.cs">

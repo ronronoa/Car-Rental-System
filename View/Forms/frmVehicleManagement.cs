@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
 using VehicleManagementSystem.Classes;
+using VehicleManagementSystem.Presenters;
 
 namespace VehicleManagementSystem.Forms {
     public partial class frmVehicleManagement : Form {
+
+        private vehicleManagementPresenter _presenter;
+
         public frmVehicleManagement() {
             InitializeComponent();
+        }
+
+        public void RenderVehicles() {
+
         }
 
         private void addNewVehBtn_Click(object sender, EventArgs e) {
