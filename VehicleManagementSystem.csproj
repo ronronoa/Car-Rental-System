@@ -244,6 +244,12 @@
     <Compile Include="Presenters\vehicleManagementPresenter.cs" />
     <Compile Include="Services\Implementations\VehicleServices.cs" />
     <Compile Include="Services\Interfaces\IVehicleService.cs" />
+    <Compile Include="UserControls\VehicleCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\VehicleCardControl.Designer.cs">
+      <DependentUpon>VehicleCardControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\frmUserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,10 @@
       <DependentUpon>frmVehicleManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Interfaces\IAddNewVehicleView.cs" />
+    <Compile Include="View\Interfaces\IVehicleManagementView.cs" />
+    <EmbeddedResource Include="UserControls\VehicleCardControl.resx">
+      <DependentUpon>VehicleCardControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\frmUserManagement.resx">
       <DependentUpon>frmUserManagement.cs</DependentUpon>
     </EmbeddedResource>
