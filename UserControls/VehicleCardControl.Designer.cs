@@ -111,7 +111,7 @@ namespace VehicleManagementSystem.UserControls {
             this.labelStatus.PlaceholderText = "";
             this.labelStatus.ReadOnly = true;
             this.labelStatus.SelectedText = "";
-            this.labelStatus.Size = new System.Drawing.Size(93, 38);
+            this.labelStatus.Size = new System.Drawing.Size(86, 38);
             this.labelStatus.TabIndex = 1;
             this.labelStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.labelStatus.WordWrap = false;

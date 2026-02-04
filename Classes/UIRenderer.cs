@@ -10,7 +10,7 @@ namespace VehicleManagementSystem.Classes {
 
         public UIRenderer(Panel menuPanel) {
             leftBorder = new Guna2GradientPanel {
-                Size = new Size(10, 85),
+                Size = new Size(10, menuPanel.Controls.Find("dashboardBtn", true)[0].Height),
                 BorderRadius = 10,
                 FillColor = AppConfig.Theme.Primary,
                 FillColor2 = AppConfig.Theme.Primary,
