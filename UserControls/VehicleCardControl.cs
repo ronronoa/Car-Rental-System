@@ -53,7 +53,10 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void Card_Click(object sender, EventArgs e) {
+            string headerLabe = "Details > " + _vehicle.LicensePlate;
+
             NavigationHelper.OpenForm(new frmVehicleDetails(_vehicle));
+            frmMain.Instance.AddHeaderLabel(headerLabe);
         }
     }
 }

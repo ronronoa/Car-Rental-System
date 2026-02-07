@@ -51,6 +51,7 @@ namespace VehicleManagementSystem.UserControls {
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Location = new System.Drawing.Point(450, 362);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(8, 8);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -65,8 +66,9 @@ namespace VehicleManagementSystem.UserControls {
             this.panelBg.FillColor2 = System.Drawing.Color.White;
             this.panelBg.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             this.panelBg.Location = new System.Drawing.Point(0, 0);
+            this.panelBg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelBg.Name = "panelBg";
-            this.panelBg.Size = new System.Drawing.Size(381, 507);
+            this.panelBg.Size = new System.Drawing.Size(381, 508);
             this.panelBg.TabIndex = 2;
             // 
             // panelPicture
@@ -81,6 +83,7 @@ namespace VehicleManagementSystem.UserControls {
             this.panelPicture.CustomizableEdges.BottomRight = false;
             this.panelPicture.FillColor = System.Drawing.Color.WhiteSmoke;
             this.panelPicture.Location = new System.Drawing.Point(0, 0);
+            this.panelPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelPicture.Name = "panelPicture";
             this.panelPicture.Size = new System.Drawing.Size(381, 225);
             this.panelPicture.TabIndex = 3;
@@ -103,15 +106,15 @@ namespace VehicleManagementSystem.UserControls {
             this.labelStatus.Font = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStatus.ForeColor = System.Drawing.Color.ForestGreen;
             this.labelStatus.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.labelStatus.Location = new System.Drawing.Point(0, 13);
+            this.labelStatus.Location = new System.Drawing.Point(0, 12);
             this.labelStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Padding = new System.Windows.Forms.Padding(4);
+            this.labelStatus.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelStatus.PlaceholderForeColor = System.Drawing.Color.Black;
             this.labelStatus.PlaceholderText = "";
             this.labelStatus.ReadOnly = true;
             this.labelStatus.SelectedText = "";
-            this.labelStatus.Size = new System.Drawing.Size(86, 38);
+            this.labelStatus.Size = new System.Drawing.Size(133, 38);
             this.labelStatus.TabIndex = 1;
             this.labelStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.labelStatus.WordWrap = false;
@@ -122,6 +125,7 @@ namespace VehicleManagementSystem.UserControls {
             this.pictureVehicle.Image = global::VehicleManagementSystem.Properties.Resources.default_car_model;
             this.pictureVehicle.ImageRotate = 0F;
             this.pictureVehicle.Location = new System.Drawing.Point(0, 0);
+            this.pictureVehicle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureVehicle.Name = "pictureVehicle";
             this.pictureVehicle.Size = new System.Drawing.Size(381, 225);
             this.pictureVehicle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -141,7 +145,8 @@ namespace VehicleManagementSystem.UserControls {
             this.guna2Panel2.CustomizableEdges.TopRight = false;
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Panel2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 231);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 232);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(381, 276);
             this.guna2Panel2.TabIndex = 2;
@@ -159,7 +164,8 @@ namespace VehicleManagementSystem.UserControls {
             this.guna2GradientPanel1.Controls.Add(this.labelCurrentOdometer);
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(23, 118);
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(22, 118);
+            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(339, 140);
             this.guna2GradientPanel1.TabIndex = 3;
@@ -172,6 +178,7 @@ namespace VehicleManagementSystem.UserControls {
             this.pictureBoxTransmission.Image = global::VehicleManagementSystem.Properties.Resources.auto_transmission_icon;
             this.pictureBoxTransmission.ImageRotate = 0F;
             this.pictureBoxTransmission.Location = new System.Drawing.Point(207, 15);
+            this.pictureBoxTransmission.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxTransmission.Name = "pictureBoxTransmission";
             this.pictureBoxTransmission.Size = new System.Drawing.Size(50, 55);
             this.pictureBoxTransmission.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -186,6 +193,7 @@ namespace VehicleManagementSystem.UserControls {
             this.guna2CirclePictureBox1.Image = global::VehicleManagementSystem.Properties.Resources.engine_icon;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
             this.guna2CirclePictureBox1.Location = new System.Drawing.Point(263, 15);
+            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CirclePictureBox1.Size = new System.Drawing.Size(55, 55);
@@ -199,7 +207,7 @@ namespace VehicleManagementSystem.UserControls {
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(13, 107);
+            this.label5.Location = new System.Drawing.Point(14, 108);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(146, 19);
             this.label5.TabIndex = 4;
@@ -211,7 +219,7 @@ namespace VehicleManagementSystem.UserControls {
             this.labelCurrentOdometer.AutoSize = true;
             this.labelCurrentOdometer.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCurrentOdometer.ForeColor = System.Drawing.Color.White;
-            this.labelCurrentOdometer.Location = new System.Drawing.Point(10, 67);
+            this.labelCurrentOdometer.Location = new System.Drawing.Point(10, 68);
             this.labelCurrentOdometer.Name = "labelCurrentOdometer";
             this.labelCurrentOdometer.Size = new System.Drawing.Size(181, 40);
             this.labelCurrentOdometer.TabIndex = 4;
@@ -261,8 +269,9 @@ namespace VehicleManagementSystem.UserControls {
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panelBg);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "VehicleCardControl";
-            this.Size = new System.Drawing.Size(381, 507);
+            this.Size = new System.Drawing.Size(381, 508);
             this.Click += new System.EventHandler(this.Card_Click);
             this.panelBg.ResumeLayout(false);
             this.panelPicture.ResumeLayout(false);

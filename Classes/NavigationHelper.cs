@@ -8,6 +8,7 @@ namespace VehicleManagementSystem.Classes {
         public static void OpenForm(Form childForm) {
             if (ActiveForm != null) {
                 ActiveForm.Close();
+                frmMain.Instance.RemoveHeaderLabel();
             }
             frmMain.ChildFormContainer.Controls.Clear();
             ActiveForm = childForm;
