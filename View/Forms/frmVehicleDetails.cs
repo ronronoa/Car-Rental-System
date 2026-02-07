@@ -13,6 +13,22 @@ namespace VehicleManagementSystem.View.Forms {
 
             InitializeComponent();
             LoadUI();
+            LoadVehicleInformation();
+        }
+
+        private void LoadVehicleInformation() {
+            inputCategory.Text = _vehicle.Category;
+            inputColor.Text = _vehicle.Color;
+            inputManufacturer.Text = _vehicle.Manufacturer;
+            inputModel.Text = _vehicle.Model;
+            inputPlateNum.Text = _vehicle.LicensePlate;
+            inputPurchasePrice.Text = "₱" +  _vehicle.PurchasePrice.ToString();
+            inputSeatingCap.Text = _vehicle.SeatingCapacity.ToString();
+            inputVehicleIdentification.Text = _vehicle.VIN;
+            inputYearModel.Text = _vehicle.YearModel.ToString();
+
+            inputPurchaseDate.Value = _vehicle.PurchaseDate;
+            inputPurchaseDate.Enabled = false;
         }
 
         private void LoadUI() {
