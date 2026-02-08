@@ -177,7 +177,7 @@ namespace VehicleManagementSystem.Forms {
             this.addNewVehBtn.Name = "addNewVehBtn";
             this.addNewVehBtn.Size = new System.Drawing.Size(190, 60);
             this.addNewVehBtn.TabIndex = 0;
-            this.addNewVehBtn.Text = "Add New Car";
+            this.addNewVehBtn.Text = "Add Vehicle";
             this.addNewVehBtn.Click += new System.EventHandler(this.addNewVehBtn_Click);
             // 
             // panel1

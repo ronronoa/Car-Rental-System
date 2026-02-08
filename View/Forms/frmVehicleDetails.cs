@@ -10,14 +10,13 @@ using VehicleManagementSystem.Forms;
 namespace VehicleManagementSystem.View.Forms {
     public partial class frmVehicleDetails : Form {
         VehicleDto _vehicle;
+        bool _isOnEdittingMOde = false;
 
         public frmVehicleDetails(VehicleDto vehicle) {
             _vehicle = vehicle;
 
             InitializeComponent();
             LoadUI();
-            LoadVehicleInformation();
-            LoadComboBoxInformation();
         }
 
         private void LoadComboBoxInformation() {
@@ -51,12 +50,6 @@ namespace VehicleManagementSystem.View.Forms {
         private void LoadVehicleInformation() {
             inputOdomter.Text = _vehicle.CurrentOdometerReading.ToString() + " km";
 
-            
-
-            //inputCategory.DataSource = Enum.GetValues(typeof(VehicleEnums.Category));
-
-            //inputTransmissionType.DataSource = Enum.GetValues(typeof(VehicleEnums.TransmissionType));
-
             inputCategory.Text = _vehicle.Category;
             inputColor.Text = _vehicle.Color;
             inputManufacturer.Text = _vehicle.Manufacturer;
@@ -77,6 +70,9 @@ namespace VehicleManagementSystem.View.Forms {
             labelStatus.FillColor = Helpers.GetStatusColor(_vehicle.CurrentStatus);
             labelStatus.Text = _vehicle.CurrentStatus.ToString();
             labelStatus.Location = new Point(labelSubHeader.Right + 5, labelSubHeader.Location.Y);
+
+            LoadVehicleInformation();
+            LoadComboBoxInformation();
         }
 
         private string GetVehicleSubHeader(VehicleDto vehicle) {
@@ -95,6 +91,46 @@ namespace VehicleManagementSystem.View.Forms {
 
         private void backBtn_Click(object sender, System.EventArgs e) {
             NavigationHelper.OpenForm(new frmVehicleManagement());
+        }
+
+        private void ToggleUIVisibility() {
+            labelEdittingModeNotice.Visible = !labelEdittingModeNotice.Visible;
+            editBtn.Visible = !editBtn.Visible;
+            saveBtn.Visible = !saveBtn.Visible;
+            cancelBtn.Visible = !cancelBtn.Visible;
+        }
+
+        private void ToggleInputsEnable() {
+            inputOdomter.ReadOnly = !inputOdomter.ReadOnly;
+            inputFuelType.Enabled = !inputFuelType.Enabled;
+            inputTransmissionType.Enabled = !inputTransmissionType.Enabled;
+
+            inputVehicleIdentification.ReadOnly = !inputVehicleIdentification.ReadOnly;
+            inputPlateNum.ReadOnly = !inputPlateNum.ReadOnly;
+            inputManufacturer.ReadOnly = !inputManufacturer.ReadOnly;
+            inputModel.ReadOnly = !inputModel.ReadOnly;
+            inputYearModel.ReadOnly = !inputYearModel.ReadOnly;
+        
+            inputColor.ReadOnly = !inputColor.ReadOnly;
+            inputSeatingCap.ReadOnly = !inputSeatingCap.ReadOnly;
+            inputPurchasePrice.ReadOnly = !inputPurchasePrice.ReadOnly;
+
+            inputPurchaseDate.Enabled = !inputPurchaseDate.Enabled;
+        }
+
+        private void editBtn_Click(object sender, EventArgs e) {
+            _isOnEdittingMOde = true;
+            ToggleUIVisibility();
+            ToggleInputsEnable();
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e) {
+            _isOnEdittingMOde = false;
+            ToggleUIVisibility();
+            ToggleInputsEnable();
+
+            LoadComboBoxInformation();
+            LoadVehicleInformation();
         }
     }
 }
