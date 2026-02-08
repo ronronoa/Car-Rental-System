@@ -251,11 +251,23 @@
     </Compile>
     <Compile Include="Services\Implementations\VehicleServices.cs" />
     <Compile Include="Services\Interfaces\IVehicleService.cs" />
+    <Compile Include="UserControls\VehicleDetailsDocuments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\VehicleDetailsDocuments.Designer.cs">
+      <DependentUpon>VehicleDetailsDocuments.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\VehicleDetailsOverview.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\VehicleDetailsOverview.Designer.cs">
       <DependentUpon>VehicleDetailsOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VehicleDocumentCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\VehicleDocumentCardControl.Designer.cs">
+      <DependentUpon>VehicleDocumentCardControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Forms\frmAddUser.cs">
       <SubType>Form</SubType>
@@ -338,8 +350,14 @@
       <DependentUpon>frmUserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Interfaces\IAddNewVehicleView.cs" />
+    <EmbeddedResource Include="UserControls\VehicleDetailsDocuments.resx">
+      <DependentUpon>VehicleDetailsDocuments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\VehicleDetailsOverview.resx">
       <DependentUpon>VehicleDetailsOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\VehicleDocumentCardControl.resx">
+      <DependentUpon>VehicleDocumentCardControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\frmAddUser.resx">
       <DependentUpon>frmAddUser.cs</DependentUpon>

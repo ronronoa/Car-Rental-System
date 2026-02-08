@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 using VehicleManagementSystem.Classes;
 using VehicleManagementSystem.Data;
@@ -10,8 +11,9 @@ namespace VehicleManagementSystem.UserControls {
         private VehicleDto _vehicle;
 
         public VehicleDetailsOverview(VehicleDto vehicle) {
-            InitializeComponent();
             _vehicle = vehicle;
+            InitializeComponent();
+            InitializeCombos();
 
             this.SetStyle(ControlStyles.AllPaintingInWmPaint |
                       ControlStyles.UserPaint |
@@ -20,25 +22,22 @@ namespace VehicleManagementSystem.UserControls {
 
             this.UpdateStyles();
 
-            LoadComboBoxInformation();
             LoadVehicleInformation();
+            LoadComboBoxInformation();
             LoadVehicleImage();
         }
 
-        private void editBtn_Click(object sender, EventArgs e) {
+        private void editBtn_Click(object sender, EventArgs e) {        
             ToggleUIVisibility();
             ToggleInputsEnable();
-
-            this.ActiveControl = inputOdomter;
-            // Focus on the first input
         }
 
         private void cancelBtn_Click(object sender, EventArgs e) {
             ToggleUIVisibility();
             ToggleInputsEnable();
 
-            LoadComboBoxInformation();
             LoadVehicleInformation();
+            LoadComboBoxInformation();
         }
 
         private void LoadVehicleImage() {
@@ -63,7 +62,6 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void LoadComboBoxInformation() {
-            inputFuelType.DataSource = Enum.GetValues(typeof(VehicleEnums.FuelType));
             var fuelTypeMap = new Dictionary<string, VehicleEnums.FuelType>{
                 { "Gasoline", VehicleEnums.FuelType.Gasoline },
                 { "Diesel", VehicleEnums.FuelType.Diesel },
@@ -76,7 +74,6 @@ namespace VehicleManagementSystem.UserControls {
 
             inputFuelType.Enabled = false;
 
-            inputTransmissionType.DataSource = Enum.GetValues(typeof(VehicleEnums.TransmissionType));
             var transmissionTypeMap = new Dictionary<string, VehicleEnums.TransmissionType>{
                 { "Manual", VehicleEnums.TransmissionType.Manual},
                 { "Automatic", VehicleEnums.TransmissionType.Automatic },
@@ -96,6 +93,8 @@ namespace VehicleManagementSystem.UserControls {
             editBtn.Visible = !editBtn.Visible;
             saveBtn.Visible = !saveBtn.Visible;
             cancelBtn.Visible = !cancelBtn.Visible;
+            
+            
         }
 
         private void ToggleInputsEnable() {
@@ -116,6 +115,12 @@ namespace VehicleManagementSystem.UserControls {
             inputPurchaseDate.Enabled = !inputPurchaseDate.Enabled;
         }
 
+        private void InitializeCombos() {
+            inputFuelType.DataSource = Enum.GetValues(typeof(VehicleEnums.FuelType));
+            inputTransmissionType.DataSource = Enum.GetValues(typeof(VehicleEnums.TransmissionType));
+        }
+
+
         // Automatically add Double Buffering to the whole form
         // Boilerplate From Stackoverflow
         protected override CreateParams CreateParams {
@@ -124,6 +129,10 @@ namespace VehicleManagementSystem.UserControls {
                 cp.ExStyle |= 0x02000000;
                 return cp;
             }
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e) {
+
         }
     }
 }

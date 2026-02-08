@@ -69,8 +69,8 @@ namespace VehicleManagementSystem.View.Forms {
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelMain.AutoScroll = true;
             this.panelMain.Controls.Add(this.panelNav);
+            this.panelMain.Controls.Add(this.hr);
             this.panelMain.Controls.Add(this.panelSubMain);
-            this.panelMain.Controls.Add(this.guna2Panel9);
             this.panelMain.Controls.Add(this.labelStatus);
             this.panelMain.Controls.Add(this.label20);
             this.panelMain.Controls.Add(this.label3);
@@ -134,7 +134,7 @@ namespace VehicleManagementSystem.View.Forms {
             this.maintenanceBtn.Name = "maintenanceBtn";
             this.maintenanceBtn.Size = new System.Drawing.Size(159, 61);
             this.maintenanceBtn.TabIndex = 4;
-            this.maintenanceBtn.Text = "MAINTENANCE";
+            this.maintenanceBtn.Text = "Maintenance";
             this.maintenanceBtn.Click += new System.EventHandler(this.maintenanceBtn_Click);
             // 
             // documentsBtn
@@ -152,7 +152,7 @@ namespace VehicleManagementSystem.View.Forms {
             this.documentsBtn.Name = "documentsBtn";
             this.documentsBtn.Size = new System.Drawing.Size(165, 61);
             this.documentsBtn.TabIndex = 4;
-            this.documentsBtn.Text = "DOCUMENTS";
+            this.documentsBtn.Text = "Documents";
             this.documentsBtn.Click += new System.EventHandler(this.documentsBtn_Click);
             // 
             // panelSubMain
@@ -180,12 +180,10 @@ namespace VehicleManagementSystem.View.Forms {
             // 
             // labelStatus
             // 
-            this.labelStatus.AutoSize = true;
-            this.labelStatus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.labelStatus.BackColor = System.Drawing.Color.Transparent;
-            this.labelStatus.BorderRadius = 15;
+            this.labelStatus.BorderRadius = 20;
             this.labelStatus.BorderThickness = 0;
-            this.labelStatus.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.labelStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.labelStatus.DefaultText = "inMaintenance";
             this.labelStatus.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.labelStatus.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -193,7 +191,7 @@ namespace VehicleManagementSystem.View.Forms {
             this.labelStatus.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.labelStatus.FillColor = System.Drawing.Color.Thistle;
             this.labelStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.labelStatus.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatus.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStatus.ForeColor = System.Drawing.Color.White;
             this.labelStatus.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.labelStatus.Location = new System.Drawing.Point(226, 16);
@@ -303,7 +301,7 @@ namespace VehicleManagementSystem.View.Forms {
         private MySqlConnector.MySqlCommand mySqlCommand1;
         private MySqlConnector.MySqlCommand mySqlCommand2;
         private Guna.UI2.WinForms.Guna2GradientPanel panelMain;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel9;
+        private Guna.UI2.WinForms.Guna2Panel hr;
         private Guna.UI2.WinForms.Guna2Button maintenanceBtn;
         private Guna.UI2.WinForms.Guna2Button documentsBtn;
         private Guna.UI2.WinForms.Guna2Button overviewBtn;

@@ -112,6 +112,7 @@ namespace VehicleManagementSystem.Forms {
             // searchBox
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchBox.BorderColor = System.Drawing.Color.White;
             this.searchBox.BorderRadius = 10;
             this.searchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.searchBox.DefaultText = "";
@@ -127,7 +128,7 @@ namespace VehicleManagementSystem.Forms {
             this.searchBox.IconRight = global::VehicleManagementSystem.Properties.Resources.magnifying_glass;
             this.searchBox.IconRightOffset = new System.Drawing.Point(10, 0);
             this.searchBox.IconRightSize = new System.Drawing.Size(25, 25);
-            this.searchBox.Location = new System.Drawing.Point(584, 21);
+            this.searchBox.Location = new System.Drawing.Point(610, 21);
             this.searchBox.Margin = new System.Windows.Forms.Padding(0);
             this.searchBox.Name = "searchBox";
             this.searchBox.PlaceholderText = "";

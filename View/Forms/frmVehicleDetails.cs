@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using VehicleManagementSystem.Classes;
 using VehicleManagementSystem.Dto;
 using VehicleManagementSystem.Forms;
@@ -38,24 +39,28 @@ namespace VehicleManagementSystem.View.Forms {
             panelSubMain.Controls.Add(ActiveUserControl);
             
             panelSubMain.ResumeLayout(true);
-            RenderActiveButtonLowerPanel();
+            RenderActiveButton();
         }
 
         private void maintenanceBtn_Click(object sender, System.EventArgs e) {
+            RemoveActiveButtonStyle();
             ActiveButton = maintenanceBtn;
             OpenSubPanel(new VehicleCardControl());
         }
 
         private void overviewBtn_Click(object sender, System.EventArgs e) {
+            RemoveActiveButtonStyle();
             ActiveButton = overviewBtn;
             OpenSubPanel(new VehicleDetailsOverview(_vehicle));
         }
 
         private void documentsBtn_Click(object sender, System.EventArgs e) {
-
+            RemoveActiveButtonStyle();
+            ActiveButton = documentsBtn;
+            OpenSubPanel(new VehicleDetailsDocuments(_vehicle));
         }
 
-        private void RenderActiveButtonLowerPanel() {
+        private void RenderActiveButton() {
             panelNav.Controls.Remove(LowerPanel);
 
             LowerPanel = new Guna2Panel() {
@@ -63,8 +68,9 @@ namespace VehicleManagementSystem.View.Forms {
                 Width = ActiveButton.Width,
                 Height = 10,
                 FillColor = AppConfig.Theme.Primary,
-                Location = new Point(ActiveButton.Location.X, 76 - 10),
+                Location = new Point(ActiveButton.Location.X, 76 - 9),
                 BorderRadius = 10,
+                Margin = new Padding(0)
             };
 
             LowerPanel.CustomizableEdges.BottomRight = false;
@@ -72,13 +78,20 @@ namespace VehicleManagementSystem.View.Forms {
             panelNav.Controls.Add(LowerPanel);
             LowerPanel.Visible = true;
             LowerPanel.BringToFront();
+
+            ActiveButton.ForeColor = AppConfig.Theme.Primary;
+        }
+
+        private void RemoveActiveButtonStyle() {
+            ActiveButton.ForeColor = Color.FromArgb(64, 64, 64);
         }
 
         private void LoadUI() {
+            hr.FillColor = AppConfig.Theme.Primary;
             labelSubHeader.Text = GetVehicleSubHeader(_vehicle);
             labelStatus.FillColor = Helpers.GetStatusColor(_vehicle.CurrentStatus);
             labelStatus.Text = _vehicle.CurrentStatus.ToString();
-            labelStatus.Location = new Point(labelSubHeader.Right + 5, labelSubHeader.Location.Y);
+            labelStatus.Location = new Point(labelSubHeader.Right + 5, labelStatus.Location.Y);
         }
 
         private string GetVehicleSubHeader(VehicleDto vehicle) {

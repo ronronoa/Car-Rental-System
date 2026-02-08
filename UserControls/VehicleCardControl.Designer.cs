@@ -90,11 +90,11 @@ namespace VehicleManagementSystem.UserControls {
             // 
             // labelStatus
             // 
-            this.labelStatus.AutoSize = true;
+            this.labelStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStatus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.labelStatus.BorderRadius = 15;
             this.labelStatus.BorderThickness = 0;
-            this.labelStatus.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.labelStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.labelStatus.CustomizableEdges.BottomLeft = false;
             this.labelStatus.CustomizableEdges.TopLeft = false;
             this.labelStatus.DefaultText = "inMaintenance";
@@ -102,11 +102,12 @@ namespace VehicleManagementSystem.UserControls {
             this.labelStatus.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.labelStatus.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.labelStatus.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.labelStatus.FillColor = System.Drawing.Color.WhiteSmoke;
             this.labelStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.labelStatus.Font = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatus.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelStatus.ForeColor = System.Drawing.Color.ForestGreen;
             this.labelStatus.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.labelStatus.Location = new System.Drawing.Point(0, 12);
+            this.labelStatus.Location = new System.Drawing.Point(244, 5);
             this.labelStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Padding = new System.Windows.Forms.Padding(4);
@@ -114,9 +115,9 @@ namespace VehicleManagementSystem.UserControls {
             this.labelStatus.PlaceholderText = "";
             this.labelStatus.ReadOnly = true;
             this.labelStatus.SelectedText = "";
-            this.labelStatus.Size = new System.Drawing.Size(134, 38);
+            this.labelStatus.Size = new System.Drawing.Size(137, 38);
             this.labelStatus.TabIndex = 1;
-            this.labelStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.labelStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labelStatus.WordWrap = false;
             // 
             // pictureVehicle
@@ -216,48 +217,45 @@ namespace VehicleManagementSystem.UserControls {
             // 
             // labelCurrentOdometer
             // 
-            this.labelCurrentOdometer.AutoSize = true;
             this.labelCurrentOdometer.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCurrentOdometer.ForeColor = System.Drawing.Color.White;
             this.labelCurrentOdometer.Location = new System.Drawing.Point(10, 68);
             this.labelCurrentOdometer.Name = "labelCurrentOdometer";
-            this.labelCurrentOdometer.Size = new System.Drawing.Size(181, 40);
+            this.labelCurrentOdometer.Size = new System.Drawing.Size(326, 40);
             this.labelCurrentOdometer.TabIndex = 4;
             this.labelCurrentOdometer.Text = "200.10 Km";
             this.labelCurrentOdometer.Click += new System.EventHandler(this.Card_Click);
             // 
             // labelDailyRate
             // 
-            this.labelDailyRate.AutoSize = true;
             this.labelDailyRate.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDailyRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.labelDailyRate.ForeColor = System.Drawing.Color.Gray;
             this.labelDailyRate.Location = new System.Drawing.Point(19, 79);
             this.labelDailyRate.Name = "labelDailyRate";
-            this.labelDailyRate.Size = new System.Drawing.Size(96, 24);
+            this.labelDailyRate.Size = new System.Drawing.Size(342, 24);
             this.labelDailyRate.TabIndex = 2;
             this.labelDailyRate.Text = "₱500/day";
             this.labelDailyRate.Click += new System.EventHandler(this.Card_Click);
             // 
             // labelSubHader
             // 
-            this.labelSubHader.AutoSize = true;
+            this.labelSubHader.AutoEllipsis = true;
             this.labelSubHader.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSubHader.ForeColor = System.Drawing.Color.Gray;
             this.labelSubHader.Location = new System.Drawing.Point(19, 51);
             this.labelSubHader.Name = "labelSubHader";
-            this.labelSubHader.Size = new System.Drawing.Size(185, 24);
+            this.labelSubHader.Size = new System.Drawing.Size(342, 24);
             this.labelSubHader.TabIndex = 1;
             this.labelSubHader.Text = "Toyota - Vios 2020";
             this.labelSubHader.Click += new System.EventHandler(this.Card_Click);
             // 
             // labelMainHeader
             // 
-            this.labelMainHeader.AutoSize = true;
             this.labelMainHeader.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMainHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.labelMainHeader.Location = new System.Drawing.Point(16, 11);
             this.labelMainHeader.Name = "labelMainHeader";
-            this.labelMainHeader.Size = new System.Drawing.Size(166, 40);
+            this.labelMainHeader.Size = new System.Drawing.Size(345, 40);
             this.labelMainHeader.TabIndex = 0;
             this.labelMainHeader.Text = "DDS-8080";
             this.labelMainHeader.Click += new System.EventHandler(this.Card_Click);
@@ -275,10 +273,8 @@ namespace VehicleManagementSystem.UserControls {
             this.Click += new System.EventHandler(this.Card_Click);
             this.panelBg.ResumeLayout(false);
             this.panelPicture.ResumeLayout(false);
-            this.panelPicture.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureVehicle)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2GradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTransmission)).EndInit();
