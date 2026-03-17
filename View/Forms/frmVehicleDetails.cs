@@ -64,14 +64,16 @@ namespace VehicleManagementSystem.View.Forms {
         }
 
         private void RenderActiveButton() {
-            panelNav.Controls.Remove(LowerPanel);
+            if (LowerPanel != null) {
+                panelNav.Controls.Remove(LowerPanel);
+            }
 
             LowerPanel = new Guna2Panel() {
                 BackColor = Color.Transparent,
                 Width = ActiveButton.Width,
                 Height = 10,
                 FillColor = AppConfig.Theme.Primary,
-                Location = new Point(ActiveButton.Location.X, 76 - 9),
+                Location = new Point(ActiveButton.Location.X, ActiveButton.Location.Y + ActiveButton.Height - 5),
                 BorderRadius = 10,
                 Margin = new Padding(0)
             };

@@ -9,13 +9,13 @@ namespace VehicleManagementSystem.Classes {
         public static Color GetStatusColor(string status) {
             switch (status.ToLower()) {
                 case "rented":
-                    return Color.DeepSkyBlue;
+                    return Color.FromArgb(142, 154, 175);
                 case "inmaintenance":
-                    return Color.DarkOrange;
+                    return Color.FromArgb(255, 183, 3);
                 case "outofservice":
-                    return Color.Red;
+                    return Color.FromArgb(230, 57, 70);
                 default:
-                    return Color.Green;
+                    return Color.FromArgb(82, 183, 136);
             }
         }
 

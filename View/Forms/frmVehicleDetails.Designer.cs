@@ -92,7 +92,7 @@ namespace VehicleManagementSystem.View.Forms {
             this.hr.Location = new System.Drawing.Point(14, 83);
             this.hr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hr.Name = "hr";
-            this.hr.Size = new System.Drawing.Size(1069, 4);
+            this.hr.Size = new System.Drawing.Size(1048, 4);
             this.hr.TabIndex = 35;
             // 
             // panelNav
@@ -102,7 +102,7 @@ namespace VehicleManagementSystem.View.Forms {
             this.panelNav.Controls.Add(this.overviewBtn);
             this.panelNav.Controls.Add(this.maintenanceBtn);
             this.panelNav.Controls.Add(this.documentsBtn);
-            this.panelNav.Location = new System.Drawing.Point(592, 22);
+            this.panelNav.Location = new System.Drawing.Point(571, 22);
             this.panelNav.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelNav.Name = "panelNav";
             this.panelNav.Size = new System.Drawing.Size(492, 61);
@@ -166,12 +166,11 @@ namespace VehicleManagementSystem.View.Forms {
             // 
             this.panelSubMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelSubMain.AutoSize = true;
             this.panelSubMain.BackColor = System.Drawing.Color.Transparent;
             this.panelSubMain.Location = new System.Drawing.Point(12, 102);
             this.panelSubMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSubMain.Name = "panelSubMain";
-            this.panelSubMain.Size = new System.Drawing.Size(1072, 533);
+            this.panelSubMain.Size = new System.Drawing.Size(1051, 533);
             this.panelSubMain.TabIndex = 33;
             // 
             // backBtn
@@ -237,7 +236,8 @@ namespace VehicleManagementSystem.View.Forms {
             // 
             // frmVehicleDetails
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1132, 546);
             this.Controls.Add(this.panelBg);

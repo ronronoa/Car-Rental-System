@@ -814,7 +814,7 @@
             this.inputVehicleIdentification.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.inputVehicleIdentification.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.inputVehicleIdentification.Location = new System.Drawing.Point(156, 6);
-            this.inputVehicleIdentification.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inputVehicleIdentification.Margin = new System.Windows.Forms.Padding(4);
             this.inputVehicleIdentification.Name = "inputVehicleIdentification";
             this.inputVehicleIdentification.PlaceholderText = "";
             this.inputVehicleIdentification.ReadOnly = true;

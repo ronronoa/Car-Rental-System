@@ -13,7 +13,8 @@ namespace VehicleManagementSystem.View.Modals {
         public AddNewVehicleDocumentModal(string PlateNumber) {
             InitializeComponent();
 
-            labelHeader.Text = PlateNumber + ": adding new document";
+            this.ControlBox = false;
+            labelHeader.Text = "Adding new document to " + PlateNumber;
         }
 
         private void closeBtn_Click(object sender, EventArgs e) {
