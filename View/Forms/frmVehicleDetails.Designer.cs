@@ -167,10 +167,10 @@ namespace VehicleManagementSystem.View.Forms {
             this.panelSubMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSubMain.BackColor = System.Drawing.Color.Transparent;
-            this.panelSubMain.Location = new System.Drawing.Point(12, 102);
+            this.panelSubMain.Location = new System.Drawing.Point(12, 91);
             this.panelSubMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSubMain.Name = "panelSubMain";
-            this.panelSubMain.Size = new System.Drawing.Size(1051, 533);
+            this.panelSubMain.Size = new System.Drawing.Size(1051, 544);
             this.panelSubMain.TabIndex = 33;
             // 
             // backBtn

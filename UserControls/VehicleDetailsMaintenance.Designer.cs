@@ -80,12 +80,13 @@
             this.panelMillage.Controls.Add(this.guna2PictureBox1);
             this.panelMillage.Controls.Add(this.label14);
             this.panelMillage.Controls.Add(this.guna2CircleProgressBar1);
+            this.panelMillage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMillage.FillColor = System.Drawing.Color.White;
-            this.panelMillage.Location = new System.Drawing.Point(684, 2);
+            this.panelMillage.Location = new System.Drawing.Point(780, 2);
             this.panelMillage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMillage.Name = "panelMillage";
             this.tableLayoutPanel1.SetRowSpan(this.panelMillage, 2);
-            this.panelMillage.Size = new System.Drawing.Size(420, 177);
+            this.panelMillage.Size = new System.Drawing.Size(325, 178);
             this.panelMillage.TabIndex = 42;
             // 
             // guna2PictureBox1
@@ -114,6 +115,7 @@
             // 
             // guna2CircleProgressBar1
             // 
+            this.guna2CircleProgressBar1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.guna2CircleProgressBar1.Animated = true;
             this.guna2CircleProgressBar1.AnimationSpeed = 0.1F;
             this.guna2CircleProgressBar1.Controls.Add(this.label3);
@@ -122,7 +124,7 @@
             this.guna2CircleProgressBar1.FillThickness = 10;
             this.guna2CircleProgressBar1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2CircleProgressBar1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleProgressBar1.Location = new System.Drawing.Point(48, 67);
+            this.guna2CircleProgressBar1.Location = new System.Drawing.Point(18, 67);
             this.guna2CircleProgressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2CircleProgressBar1.Minimum = 0;
             this.guna2CircleProgressBar1.Name = "guna2CircleProgressBar1";
@@ -137,24 +139,24 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkGray;
             this.label3.Location = new System.Drawing.Point(80, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 23);
+            this.label3.Size = new System.Drawing.Size(141, 23);
             this.label3.TabIndex = 40;
-            this.label3.Text = "Kilomter";
+            this.label3.Text = "Kilometer";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelCurrentOdometer
             // 
+            this.labelCurrentOdometer.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelCurrentOdometer.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCurrentOdometer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.labelCurrentOdometer.Location = new System.Drawing.Point(28, 54);
             this.labelCurrentOdometer.Name = "labelCurrentOdometer";
-            this.labelCurrentOdometer.Size = new System.Drawing.Size(242, 31);
+            this.labelCurrentOdometer.Size = new System.Drawing.Size(239, 31);
             this.labelCurrentOdometer.TabIndex = 0;
             this.labelCurrentOdometer.Text = "12000";
             this.labelCurrentOdometer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -163,11 +165,12 @@
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 427F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.39263F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.39263F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.39263F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.8221F));
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel6, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel5, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel4, 2, 0);
@@ -181,7 +184,6 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1108, 182);
             this.tableLayoutPanel1.TabIndex = 43;
             // 
@@ -193,10 +195,10 @@
             this.guna2Panel6.Controls.Add(this.label17);
             this.guna2Panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel6.FillColor = System.Drawing.Color.White;
-            this.guna2Panel6.Location = new System.Drawing.Point(463, 99);
+            this.guna2Panel6.Location = new System.Drawing.Point(527, 99);
             this.guna2Panel6.Margin = new System.Windows.Forms.Padding(9, 8, 9, 0);
             this.guna2Panel6.Name = "guna2Panel6";
-            this.guna2Panel6.Size = new System.Drawing.Size(209, 83);
+            this.guna2Panel6.Size = new System.Drawing.Size(241, 83);
             this.guna2Panel6.TabIndex = 48;
             // 
             // guna2PictureBox8
@@ -206,7 +208,7 @@
             this.guna2PictureBox8.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox8.Image = global::VehicleManagementSystem.Properties.Resources.clock_time;
             this.guna2PictureBox8.ImageRotate = 0F;
-            this.guna2PictureBox8.Location = new System.Drawing.Point(138, 18);
+            this.guna2PictureBox8.Location = new System.Drawing.Point(170, 18);
             this.guna2PictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox8.Name = "guna2PictureBox8";
             this.guna2PictureBox8.Size = new System.Drawing.Size(62, 46);
@@ -249,7 +251,7 @@
             this.guna2Panel5.Location = new System.Drawing.Point(9, 99);
             this.guna2Panel5.Margin = new System.Windows.Forms.Padding(9, 8, 9, 0);
             this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(209, 83);
+            this.guna2Panel5.Size = new System.Drawing.Size(241, 83);
             this.guna2Panel5.TabIndex = 47;
             // 
             // guna2PictureBox7
@@ -259,7 +261,7 @@
             this.guna2PictureBox7.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox7.Image = global::VehicleManagementSystem.Properties.Resources.loading;
             this.guna2PictureBox7.ImageRotate = 0F;
-            this.guna2PictureBox7.Location = new System.Drawing.Point(138, 18);
+            this.guna2PictureBox7.Location = new System.Drawing.Point(170, 18);
             this.guna2PictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox7.Name = "guna2PictureBox7";
             this.guna2PictureBox7.Size = new System.Drawing.Size(62, 46);
@@ -299,10 +301,10 @@
             this.guna2Panel4.Controls.Add(this.label12);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel4.FillColor = System.Drawing.Color.White;
-            this.guna2Panel4.Location = new System.Drawing.Point(463, 0);
+            this.guna2Panel4.Location = new System.Drawing.Point(527, 0);
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(9, 0, 9, 8);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(209, 83);
+            this.guna2Panel4.Size = new System.Drawing.Size(241, 83);
             this.guna2Panel4.TabIndex = 46;
             // 
             // label18
@@ -349,10 +351,10 @@
             this.guna2Panel3.Controls.Add(this.label9);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel3.FillColor = System.Drawing.Color.White;
-            this.guna2Panel3.Location = new System.Drawing.Point(236, 0);
+            this.guna2Panel3.Location = new System.Drawing.Point(268, 0);
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(9, 0, 9, 8);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(209, 83);
+            this.guna2Panel3.Size = new System.Drawing.Size(241, 83);
             this.guna2Panel3.TabIndex = 45;
             // 
             // label10
@@ -374,7 +376,7 @@
             this.guna2PictureBox5.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox5.Image = global::VehicleManagementSystem.Properties.Resources.calendar;
             this.guna2PictureBox5.ImageRotate = 0F;
-            this.guna2PictureBox5.Location = new System.Drawing.Point(154, 18);
+            this.guna2PictureBox5.Location = new System.Drawing.Point(186, 18);
             this.guna2PictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox5.Name = "guna2PictureBox5";
             this.guna2PictureBox5.Size = new System.Drawing.Size(46, 46);
@@ -405,7 +407,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(9, 0);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(9, 0, 9, 8);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(209, 83);
+            this.guna2Panel2.Size = new System.Drawing.Size(241, 83);
             this.guna2Panel2.TabIndex = 44;
             // 
             // label8
@@ -427,7 +429,7 @@
             this.guna2PictureBox3.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox3.Image = global::VehicleManagementSystem.Properties.Resources.inspection;
             this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(138, 18);
+            this.guna2PictureBox3.Location = new System.Drawing.Point(170, 18);
             this.guna2PictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox3.Name = "guna2PictureBox3";
             this.guna2PictureBox3.Size = new System.Drawing.Size(62, 46);
@@ -455,10 +457,10 @@
             this.guna2Panel1.Controls.Add(this.label4);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
-            this.guna2Panel1.Location = new System.Drawing.Point(236, 99);
+            this.guna2Panel1.Location = new System.Drawing.Point(268, 99);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(9, 8, 9, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(209, 83);
+            this.guna2Panel1.Size = new System.Drawing.Size(241, 83);
             this.guna2Panel1.TabIndex = 43;
             // 
             // guna2PictureBox2
@@ -468,7 +470,7 @@
             this.guna2PictureBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox2.Image = global::VehicleManagementSystem.Properties.Resources.coming_soon__1_;
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(138, 18);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(170, 18);
             this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
             this.guna2PictureBox2.Size = new System.Drawing.Size(62, 46);

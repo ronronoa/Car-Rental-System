@@ -150,9 +150,9 @@
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.label10.Location = new System.Drawing.Point(24, 97);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(148, 23);
+            this.label10.Size = new System.Drawing.Size(171, 23);
             this.label10.TabIndex = 105;
-            this.label10.Text = "Document Type";
+            this.label10.Text = "Maintenance Type";
             // 
             // inputPurchaseDate
             // 
@@ -391,7 +391,7 @@
             this.guna2CheckBox1.UncheckedState.BorderThickness = 0;
             this.guna2CheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             // 
-            // AddNewVehicleDocumentModal
+            // AddNewVehicleMaintenanceModal
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
@@ -416,7 +416,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "AddNewVehicleDocumentModal";
+            this.Name = "AddNewVehicleMaintenanceModal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddNewVehicleDocumentModal";
             this.panelTop.ResumeLayout(false);

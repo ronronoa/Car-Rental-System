@@ -237,6 +237,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DataGridViewStyle.cs" />
+    <Compile Include="Data\Enums\VehicleDocumentEnums.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Classes\UIRenderer.cs" />
     <Compile Include="Classes\NavigationHelper.cs" />

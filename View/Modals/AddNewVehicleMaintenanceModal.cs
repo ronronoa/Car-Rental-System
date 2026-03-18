@@ -14,7 +14,7 @@ namespace VehicleManagementSystem.View.Modals {
             InitializeComponent();
 
             this.ControlBox = false;
-            labelHeader.Text = "Adding new document to " + PlateNumber;
+            labelHeader.Text = "Adding new maintenance schedule to " + PlateNumber;
         }
 
         private void closeBtn_Click(object sender, EventArgs e) {

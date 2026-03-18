@@ -31,7 +31,8 @@ namespace VehicleManagementSystem.UserControls {
 
             tableMain.Controls.Add(documentCard);
             tableMain.Controls.Add(documentCard1);
-            
+            tableMain.Controls.Add(documentCard2);
+
 
             tableMain.ResumeLayout();
 

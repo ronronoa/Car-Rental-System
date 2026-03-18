@@ -30,13 +30,13 @@
             this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.labelHeader = new System.Windows.Forms.Label();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.inputCategory = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.inputDocumentType = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.inputPurchaseDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.inputIssuingAuthority = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -118,26 +118,26 @@
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
-            // inputCategory
+            // inputDocumentType
             // 
-            this.inputCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.inputDocumentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputCategory.BackColor = System.Drawing.Color.Transparent;
-            this.inputCategory.BorderRadius = 10;
-            this.inputCategory.BorderThickness = 2;
-            this.inputCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.inputCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.inputCategory.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.inputCategory.IntegralHeight = false;
-            this.inputCategory.ItemHeight = 44;
-            this.inputCategory.Location = new System.Drawing.Point(29, 119);
-            this.inputCategory.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
-            this.inputCategory.Name = "inputCategory";
-            this.inputCategory.Size = new System.Drawing.Size(293, 50);
-            this.inputCategory.TabIndex = 104;
+            this.inputDocumentType.BackColor = System.Drawing.Color.Transparent;
+            this.inputDocumentType.BorderRadius = 10;
+            this.inputDocumentType.BorderThickness = 2;
+            this.inputDocumentType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.inputDocumentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputDocumentType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.inputDocumentType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.inputDocumentType.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputDocumentType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.inputDocumentType.IntegralHeight = false;
+            this.inputDocumentType.ItemHeight = 44;
+            this.inputDocumentType.Location = new System.Drawing.Point(29, 119);
+            this.inputDocumentType.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.inputDocumentType.Name = "inputDocumentType";
+            this.inputDocumentType.Size = new System.Drawing.Size(293, 50);
+            this.inputDocumentType.TabIndex = 104;
             // 
             // label10
             // 
@@ -201,7 +201,7 @@
             this.guna2DateTimePicker1.FillColor = System.Drawing.Color.White;
             this.guna2DateTimePicker1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(355, 123);
+            this.guna2DateTimePicker1.Location = new System.Drawing.Point(28, 217);
             this.guna2DateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2DateTimePicker1.MaxDate = new System.DateTime(2026, 2, 2, 1, 16, 31, 598);
             this.guna2DateTimePicker1.MinDate = new System.DateTime(1925, 1, 1, 0, 0, 0, 0);
@@ -218,32 +218,32 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.label1.Location = new System.Drawing.Point(351, 97);
+            this.label1.Location = new System.Drawing.Point(24, 191);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 23);
             this.label1.TabIndex = 109;
             this.label1.Text = "Issue Date";
             // 
-            // guna2ComboBox1
+            // inputIssuingAuthority
             // 
-            this.guna2ComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.inputIssuingAuthority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.BorderRadius = 10;
-            this.guna2ComboBox1.BorderThickness = 2;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.IntegralHeight = false;
-            this.guna2ComboBox1.ItemHeight = 44;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(28, 210);
-            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(293, 50);
-            this.guna2ComboBox1.TabIndex = 110;
+            this.inputIssuingAuthority.BackColor = System.Drawing.Color.Transparent;
+            this.inputIssuingAuthority.BorderRadius = 10;
+            this.inputIssuingAuthority.BorderThickness = 2;
+            this.inputIssuingAuthority.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.inputIssuingAuthority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputIssuingAuthority.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.inputIssuingAuthority.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.inputIssuingAuthority.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputIssuingAuthority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.inputIssuingAuthority.IntegralHeight = false;
+            this.inputIssuingAuthority.ItemHeight = 44;
+            this.inputIssuingAuthority.Location = new System.Drawing.Point(356, 119);
+            this.inputIssuingAuthority.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.inputIssuingAuthority.Name = "inputIssuingAuthority";
+            this.inputIssuingAuthority.Size = new System.Drawing.Size(293, 50);
+            this.inputIssuingAuthority.TabIndex = 110;
             // 
             // label2
             // 
@@ -254,11 +254,11 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.label2.Location = new System.Drawing.Point(23, 188);
+            this.label2.Location = new System.Drawing.Point(351, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 23);
             this.label2.TabIndex = 111;
-            this.label2.Text = "issuing Authority";
+            this.label2.Text = "Issuing Authority";
             // 
             // label3
             // 
@@ -372,6 +372,7 @@
             this.cancelBtn.Size = new System.Drawing.Size(105, 44);
             this.cancelBtn.TabIndex = 116;
             this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // guna2CheckBox1
             // 
@@ -404,13 +405,13 @@
             this.Controls.Add(this.addImageBtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.guna2ComboBox1);
+            this.Controls.Add(this.inputIssuingAuthority);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.guna2DateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.inputPurchaseDate);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.inputCategory);
+            this.Controls.Add(this.inputDocumentType);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.panelTop);
             this.DoubleBuffered = true;
@@ -433,12 +434,12 @@
         private System.Windows.Forms.Label labelHeader;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private Guna.UI2.WinForms.Guna2ComboBox inputCategory;
+        private Guna.UI2.WinForms.Guna2ComboBox inputDocumentType;
         private System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2DateTimePicker inputPurchaseDate;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2ComboBox inputIssuingAuthority;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
         private System.Windows.Forms.Label label1;
