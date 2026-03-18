@@ -405,6 +405,12 @@
       <DependentUpon>frmUserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Interfaces\IAddNewVehicleView.cs" />
+    <Compile Include="View\Modals\AddNewVehicleMaintenanceModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Modals\AddNewVehicleMaintenanceModal.Designer.cs">
+      <DependentUpon>AddNewVehicleMaintenanceModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Modals\AddNewVehicleDocumentModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -482,6 +488,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\frmUserManagement.resx">
       <DependentUpon>frmUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Modals\AddNewVehicleMaintenanceModal.resx">
+      <DependentUpon>AddNewVehicleMaintenanceModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Modals\AddNewVehicleDocumentModal.resx">
       <DependentUpon>AddNewVehicleDocumentModal.cs</DependentUpon>

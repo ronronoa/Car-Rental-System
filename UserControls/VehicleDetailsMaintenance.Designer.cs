@@ -143,7 +143,7 @@
             this.label3.ForeColor = System.Drawing.Color.DarkGray;
             this.label3.Location = new System.Drawing.Point(80, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 23);
+            this.label3.Size = new System.Drawing.Size(144, 23);
             this.label3.TabIndex = 40;
             this.label3.Text = "Kilomter";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -154,7 +154,7 @@
             this.labelCurrentOdometer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.labelCurrentOdometer.Location = new System.Drawing.Point(28, 54);
             this.labelCurrentOdometer.Name = "labelCurrentOdometer";
-            this.labelCurrentOdometer.Size = new System.Drawing.Size(264, 31);
+            this.labelCurrentOdometer.Size = new System.Drawing.Size(242, 31);
             this.labelCurrentOdometer.TabIndex = 0;
             this.labelCurrentOdometer.Text = "12000";
             this.labelCurrentOdometer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,7 +167,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 425F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 427F));
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel6, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel5, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel4, 2, 0);
@@ -538,6 +538,7 @@
             this.addNewVehBtn.Size = new System.Drawing.Size(305, 48);
             this.addNewVehBtn.TabIndex = 44;
             this.addNewVehBtn.Text = "Add Maintenance Schedule";
+            this.addNewVehBtn.Click += new System.EventHandler(this.addNewVehBtn_Click);
             // 
             // VehicleDetailsMaintenance
             // 

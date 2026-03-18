@@ -43,8 +43,8 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void addNewVehBtn_Click(object sender, EventArgs e) {
-            var addVehicleForm = new AddNewVehicleDocumentModal(_vehicle.LicensePlate);
-            addVehicleForm.ShowDialog();
+            var addVehicleDocumentForm = new AddNewVehicleDocumentModal(_vehicle.LicensePlate);
+            addVehicleDocumentForm.ShowDialog();
         }
     }
 }

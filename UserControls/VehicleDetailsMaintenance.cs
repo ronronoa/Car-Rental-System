@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using VehicleManagementSystem.Classes;
 using VehicleManagementSystem.Dto;
+using VehicleManagementSystem.View.Modals;
 
 namespace VehicleManagementSystem.UserControls {
     public partial class VehicleDetailsMaintenance : UserControl {
@@ -197,5 +198,9 @@ namespace VehicleManagementSystem.UserControls {
             tableMain.ResumeLayout();
         }
 
+        private void addNewVehBtn_Click(object sender, EventArgs e) {
+            var addVehicleMaintenanceForm = new AddNewVehicleMaintenanceModal(_vehicle.LicensePlate);
+            addVehicleMaintenanceForm.ShowDialog();
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿namespace VehicleManagementSystem.View.Modals {
-    partial class AddNewVehicleDocumentModal {
+    partial class AddNewVehicleMaintenanceModal {
         /// <summary>
         /// Required designer variable.
         /// </summary>
