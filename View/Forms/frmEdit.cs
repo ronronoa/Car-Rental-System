@@ -299,5 +299,57 @@ namespace PL_VehicleRental.Forms
                 e.Handled = true;
             }
         }
+
+        private async void btnResetPass_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ToggleLoading(true);
+
+                DialogResult confirmResult = MessageBox.Show(
+                    $"Are you sure you want to reset the password for '{txtUserName.Text}'?\n\nA temporary password will be generated and displayed.",
+                    "Confirm Password Reset",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmResult != DialogResult.Yes)
+                {
+                    ToggleLoading(false);
+                    return;
+                }
+
+                var result = await _repository.ResetPasswordAsync(txtUserName.Text);
+
+                if (result.Success)
+                {
+                    MessageBox.Show(
+                        $"Password reset successfully!\n\nTemporary Password: {result.TemporaryPassword}\n\nThe user must change this password on their next login.",
+                        "Password Reset",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+
+                    MessageBox.Show(
+                        $"Failed to reset password: {result.Message}",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error resetting password:\n{ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ToggleLoading(false);
+            }
+        }
     }
 }
