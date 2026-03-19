@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VehicleManagementSystem.Dto;
+using System.Windows;
 
 namespace PL_VehicleRental.Services
 {
@@ -35,7 +36,8 @@ namespace PL_VehicleRental.Services
                 imagePath = imageService.Save(userImage);
             }
 
-            int insertResult = await _repository.InsertAsync(dto, imagePath);
+            var insertResult = await _repository.InsertAsync(dto, imagePath);
+            MessageBox.Show($"User created! \n Temporary password: {insertResult.TemporaryPassword}");
 
             if (insertResult <= 0) return (false, "Failed to insert user.", 0);
 

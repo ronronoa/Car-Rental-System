@@ -252,6 +252,7 @@
     <Compile Include="Dto\VehicleMaintenanceScheduleDto.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\UserImageService.cs" />
+    <Compile Include="Models\CreateUserResult.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Presenters\addNewVehiclePresenter.cs" />
     <Compile Include="Presenters\vehicleManagementPresenter.cs" />

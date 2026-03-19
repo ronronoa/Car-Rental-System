@@ -11,6 +11,7 @@ using Org.BouncyCastle.Bcpg;
 using System.Drawing;
 using VehicleManagementSystem.Helpers;
 using System.Runtime.InteropServices;
+using VehicleManagementSystem.Models;
 
 namespace PL_VehicleRental.DAL.Repositories
 {
@@ -18,16 +19,35 @@ namespace PL_VehicleRental.DAL.Repositories
     {
         public static class PasswordHelper
         {
-            private const string DefaultPassword = "userpass";
+            //private const string DefaultPassword = "userpass";
 
             public static string HashPassword(string password)
                 => BCrypt.Net.BCrypt.HashPassword(password);
 
-            public static string GetDefaultPasswordHash()
-                => BCrypt.Net.BCrypt.HashPassword(DefaultPassword);
+            //public static string GetDefaultPasswordHash()
+            //    => BCrypt.Net.BCrypt.HashPassword(DefaultPassword);
 
             public static bool Verify(string inputPassword, string storedHash)
                 => BCrypt.Net.BCrypt.Verify(inputPassword, storedHash);
+
+            public static string GenerateTemporaryPassword(int length = 10)
+            {
+                const string chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$";
+                var data = new byte[length];
+
+                using (var rng = System.Security.Cryptography.RandomNumberGenerator.Create())
+                {
+                    rng.GetBytes(data);
+                }
+
+                var result = new char[length];
+                for (int i = 0; i < length; i++)
+                {
+                    result[i] = chars[data[i] % chars.Length];
+                }
+
+                return new string(result);
+            }
         }
 
         public async Task<bool> UsernameExistsAsync(string username)
@@ -48,8 +68,10 @@ namespace PL_VehicleRental.DAL.Repositories
             }
         }
 
-        public async Task<int> InsertAsync(UserInfoDto dto, string userImage)
+        public async Task<CreateUserResult> InsertAsync(UserInfoDto dto, string userImage)
         {
+            string tempPassword = PasswordHelper.GenerateTemporaryPassword();
+
             using (var conn = MySQLConnectionContext.Create())
             {
                 await conn.OpenAsync();
@@ -67,12 +89,17 @@ namespace PL_VehicleRental.DAL.Repositories
                     cmd.Parameters.AddWithValue("@address", dto.Address);
                     cmd.Parameters.AddWithValue("@role", dto.Role);
                     cmd.Parameters.AddWithValue("@status", dto.Status);
-                    cmd.Parameters.AddWithValue("@passwordHash", PasswordHelper.GetDefaultPasswordHash());
+                    cmd.Parameters.AddWithValue("@passwordHash", PasswordHelper.HashPassword(tempPassword));
                     cmd.Parameters.AddWithValue("@isDeleted", dto.isDeleted);
                     cmd.Parameters.AddWithValue("@ImagePath", (object)userImage ?? (object)DBNull.Value);
 
                     int newId = Convert.ToInt32(await cmd.ExecuteScalarAsync());
-                    return newId;
+
+                    return new CreateUserResult
+                    {
+                        UserId = newId,
+                        TemporaryPassword = tempPassword,
+                    };
                 }
             }
         }
@@ -133,6 +160,46 @@ namespace PL_VehicleRental.DAL.Repositories
                     cmd.Parameters.AddWithValue("@userName", username);
 
                     return await cmd.ExecuteNonQueryAsync() > 0;
+                }
+            }
+        }
+
+        public async Task<CreateUserResult> ResetPasswordAsync(string usernameOrEmail)
+        {
+            string tempPassword = PasswordHelper.GenerateTemporaryPassword();
+
+            using (var conn = MySQLConnectionContext.Create())
+            {
+                await conn.OpenAsync();
+
+                const string sql = @"UPDATE users SET passwordHash = @password, 
+                                                            isDefaultPassword = 1
+                                                            WHERE (userName = @input OR email = @input)
+                                                            AND status = 'Active'";
+                using (var cmd = new MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@password", PasswordHelper.HashPassword(tempPassword));
+                    cmd.Parameters.AddWithValue("@input", usernameOrEmail);
+                    var rows = await cmd.ExecuteNonQueryAsync();
+
+                    if (rows > 0)
+                    {
+                        return new CreateUserResult
+                        {
+                            Success = true,
+                            Message = "Temporary password generated.",
+                            TemporaryPassword = tempPassword
+                        };
+                    }
+                    else
+                    {
+                        return new CreateUserResult
+                        {
+                            Success = false,
+                            Message = "User not found or inactive.",
+                            TemporaryPassword = null
+                        };
+                    }
                 }
             }
         }
