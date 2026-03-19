@@ -7,18 +7,9 @@ using System.Threading.Tasks;
 namespace VehicleManagementSystem.Data.Enums {
     internal class VehicleDocumentEnums {
         public enum Type {
-            Registration,
-            Insurance,
-            SafetyInspection,
-            EmissionTest,
-            CommercialPermit,
-            TaxiLicense,
-            RentalPermit,
-            WeightCertificate,
-            ImportDocuments,
-            WarrantyDocument,
-            ServiceContract,
-            Other
+            Permanent, 
+            FixedExpiry, 
+            RequiredRenewal,
         }
 
         public enum IssuingAuthority {

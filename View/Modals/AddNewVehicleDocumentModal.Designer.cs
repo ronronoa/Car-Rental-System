@@ -30,7 +30,6 @@
             this.closeBtn = new FontAwesome.Sharp.IconButton();
             this.labelHeader = new System.Windows.Forms.Label();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.inputDocumentType = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.inputExpirationDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.labelExpirationDate = new System.Windows.Forms.Label();
@@ -43,8 +42,12 @@
             this.addImageBtn = new Guna.UI2.WinForms.Guna2Button();
             this.saveBtn = new Guna.UI2.WinForms.Guna2Button();
             this.cancelBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.inputHasExpirationDate = new Guna.UI2.WinForms.Guna2CheckBox();
             this.inputPlateNum = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.radioPermanent = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.guna2RadioButton1 = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.guna2RadioButton2 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +67,7 @@
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(687, 71);
+            this.panelTop.Size = new System.Drawing.Size(577, 71);
             this.panelTop.TabIndex = 103;
             // 
             // guna2Panel2
@@ -76,7 +79,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(28, 52);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(578, 4);
+            this.guna2Panel2.Size = new System.Drawing.Size(533, 4);
             this.guna2Panel2.TabIndex = 104;
             // 
             // closeBtn
@@ -91,10 +94,10 @@
             this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
             this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.closeBtn.IconSize = 28;
-            this.closeBtn.Location = new System.Drawing.Point(627, 11);
+            this.closeBtn.Location = new System.Drawing.Point(518, 11);
             this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(48, 40);
+            this.closeBtn.Size = new System.Drawing.Size(43, 30);
             this.closeBtn.TabIndex = 11;
             this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
@@ -118,26 +121,6 @@
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
-            // inputDocumentType
-            // 
-            this.inputDocumentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputDocumentType.BackColor = System.Drawing.Color.Transparent;
-            this.inputDocumentType.BorderRadius = 10;
-            this.inputDocumentType.BorderThickness = 2;
-            this.inputDocumentType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.inputDocumentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.inputDocumentType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputDocumentType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputDocumentType.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputDocumentType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.inputDocumentType.ItemHeight = 40;
-            this.inputDocumentType.Location = new System.Drawing.Point(29, 119);
-            this.inputDocumentType.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
-            this.inputDocumentType.Name = "inputDocumentType";
-            this.inputDocumentType.Size = new System.Drawing.Size(293, 46);
-            this.inputDocumentType.TabIndex = 1;
-            // 
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -147,7 +130,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.label10.Location = new System.Drawing.Point(24, 97);
+            this.label10.Location = new System.Drawing.Point(25, 82);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 23);
             this.label10.TabIndex = 105;
@@ -155,8 +138,6 @@
             // 
             // inputExpirationDate
             // 
-            this.inputExpirationDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.inputExpirationDate.BackColor = System.Drawing.Color.White;
             this.inputExpirationDate.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.inputExpirationDate.BorderRadius = 10;
@@ -165,12 +146,12 @@
             this.inputExpirationDate.FillColor = System.Drawing.Color.White;
             this.inputExpirationDate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.inputExpirationDate.Location = new System.Drawing.Point(355, 210);
+            this.inputExpirationDate.Location = new System.Drawing.Point(295, 286);
             this.inputExpirationDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inputExpirationDate.MaxDate = new System.DateTime(2026, 2, 2, 1, 16, 31, 598);
             this.inputExpirationDate.MinDate = new System.DateTime(1925, 1, 1, 0, 0, 0, 0);
             this.inputExpirationDate.Name = "inputExpirationDate";
-            this.inputExpirationDate.Size = new System.Drawing.Size(301, 44);
+            this.inputExpirationDate.Size = new System.Drawing.Size(252, 44);
             this.inputExpirationDate.TabIndex = 4;
             this.inputExpirationDate.Value = new System.DateTime(2026, 1, 20, 18, 53, 53, 702);
             this.inputExpirationDate.Visible = false;
@@ -183,7 +164,7 @@
             this.labelExpirationDate.BackColor = System.Drawing.Color.Transparent;
             this.labelExpirationDate.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelExpirationDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.labelExpirationDate.Location = new System.Drawing.Point(351, 185);
+            this.labelExpirationDate.Location = new System.Drawing.Point(291, 264);
             this.labelExpirationDate.Name = "labelExpirationDate";
             this.labelExpirationDate.Size = new System.Drawing.Size(144, 23);
             this.labelExpirationDate.TabIndex = 107;
@@ -192,8 +173,6 @@
             // 
             // guna2DateTimePicker1
             // 
-            this.guna2DateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2DateTimePicker1.BackColor = System.Drawing.Color.White;
             this.guna2DateTimePicker1.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.guna2DateTimePicker1.BorderRadius = 10;
@@ -202,12 +181,12 @@
             this.guna2DateTimePicker1.FillColor = System.Drawing.Color.White;
             this.guna2DateTimePicker1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(29, 211);
+            this.guna2DateTimePicker1.Location = new System.Drawing.Point(29, 286);
             this.guna2DateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2DateTimePicker1.MaxDate = new System.DateTime(2026, 2, 2, 1, 16, 31, 598);
             this.guna2DateTimePicker1.MinDate = new System.DateTime(1925, 1, 1, 0, 0, 0, 0);
             this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            this.guna2DateTimePicker1.Size = new System.Drawing.Size(294, 44);
+            this.guna2DateTimePicker1.Size = new System.Drawing.Size(252, 44);
             this.guna2DateTimePicker1.TabIndex = 3;
             this.guna2DateTimePicker1.Value = new System.DateTime(2026, 1, 20, 18, 53, 53, 702);
             // 
@@ -219,7 +198,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.label1.Location = new System.Drawing.Point(25, 185);
+            this.label1.Location = new System.Drawing.Point(25, 264);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 23);
             this.label1.TabIndex = 109;
@@ -234,7 +213,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.label2.Location = new System.Drawing.Point(351, 97);
+            this.label2.Location = new System.Drawing.Point(291, 176);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 23);
             this.label2.TabIndex = 111;
@@ -249,11 +228,11 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.label3.Location = new System.Drawing.Point(25, 311);
+            this.label3.Location = new System.Drawing.Point(24, 351);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 23);
+            this.label3.Size = new System.Drawing.Size(168, 23);
             this.label3.TabIndex = 112;
-            this.label3.Text = "Attachments";
+            this.label3.Text = "Upload Document";
             // 
             // label4
             // 
@@ -261,7 +240,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(26, 334);
+            this.label4.Location = new System.Drawing.Point(25, 374);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(347, 17);
             this.label4.TabIndex = 113;
@@ -281,7 +260,7 @@
             this.closeImageBtn.IconColor = System.Drawing.Color.RosyBrown;
             this.closeImageBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.closeImageBtn.IconSize = 28;
-            this.closeImageBtn.Location = new System.Drawing.Point(598, 379);
+            this.closeImageBtn.Location = new System.Drawing.Point(485, 414);
             this.closeImageBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeImageBtn.Name = "closeImageBtn";
             this.closeImageBtn.Size = new System.Drawing.Size(37, 30);
@@ -291,8 +270,6 @@
             // 
             // addImageBtn
             // 
-            this.addImageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.addImageBtn.BorderColor = System.Drawing.Color.Red;
             this.addImageBtn.BorderRadius = 10;
             this.addImageBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -304,10 +281,10 @@
             this.addImageBtn.ForeColor = System.Drawing.Color.Gray;
             this.addImageBtn.HoverState.FillColor = System.Drawing.Color.Gainsboro;
             this.addImageBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.addImageBtn.Location = new System.Drawing.Point(29, 367);
+            this.addImageBtn.Location = new System.Drawing.Point(26, 402);
             this.addImageBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addImageBtn.Name = "addImageBtn";
-            this.addImageBtn.Size = new System.Drawing.Size(627, 201);
+            this.addImageBtn.Size = new System.Drawing.Size(521, 201);
             this.addImageBtn.TabIndex = 114;
             this.addImageBtn.Text = "Click here to add documents file.";
             // 
@@ -325,7 +302,7 @@
             this.saveBtn.ForeColor = System.Drawing.Color.White;
             this.saveBtn.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
             this.saveBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.saveBtn.Location = new System.Drawing.Point(444, 588);
+            this.saveBtn.Location = new System.Drawing.Point(334, 616);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(212, 44);
@@ -346,7 +323,7 @@
             this.cancelBtn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelBtn.ForeColor = System.Drawing.Color.DarkGray;
             this.cancelBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.cancelBtn.Location = new System.Drawing.Point(318, 588);
+            this.cancelBtn.Location = new System.Drawing.Point(208, 616);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(105, 44);
@@ -354,29 +331,8 @@
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // inputHasExpirationDate
-            // 
-            this.inputHasExpirationDate.AutoSize = true;
-            this.inputHasExpirationDate.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputHasExpirationDate.CheckedState.BorderRadius = 0;
-            this.inputHasExpirationDate.CheckedState.BorderThickness = 0;
-            this.inputHasExpirationDate.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputHasExpirationDate.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputHasExpirationDate.Location = new System.Drawing.Point(28, 273);
-            this.inputHasExpirationDate.Name = "inputHasExpirationDate";
-            this.inputHasExpirationDate.Size = new System.Drawing.Size(181, 24);
-            this.inputHasExpirationDate.TabIndex = 5;
-            this.inputHasExpirationDate.Text = "Has Expiration Date";
-            this.inputHasExpirationDate.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.inputHasExpirationDate.UncheckedState.BorderRadius = 0;
-            this.inputHasExpirationDate.UncheckedState.BorderThickness = 0;
-            this.inputHasExpirationDate.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.inputHasExpirationDate.CheckedChanged += new System.EventHandler(this.inputHasExpirationDate_CheckedChanged);
-            // 
             // inputPlateNum
             // 
-            this.inputPlateNum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.inputPlateNum.BorderRadius = 10;
             this.inputPlateNum.BorderThickness = 2;
             this.inputPlateNum.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -388,22 +344,119 @@
             this.inputPlateNum.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.inputPlateNum.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputPlateNum.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.inputPlateNum.Location = new System.Drawing.Point(355, 119);
+            this.inputPlateNum.Location = new System.Drawing.Point(295, 198);
             this.inputPlateNum.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.inputPlateNum.Name = "inputPlateNum";
             this.inputPlateNum.PlaceholderText = "";
             this.inputPlateNum.SelectedText = "";
-            this.inputPlateNum.Size = new System.Drawing.Size(301, 44);
+            this.inputPlateNum.Size = new System.Drawing.Size(252, 44);
             this.inputPlateNum.TabIndex = 118;
+            // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.BorderRadius = 10;
+            this.guna2TextBox1.BorderThickness = 2;
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Location = new System.Drawing.Point(28, 198);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PlaceholderText = "";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.Size = new System.Drawing.Size(251, 44);
+            this.guna2TextBox1.TabIndex = 120;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.label5.Location = new System.Drawing.Point(26, 176);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(143, 23);
+            this.label5.TabIndex = 119;
+            this.label5.Text = "Document TItle";
+            // 
+            // radioPermanent
+            // 
+            this.radioPermanent.AutoSize = true;
+            this.radioPermanent.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.radioPermanent.CheckedState.BorderThickness = 0;
+            this.radioPermanent.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.radioPermanent.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.radioPermanent.CheckedState.InnerOffset = -4;
+            this.radioPermanent.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioPermanent.Location = new System.Drawing.Point(28, 120);
+            this.radioPermanent.Name = "radioPermanent";
+            this.radioPermanent.Size = new System.Drawing.Size(118, 25);
+            this.radioPermanent.TabIndex = 121;
+            this.radioPermanent.Text = "Permanent";
+            this.radioPermanent.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.radioPermanent.UncheckedState.BorderThickness = 2;
+            this.radioPermanent.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.radioPermanent.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
+            // guna2RadioButton1
+            // 
+            this.guna2RadioButton1.AutoSize = true;
+            this.guna2RadioButton1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton1.CheckedState.BorderThickness = 0;
+            this.guna2RadioButton1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton1.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.guna2RadioButton1.CheckedState.InnerOffset = -4;
+            this.guna2RadioButton1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2RadioButton1.Location = new System.Drawing.Point(371, 120);
+            this.guna2RadioButton1.Name = "guna2RadioButton1";
+            this.guna2RadioButton1.Size = new System.Drawing.Size(179, 25);
+            this.guna2RadioButton1.TabIndex = 122;
+            this.guna2RadioButton1.Text = "Required Renewal";
+            this.guna2RadioButton1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2RadioButton1.UncheckedState.BorderThickness = 2;
+            this.guna2RadioButton1.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton1.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            // 
+            // guna2RadioButton2
+            // 
+            this.guna2RadioButton2.AutoSize = true;
+            this.guna2RadioButton2.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton2.CheckedState.BorderThickness = 0;
+            this.guna2RadioButton2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2RadioButton2.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.guna2RadioButton2.CheckedState.InnerOffset = -4;
+            this.guna2RadioButton2.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2RadioButton2.Location = new System.Drawing.Point(189, 120);
+            this.guna2RadioButton2.Name = "guna2RadioButton2";
+            this.guna2RadioButton2.Size = new System.Drawing.Size(128, 25);
+            this.guna2RadioButton2.TabIndex = 123;
+            this.guna2RadioButton2.Text = "Fixed Expiry";
+            this.guna2RadioButton2.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2RadioButton2.UncheckedState.BorderThickness = 2;
+            this.guna2RadioButton2.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton2.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             // 
             // AddNewVehicleDocumentModal
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(687, 663);
+            this.ClientSize = new System.Drawing.Size(577, 684);
             this.ControlBox = false;
+            this.Controls.Add(this.guna2RadioButton2);
+            this.Controls.Add(this.guna2RadioButton1);
+            this.Controls.Add(this.radioPermanent);
+            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.inputPlateNum);
-            this.Controls.Add(this.inputHasExpirationDate);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.closeImageBtn);
@@ -415,7 +468,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.inputExpirationDate);
             this.Controls.Add(this.labelExpirationDate);
-            this.Controls.Add(this.inputDocumentType);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.panelTop);
             this.DoubleBuffered = true;
@@ -438,7 +490,6 @@
         private System.Windows.Forms.Label labelHeader;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private Guna.UI2.WinForms.Guna2ComboBox inputDocumentType;
         private System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2DateTimePicker inputExpirationDate;
         private System.Windows.Forms.Label labelExpirationDate;
@@ -451,7 +502,11 @@
         private Guna.UI2.WinForms.Guna2Button addImageBtn;
         private Guna.UI2.WinForms.Guna2Button saveBtn;
         private Guna.UI2.WinForms.Guna2Button cancelBtn;
-        private Guna.UI2.WinForms.Guna2CheckBox inputHasExpirationDate;
         private Guna.UI2.WinForms.Guna2TextBox inputPlateNum;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2RadioButton radioPermanent;
+        private Guna.UI2.WinForms.Guna2RadioButton guna2RadioButton2;
+        private Guna.UI2.WinForms.Guna2RadioButton guna2RadioButton1;
     }
 }
