@@ -56,6 +56,7 @@
             this.headerLabel = new System.Windows.Forms.Label();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblImagePlaceholder = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.pnlUserImage.SuspendLayout();
@@ -461,6 +462,7 @@
             // 
             // pnlUserImage
             // 
+            this.pnlUserImage.Controls.Add(this.lblImagePlaceholder);
             this.pnlUserImage.Controls.Add(this.userImage);
             this.pnlUserImage.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUserImage.Location = new System.Drawing.Point(8, 62);
@@ -542,6 +544,19 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // lblImagePlaceholder
+            // 
+            this.lblImagePlaceholder.AutoSize = true;
+            this.lblImagePlaceholder.BackColor = System.Drawing.Color.Transparent;
+            this.lblImagePlaceholder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblImagePlaceholder.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblImagePlaceholder.Location = new System.Drawing.Point(162, 62);
+            this.lblImagePlaceholder.Name = "lblImagePlaceholder";
+            this.lblImagePlaceholder.Size = new System.Drawing.Size(36, 13);
+            this.lblImagePlaceholder.TabIndex = 9;
+            this.lblImagePlaceholder.Text = "Image";
+            this.lblImagePlaceholder.Click += new System.EventHandler(this.lblImagePlaceholder_Click);
+            // 
             // frmAddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -559,6 +574,7 @@
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             this.pnlUserImage.ResumeLayout(false);
+            this.pnlUserImage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
@@ -596,5 +612,6 @@
         private Guna.UI2.WinForms.Guna2Panel pnlUserImage;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private System.Windows.Forms.Label lblImagePlaceholder;
     }
 }

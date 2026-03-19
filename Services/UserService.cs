@@ -37,7 +37,7 @@ namespace PL_VehicleRental.Services
             }
 
             var insertResult = await _repository.InsertAsync(dto, imagePath);
-            MessageBox.Show($"User created! \n Temporary password: {insertResult.TemporaryPassword}");
+            MessageBox.Show($"User created! \n Temporary password: {insertResult.TemporaryPassword}", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
             if (insertResult <= 0) return (false, "Failed to insert user.", 0);
 

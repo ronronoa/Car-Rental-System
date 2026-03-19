@@ -67,7 +67,10 @@ namespace PL_VehicleRental.Forms
 
                     using (var changePassForm = new frmChangePassword(user.UserName))
                     {
-                        changePassForm.ShowDialog();
+                        if (changePassForm.ShowDialog() != DialogResult.OK)
+                        {
+                            return;
+                        }
                     }
 
                     usernameTxt.Clear();

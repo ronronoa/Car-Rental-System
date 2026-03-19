@@ -41,16 +41,16 @@
             this.label = new System.Windows.Forms.Label();
             this.pnlMain = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.resetImg = new Guna.UI2.WinForms.Guna2Button();
-            this.userImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.statusCmb = new Guna.UI2.WinForms.Guna2ComboBox();
             this.roleCmb = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnResetPass = new Guna.UI2.WinForms.Guna2Button();
+            this.userImage = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.pnlProgress.SuspendLayout();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -117,6 +117,7 @@
             // exitBtn
             // 
             this.exitBtn.BorderThickness = 2;
+            this.exitBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exitBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.exitBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.exitBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -212,6 +213,7 @@
             // 
             this.pnlMain.BorderColor = System.Drawing.Color.Silver;
             this.pnlMain.BorderThickness = 2;
+            this.pnlMain.Controls.Add(this.exitBtn);
             this.pnlMain.Controls.Add(this.btnResetPass);
             this.pnlMain.Controls.Add(this.resetImg);
             this.pnlMain.Controls.Add(this.userImage);
@@ -225,7 +227,6 @@
             this.pnlMain.Controls.Add(this.label5);
             this.pnlMain.Controls.Add(this.label4);
             this.pnlMain.Controls.Add(this.label3);
-            this.pnlMain.Controls.Add(this.exitBtn);
             this.pnlMain.Controls.Add(this.label2);
             this.pnlMain.Controls.Add(this.label);
             this.pnlMain.Controls.Add(this.txtFullName);
@@ -244,6 +245,7 @@
             // resetImg
             // 
             this.resetImg.BorderRadius = 5;
+            this.resetImg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.resetImg.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.resetImg.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.resetImg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -258,18 +260,6 @@
             this.resetImg.TabIndex = 22;
             this.resetImg.Text = "Reset";
             this.resetImg.Click += new System.EventHandler(this.resetImg_Click);
-            // 
-            // userImage
-            // 
-            this.userImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.userImage.ImageRotate = 0F;
-            this.userImage.Location = new System.Drawing.Point(124, 37);
-            this.userImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.userImage.Name = "userImage";
-            this.userImage.Size = new System.Drawing.Size(100, 100);
-            this.userImage.TabIndex = 21;
-            this.userImage.TabStop = false;
-            this.userImage.Click += new System.EventHandler(this.userImage_Click);
             // 
             // label7
             // 
@@ -339,6 +329,7 @@
             // statusCmb
             // 
             this.statusCmb.BackColor = System.Drawing.Color.Transparent;
+            this.statusCmb.Cursor = System.Windows.Forms.Cursors.Hand;
             this.statusCmb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.statusCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.statusCmb.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -346,7 +337,7 @@
             this.statusCmb.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.statusCmb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.statusCmb.ItemHeight = 30;
-            this.statusCmb.Location = new System.Drawing.Point(75, 410);
+            this.statusCmb.Location = new System.Drawing.Point(74, 410);
             this.statusCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusCmb.Name = "statusCmb";
             this.statusCmb.Size = new System.Drawing.Size(134, 36);
@@ -355,6 +346,7 @@
             // roleCmb
             // 
             this.roleCmb.BackColor = System.Drawing.Color.Transparent;
+            this.roleCmb.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roleCmb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.roleCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roleCmb.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -367,31 +359,6 @@
             this.roleCmb.Name = "roleCmb";
             this.roleCmb.Size = new System.Drawing.Size(134, 36);
             this.roleCmb.TabIndex = 15;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BorderColor = System.Drawing.Color.Transparent;
-            this.btnSave.BorderRadius = 5;
-            this.btnSave.BorderThickness = 2;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.btnSave.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
-            this.btnSave.ImageOffset = new System.Drawing.Point(-2, 0);
-            this.btnSave.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnSave.Location = new System.Drawing.Point(261, 483);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(81, 29);
-            this.btnSave.TabIndex = 14;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtAddress
             // 
@@ -425,18 +392,54 @@
             this.btnResetPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnResetPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnResetPass.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.btnResetPass.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnResetPass.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResetPass.ForeColor = System.Drawing.Color.White;
-            this.btnResetPass.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
+            this.btnResetPass.Image = global::VehicleManagementSystem.Properties.Resources.reset_pass;
             this.btnResetPass.ImageOffset = new System.Drawing.Point(-2, 0);
-            this.btnResetPass.ImageSize = new System.Drawing.Size(25, 25);
             this.btnResetPass.Location = new System.Drawing.Point(11, 483);
             this.btnResetPass.Margin = new System.Windows.Forms.Padding(2);
             this.btnResetPass.Name = "btnResetPass";
-            this.btnResetPass.Size = new System.Drawing.Size(161, 34);
+            this.btnResetPass.Size = new System.Drawing.Size(132, 29);
             this.btnResetPass.TabIndex = 23;
             this.btnResetPass.Text = "Reset Password";
             this.btnResetPass.Click += new System.EventHandler(this.btnResetPass_Click);
+            // 
+            // userImage
+            // 
+            this.userImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.userImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.userImage.ImageRotate = 0F;
+            this.userImage.Location = new System.Drawing.Point(124, 37);
+            this.userImage.Margin = new System.Windows.Forms.Padding(2);
+            this.userImage.Name = "userImage";
+            this.userImage.Size = new System.Drawing.Size(100, 100);
+            this.userImage.TabIndex = 21;
+            this.userImage.TabStop = false;
+            this.userImage.Click += new System.EventHandler(this.userImage_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BorderColor = System.Drawing.Color.Transparent;
+            this.btnSave.BorderRadius = 5;
+            this.btnSave.BorderThickness = 2;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.btnSave.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
+            this.btnSave.ImageOffset = new System.Drawing.Point(-2, 0);
+            this.btnSave.Location = new System.Drawing.Point(261, 483);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(81, 29);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmEdit
             // 

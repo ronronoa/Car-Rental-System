@@ -18,6 +18,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleManagementSystem.Dto;
+using Guna.UI2.WinForms;
 
 namespace PL_VehicleRental.Forms
 {
@@ -32,11 +33,13 @@ namespace PL_VehicleRental.Forms
         private bool _isUsernameAvailable = false;
         private bool _isSubmitting = false;
         private const long MaxFileSize = 2 * 1024 * 1024;
+        private ToolTip _asyncToolTip;
         public frmAddUser()
         {
             InitializeComponent();
-            _validator = new Validator(errorProvider1);
+            _validator = new Validator();
             _userService = new UserService();
+            _asyncToolTip = new ToolTip();
             userNameTextBox.TextChanged += userNameTextBox_TextChanged;
         }
 
@@ -50,6 +53,8 @@ namespace PL_VehicleRental.Forms
             roleCmb.StartIndex = 0;
             statusCmb.StartIndex = 0;
             userImage.Image = null;
+
+            _validator.Clear();
 
         }
 
@@ -77,7 +82,14 @@ namespace PL_VehicleRental.Forms
                 _validator.Custom(userNameTextBox, () => userNameTextBox.Text.Length >= 5, "Username must be at least 5 characters");
                 _validator.Custom(userNameTextBox, () => Regex.IsMatch(userNameTextBox.Text, @"^[a-zA-Z0-9]+$"), "Username can only contain letters and numbers.");
 
-                if (!_validator.Validate() || !_isUsernameAvailable) return;
+                if (!_validator.Validate() || !_isUsernameAvailable)
+                {
+                    if (_validator.Validate() && !_isUsernameAvailable)
+                    {
+                        SetAsyncError(userNameTextBox, "Username already taken.");
+                    }
+                    return;
+                }
 
                 var dto = new UserInfoDto
                 {
@@ -170,6 +182,31 @@ namespace PL_VehicleRental.Forms
             addBtn.Enabled = basicValid && _isUsernameAvailable;
         }
 
+        private void SetAsyncError(Control control, string message)
+        {
+            if (control is Guna2TextBox gunaTxt)
+            {
+                if (string.IsNullOrEmpty(message))
+                {
+                    gunaTxt.BorderColor = Color.FromArgb(213, 218, 223);
+                    gunaTxt.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+                    gunaTxt.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+
+                    _asyncToolTip.SetToolTip(control, null);
+                    _asyncToolTip.Hide(control);
+                }
+                else
+                {
+                    gunaTxt.BorderColor = Color.Red;
+                    gunaTxt.HoverState.BorderColor = Color.Red;
+                    gunaTxt.FocusedState.BorderColor = Color.Red;
+
+                    _asyncToolTip.SetToolTip(control, message);
+                    _asyncToolTip.Show(message, control);
+                }
+            }
+        }
+
         private async void userNameTextBox_TextChanged(object sender, EventArgs e)
         {
             _usernameCts?.Cancel();
@@ -180,7 +217,7 @@ namespace PL_VehicleRental.Forms
 
             if(string.IsNullOrWhiteSpace(username))
             {
-                errorProvider1.SetError(userNameTextBox, "Username is required");
+                SetAsyncError(userNameTextBox, "Username is required");
                 _isUsernameAvailable = false;
                 return;
             }
@@ -188,17 +225,18 @@ namespace PL_VehicleRental.Forms
 
             try
             {
+                SetAsyncError(userNameTextBox, null);
                 await Task.Delay(500, token);
 
                 bool exists = await _userService.UsernameExistsAsync(username);
 
                 if(exists)
                 {
-                    errorProvider1.SetError(userNameTextBox, "Username already taken.");
+                    SetAsyncError(userNameTextBox, "Username already taken.");
                     _isUsernameAvailable = false;
                 } else
                 {
-                    errorProvider1.SetError(userNameTextBox, "");
+                    SetAsyncError(userNameTextBox, "");
                    _isUsernameAvailable = true;
                 }
 
@@ -267,6 +305,11 @@ namespace PL_VehicleRental.Forms
                         return;
                     }
 
+                    if (userImage != null)
+                    {
+                        lblImagePlaceholder.Visible = false;
+                    }
+
                     userImage.Image = Image.FromFile(ofd.FileName);
                 }
             }
@@ -283,6 +326,12 @@ namespace PL_VehicleRental.Forms
             userImage.Anchor = AnchorStyles.None;
             userImage.Location = new Point((pnlUserImage.Width - userImage.Width) / 2,
                                             (pnlUserImage.Height - userImage.Height) / 2);
+
+            lblImagePlaceholder.Anchor = AnchorStyles.None;
+            lblImagePlaceholder.Location = new Point((pnlUserImage.Width - lblImagePlaceholder.Width) / 2,
+                                                      (pnlUserImage.Height - lblImagePlaceholder.Height) / 2);
+
+            lblImagePlaceholder.Click += userImage_Click;
         }
 
         private void guna2Separator1_Click(object sender, EventArgs e)
@@ -324,6 +373,11 @@ namespace PL_VehicleRental.Forms
                 phoneTxt.Text = "+63";
                 phoneTxt.SelectionStart = phoneTxt.Text.Length;
             }
+        }
+
+        private void lblImagePlaceholder_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
