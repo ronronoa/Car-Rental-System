@@ -20,10 +20,17 @@ namespace VehicleManagementSystem.UserControls {
 
         public void Bind(VehicleDocumentDto document) {
             _document = document;
+            IntializeData();
+        }
 
-            labelType.Text = document.Category;
-            labelTitle.Text = document.Title;
-            labelExpirationDate.Text = document.ExpirationDate?.ToString("d") ?? "N/A";
+        private void IntializeData() {
+            labelType.Text = _document.Category;
+            labelTitle.Text = _document.Title;
+            labelExpirationDate.Text = _document.ExpirationDate?.ToString("d") ?? "N/A";
+
+            if(_document.Category != "Required Renewal") {
+                btnRenew.Visible = false;
+            }
         }
 
     }

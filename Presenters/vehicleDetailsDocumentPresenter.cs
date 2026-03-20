@@ -22,7 +22,11 @@ namespace VehicleManagementSystem.Presenters {
         public void LoadAllDocuments() {
             try {
                 var documents = _services.GetDocumentsByPlateNumber(_view.VehiclePlateNum);
-                if (documents.Count > 0) _view.DisplayDocuments(documents);
+                if (documents.Count > 0) {
+                    _view.DisplayDocuments(documents);
+                } else {
+                    _view.ToggleNoDocumentDisplay();
+                }
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
             }

@@ -8,6 +8,8 @@ using VehicleManagementSystem.Dto;
 namespace VehicleManagementSystem.View.Interfaces {
     public interface IVehicleDetailsDocumentView {
         string VehiclePlateNum { get; }
+
+        void ToggleNoDocumentDisplay();
         void DisplayDocuments(List<VehicleDocumentDto> documents);
         void ShowError(string error);
     }
