@@ -162,7 +162,7 @@
             this.inputExpirationDate.MinDate = new System.DateTime(1925, 1, 1, 0, 0, 0, 0);
             this.inputExpirationDate.Name = "inputExpirationDate";
             this.inputExpirationDate.Size = new System.Drawing.Size(252, 44);
-            this.inputExpirationDate.TabIndex = 123;
+            this.inputExpirationDate.TabIndex = 4;
             this.inputExpirationDate.Value = new System.DateTime(2026, 1, 20, 18, 53, 53, 702);
             this.inputExpirationDate.Visible = false;
             // 
@@ -197,7 +197,7 @@
             this.inputIssueDate.MinDate = new System.DateTime(1925, 1, 1, 0, 0, 0, 0);
             this.inputIssueDate.Name = "inputIssueDate";
             this.inputIssueDate.Size = new System.Drawing.Size(244, 44);
-            this.inputIssueDate.TabIndex = 122;
+            this.inputIssueDate.TabIndex = 3;
             this.inputIssueDate.Value = new System.DateTime(2026, 1, 20, 18, 53, 53, 702);
             // 
             // label1
@@ -319,7 +319,7 @@
             this.inputIssuingAuthority.PlaceholderText = "";
             this.inputIssuingAuthority.SelectedText = "";
             this.inputIssuingAuthority.Size = new System.Drawing.Size(252, 44);
-            this.inputIssuingAuthority.TabIndex = 121;
+            this.inputIssuingAuthority.TabIndex = 2;
             // 
             // inputDocumentTitle
             // 
@@ -340,7 +340,7 @@
             this.inputDocumentTitle.PlaceholderText = "";
             this.inputDocumentTitle.SelectedText = "";
             this.inputDocumentTitle.Size = new System.Drawing.Size(245, 44);
-            this.inputDocumentTitle.TabIndex = 120;
+            this.inputDocumentTitle.TabIndex = 1;
             // 
             // label5
             // 

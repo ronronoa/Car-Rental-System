@@ -105,7 +105,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableHeader.BackColor = System.Drawing.Color.Transparent;
             this.tableHeader.ColumnCount = 5;
-            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
             this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
@@ -169,7 +169,7 @@
             this.label6.AutoEllipsis = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(137, 7);
+            this.label6.Location = new System.Drawing.Point(169, 7);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(214, 28);
             this.label6.TabIndex = 3;
