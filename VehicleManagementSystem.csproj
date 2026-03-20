@@ -337,7 +337,7 @@
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Forms\frmEdit.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Forms\frmEdit.Designer.cs">
       <DependentUpon>frmEdit.cs</DependentUpon>

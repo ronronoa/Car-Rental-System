@@ -31,7 +31,9 @@ namespace PL_VehicleRental.Forms
         private readonly userRepository _repository = new userRepository();
         private readonly int _userId;
         private CancellationTokenSource _usernameCts;
+        private CancellationTokenSource _emailCts;
         private bool _isUsernameAvailable = false;
+        private bool _isEmailAvailable = false;
         private bool _isSubmitting = false;
         private const long MaxFileSize = 2 * 1024 * 1024;
         private ToolTip _asyncToolTip;
@@ -72,9 +74,10 @@ namespace PL_VehicleRental.Forms
                 _validator.Required(userNameTextBox, "Username is required");
                 _validator.Required(fullNameTxt, "Full name is required");
                 _validator.Required(addressTextBox, "Address is required");
+                _validator.Required(emaiTextBox, "Email is required");
                 _validator.IsEmail(emaiTextBox, "Invalid email format");
                 _validator.IsPhoneNumber(phoneTxt, "Invalid phone number.");
-
+                _validator.Required(addressTextBox, "Address is required.");
                 _validator.Custom(phoneTxt, () =>
                 {
                     return phoneTxt.Text.Length == 13 && phoneTxt.Text.StartsWith("+639");
@@ -96,6 +99,7 @@ namespace PL_VehicleRental.Forms
                 {
                     UserName = userNameTextBox.Text.Trim(),
                     FullName = fullNameTxt.Text.Trim(),
+                    Gender = genderCmb.Text,
                     Email = emaiTextBox.Text.Trim(),
                     PhoneNumber = phoneTxt.Text.Trim(),
                     Address = addressTextBox.Text.Trim(),
@@ -171,6 +175,7 @@ namespace PL_VehicleRental.Forms
             userNameTextBox.Clear();
             addressTextBox.Clear();
             phoneTxt.Clear();
+            genderCmb.StartIndex = 0;
             roleCmb.StartIndex = 0;
             statusCmb.StartIndex = 0;
         }
@@ -183,6 +188,7 @@ namespace PL_VehicleRental.Forms
                 !string.IsNullOrWhiteSpace(emaiTextBox.Text) &&
                 !string.IsNullOrWhiteSpace(phoneTxt.Text) &&
                 !string.IsNullOrWhiteSpace(addressTextBox.Text) &&
+                genderCmb.SelectedIndex != -1 &&
                 roleCmb.SelectedIndex != -1 &&
                 statusCmb.SelectedIndex != -1;
 
@@ -193,7 +199,7 @@ namespace PL_VehicleRental.Forms
         {
             if (control is Guna2TextBox gunaTxt)
             {
-                if (string.IsNullOrEmpty(message))
+                if (string.IsNullOrWhiteSpace(message))
                 {
                     gunaTxt.BorderColor = Color.FromArgb(213, 218, 223);
                     gunaTxt.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
@@ -229,7 +235,6 @@ namespace PL_VehicleRental.Forms
                 return;
             }
 
-
             try
             {
                 SetAsyncError(userNameTextBox, null);
@@ -263,17 +268,57 @@ namespace PL_VehicleRental.Forms
             {
                 SetAsyncError(fullNameTxt, "Name is required");
                 return;
-            }
-            UpdateAddButtonState();
+            } 
+                SetAsyncError(fullNameTxt, "");
+                UpdateAddButtonState();
+             
         }
 
-        private void emaiTxt_TextChanged(object sender, EventArgs e)
+        private async void emaiTxt_TextChanged(object sender, EventArgs e)
         {
-            UpdateAddButtonState();
+            _emailCts?.Cancel();
+            _emailCts = new CancellationTokenSource();
+            var token = _emailCts.Token;
+            string email = emaiTextBox.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                SetAsyncError(emaiTextBox, "Email is required");
+                _isEmailAvailable = false;
+                return;
+            }
+
+            try
+            {
+                SetAsyncError(emaiTextBox, null);
+                await Task.Delay(500, token);
+
+                bool exists = await _userService.EmailExistsAsync(email);
+
+                if (exists)
+                {
+                    SetAsyncError(emaiTextBox, "This email is already used by another user.");
+                    _isEmailAvailable = false;
+                } else
+                {
+                    SetAsyncError(emaiTextBox, "");
+                    _isEmailAvailable = true;
+                }
+            } catch (TaskCanceledException)
+            {
+                return;
+            }
+                UpdateAddButtonState();
         }
 
         private void addressTextBox_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(addressTextBox.Text.Trim()))
+            {
+                SetAsyncError(addressTextBox, "Address is required");
+                return;
+            }
+            SetAsyncError(addressTextBox, "");
             UpdateAddButtonState();
         }
 
@@ -369,6 +414,16 @@ namespace PL_VehicleRental.Forms
                 phoneTxt.Text = "+63";
                 phoneTxt.SelectionStart = phoneTxt.Text.Length;
             }
+
+            string contact = phoneTxt.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(contact))
+            {
+                SetAsyncError(phoneTxt, "Contact number is required");
+                return;
+            }
+            SetAsyncError(phoneTxt, "");
+
             UpdateAddButtonState();
         }
 

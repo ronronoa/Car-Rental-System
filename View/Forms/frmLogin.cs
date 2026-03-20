@@ -145,9 +145,23 @@ namespace PL_VehicleRental.Forms
             //passwordTxt.UseSystemPasswordChar = true;
         }
 
+
+
         private void frmLogin_KeyDown(object sender, KeyEventArgs e)
         {
             
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x115 || m.Msg == 0x114)
+            {
+                if ((m.WParam.ToInt32() & 0xFFFF) == 5)
+                {
+                    m.WParam = (IntPtr)((m.WParam.ToInt32() & ~0xFFFF) | 4);
+                }
+            }
+            base.WndProc(ref m);
         }
     }
 }

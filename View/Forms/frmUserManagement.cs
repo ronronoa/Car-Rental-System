@@ -30,6 +30,7 @@ namespace PL_VehicleRental.Forms
 
         private readonly userRepository _repository = new userRepository();
         private frmAddUser _addUserControl;
+        private frmEdit _editUserControl;
         public UserManagementForm()
         {
             InitializeComponent();
@@ -75,13 +76,70 @@ namespace PL_VehicleRental.Forms
 
             _totalPages = (int)Math.Ceiling((double)totalCount / _pageSize);
 
-            lblPageInfo.Text = $"Page {_currentPage} of {_totalPages}";
+            //lblPageInfo.Text = $"Page {_currentPage} of {_totalPages}";
+            UpdatePageButtons();
 
-            btnPrev.Enabled = _currentPage > 1;
-            btnNext.Enabled = _currentPage < _totalPages;
+            //btnPrev.Enabled = _currentPage > 1;
+            //btnNext.Enabled = _currentPage < _totalPages;
 
             ToggleLoading(false);
         }
+
+        private void UpdatePageButtons()
+        {
+            flowPageNumbers.Controls.Clear();
+
+            int maxVisiblePages = 5;
+            int startPage = Math.Max(1, _currentPage - maxVisiblePages / 2);
+            int endPage = Math.Min(_totalPages, startPage + maxVisiblePages - 1);
+
+            if (endPage - startPage + 1 < maxVisiblePages)
+                startPage = Math.Max(1, endPage - maxVisiblePages + 1);
+
+            for (int i = startPage; i <= endPage; i++)
+            {
+                var btn = new Guna.UI2.WinForms.Guna2Button
+                {
+                    Text = i.ToString(),
+                    Size = new Size(30, 24),
+                    BorderRadius = 2,
+                    Font = new Font("Segoe UI", 9F),
+                    Cursor = Cursors.Hand,
+                    Margin = new Padding(2),
+                    Tag = i
+                };
+
+                if (i == _currentPage)
+                {
+                    btn.FillColor = Color.FromArgb(42, 132, 191);
+                    btn.ForeColor = Color.White;
+                }
+                else
+                {
+                    btn.FillColor = Color.FromArgb(230, 230, 230);
+                    btn.ForeColor = Color.Black;
+                }
+
+                btn.Click += PageButton_Click;
+                flowPageNumbers.Controls.Add(btn);
+            }
+
+            btnPrev.Enabled = _currentPage > 1;
+            btnNext.Enabled = _currentPage < _totalPages;
+        }
+
+        private async void PageButton_Click(object sender, EventArgs e)
+        {
+            var btn = (Guna.UI2.WinForms.Guna2Button)sender;
+            int page = (int)btn.Tag;
+
+            if (page != _currentPage)
+            {
+                _currentPage = page;
+                await LoadPageAsync();
+            }
+        }
+
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -226,15 +284,32 @@ namespace PL_VehicleRental.Forms
             }
         }
 
-        private async void OpenEditForm(int userId)
+        private void OpenEditForm(int userId)
         {
-            using (frmEdit form = new frmEdit(userId))
+            HideAddUserForm();
+
+            if (_editUserControl != null )
             {
-                if(form.ShowDialog() == DialogResult.OK)
-                {
-                    await LoadPageAsync();
-                }
+                UserManagementPanel.Controls.Remove(_editUserControl);
+                _editUserControl.Dispose();
             }
+
+            _editUserControl = new frmEdit(userId);
+            _editUserControl.UserUpdated += async (sender, e) =>
+            {
+                HideEditUserForm();
+                await LoadPageAsync();
+            };
+
+            _editUserControl.FormClosed += (sender, e) =>
+            {
+                HideEditUserForm();
+            };
+            RecenterOverlayControl(_editUserControl);
+            UserManagementPanel.Controls.Add(_editUserControl);
+            _editUserControl.BringToFront();
+
+            SetUserListVisibility(false);
         }
 
         private async void DeleteUser(int userId, string userName)
@@ -290,7 +365,8 @@ namespace PL_VehicleRental.Forms
         }
 
         private void OpenAddUserForm()
-        { 
+        {
+
             if (_addUserControl != null)
             {
                 UserManagementPanel.Controls.Remove( _addUserControl);
@@ -310,15 +386,12 @@ namespace PL_VehicleRental.Forms
                 HideAddUserForm();
             };
 
-            RecenterAddUserForm();
+            RecenterOverlayControl(_addUserControl);
 
             UserManagementPanel.Controls.Add(_addUserControl);
             _addUserControl.BringToFront();
 
-            headerPanel.Visible = false;
-            TableHeaderPanel.Visible = false;
-            flowUsers.Visible = false;
-            rolesTablePanel.Visible = false;
+            SetUserListVisibility(false);
         }
 
         private void HideAddUserForm()
@@ -330,10 +403,27 @@ namespace PL_VehicleRental.Forms
                 _addUserControl = null;
             }
 
-            headerPanel.Visible = true;
-            TableHeaderPanel.Visible = true;
-            flowUsers.Visible = true;
-            rolesTablePanel.Visible = true;
+            SetUserListVisibility(true);
+        }
+
+        private void HideEditUserForm()
+        {
+            if (_editUserControl != null)
+            {
+                UserManagementPanel.Controls.Remove(_editUserControl);
+                _editUserControl.Dispose();
+                _editUserControl = null;
+            }
+
+            SetUserListVisibility(true);
+        }
+
+        private void SetUserListVisibility(bool isVisible)
+        {
+            headerPanel.Visible = isVisible;
+            TableHeaderPanel.Visible = isVisible;
+            flowUsers.Visible = isVisible;
+            rolesTablePanel.Visible = isVisible;
         }
 
         // Double buffer
@@ -416,15 +506,22 @@ namespace PL_VehicleRental.Forms
 
         private void RecenterAddUserForm()
         {
-            if (_addUserControl != null && _addUserControl.Visible)
+            RecenterOverlayControl(_addUserControl);
+            RecenterOverlayControl(_editUserControl);
+        }
+
+        private void RecenterOverlayControl(Control overlayControl)
+        {
+            if (overlayControl != null && overlayControl.Visible)
             {
-                int newX = (UserManagementPanel.Width - _addUserControl.Width) / 2;
-                int newY = (UserManagementPanel.Height - _addUserControl.Height) / 2;
+                int newX = (UserManagementPanel.Width - overlayControl.Width) / 2;
+                int newY = (UserManagementPanel.Height - overlayControl.Height) / 2;
+
 
                 newX = Math.Max(0, newX);
                 newY = Math.Max(0, newY);
 
-                _addUserControl.Location = new Point(newX, newY);
+                overlayControl.Location = new Point(newX, newY);
             }
         }
 
