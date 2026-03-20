@@ -30,14 +30,23 @@ namespace VehicleManagementSystem.UserControls {
             MessageBox.Show(error, "Error");
         }
 
+        public void ToggleNoDocumentDisplay() {
+            tableMain.Visible = !tableMain.Visible;
+            tableHeader.Visible = !tableHeader.Visible;
+            labelNoDocument.Visible = !labelNoDocument.Visible;
+        }
+
         public void DisplayDocuments(List<VehicleDocumentDto> documents) {
             tableMain.SuspendLayout();
-            const int DocumentCardHeight = 84;
+            const int DocumentCardHeight = 85;
+            const int BottomPadding = 10;
+            int TableMainHeight = DocumentCardHeight * documents.Count;
 
             tableMain.Controls.Clear();
             tableMain.RowStyles.Clear();
             tableMain.RowCount = 0;
-            tableMain.Height = DocumentCardHeight * documents.Count;
+            tableMain.Height = TableMainHeight;
+            this.Height += (TableMainHeight + BottomPadding);
 
             int col = 0;
             int row = 0;
@@ -46,7 +55,6 @@ namespace VehicleManagementSystem.UserControls {
                 var card = new VehicleDocumentCardControl();
                 card.Bind(document);
                 card.Dock = DockStyle.Fill;
-                //card.Margin = new Padding(10);
 
                 tableMain.Controls.Add(card, col, row);
 
@@ -61,8 +69,14 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void addNewVehBtn_Click(object sender, EventArgs e) {
-            var addVehicleDocumentForm = new AddNewVehicleDocumentModal(_vehicle.LicensePlate);
-            addVehicleDocumentForm.ShowDialog();
+            using (var addVehicleDocumentForm = new AddNewVehicleDocumentModal(_vehicle.LicensePlate)) {
+                DialogResult result = addVehicleDocumentForm.ShowDialog();
+
+                if (result != DialogResult.OK) return;
+
+                _presenter.LoadAllDocuments();
+                if(!tableMain.Visible) ToggleNoDocumentDisplay(); 
+            }
         }
 
         private void VehicleDetailsDocuments_Load(object sender, EventArgs e) {
@@ -70,3 +84,4 @@ namespace VehicleManagementSystem.UserControls {
         }
     }
 }
+

@@ -42,9 +42,9 @@ namespace VehicleManagementSystem.Presenters {
                 };
 
                 _vehicleDocumentServices.AddVehicleDocument(newDocument);
-
-                _view.ShowSuccess($"Document '{newDocument.Title}' for Plate {_view.VehiclePlateNum} has been added.");
                 _view.CloseModal();
+
+                //_view.ShowSuccess($"Document '{newDocument.Title}' for Plate {_view.VehiclePlateNum} has been added.");
             } catch (Exception ex) {
                 _view.ShowError($"Failed to save document: {ex.Message}");
             }

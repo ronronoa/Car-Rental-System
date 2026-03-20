@@ -50,7 +50,7 @@
             this.tableMain.RowCount = 2;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableMain.Size = new System.Drawing.Size(1109, 140);
+            this.tableMain.Size = new System.Drawing.Size(1109, 94);
             this.tableMain.TabIndex = 11;
             // 
             // searchBox
@@ -191,10 +191,11 @@
             // 
             // labelNoDocument
             // 
+            this.labelNoDocument.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelNoDocument.AutoSize = true;
             this.labelNoDocument.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNoDocument.ForeColor = System.Drawing.Color.DarkGray;
-            this.labelNoDocument.Location = new System.Drawing.Point(163, 311);
+            this.labelNoDocument.Location = new System.Drawing.Point(162, 368);
             this.labelNoDocument.Name = "labelNoDocument";
             this.labelNoDocument.Size = new System.Drawing.Size(764, 24);
             this.labelNoDocument.TabIndex = 14;
@@ -214,7 +215,7 @@
             this.Controls.Add(this.addNewVehBtn);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "VehicleDetailsDocuments";
-            this.Size = new System.Drawing.Size(1113, 1133);
+            this.Size = new System.Drawing.Size(1113, 1051);
             this.Load += new System.EventHandler(this.VehicleDetailsDocuments_Load);
             this.tableHeader.ResumeLayout(false);
             this.ResumeLayout(false);

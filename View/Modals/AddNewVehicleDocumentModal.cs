@@ -32,6 +32,7 @@ namespace VehicleManagementSystem.View.Modals {
         }
 
         public void CloseModal() {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
