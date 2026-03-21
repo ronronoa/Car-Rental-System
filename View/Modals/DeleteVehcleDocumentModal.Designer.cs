@@ -144,7 +144,7 @@
             this.panelPreview.Controls.Add(this.guna2TextBox1);
             this.panelPreview.Location = new System.Drawing.Point(25, 303);
             this.panelPreview.Name = "panelPreview";
-            this.panelPreview.Size = new System.Drawing.Size(520, 217);
+            this.panelPreview.Size = new System.Drawing.Size(523, 217);
             this.panelPreview.TabIndex = 126;
             // 
             // inputDocumentTitle
@@ -170,7 +170,7 @@
             this.inputDocumentTitle.PlaceholderText = "";
             this.inputDocumentTitle.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.inputDocumentTitle.SelectedText = "";
-            this.inputDocumentTitle.Size = new System.Drawing.Size(520, 217);
+            this.inputDocumentTitle.Size = new System.Drawing.Size(523, 217);
             this.inputDocumentTitle.TabIndex = 2;
             // 
             // guna2TextBox1

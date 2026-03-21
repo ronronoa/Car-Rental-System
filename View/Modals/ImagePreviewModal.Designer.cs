@@ -33,8 +33,10 @@
             this.pictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ResizeForm1 = new Guna.UI2.WinForms.Guna2ResizeForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -137,12 +139,28 @@
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 105;
             this.pictureBox.TabStop = false;
+            this.pictureBox.Visible = false;
             // 
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2DragControl1.TargetControl = this.panelTop;
             this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // webView21
+            // 
+            this.webView21.AllowExternalDrop = true;
+            this.webView21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webView21.CreationProperties = null;
+            this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView21.Location = new System.Drawing.Point(0, 61);
+            this.webView21.Name = "webView21";
+            this.webView21.Size = new System.Drawing.Size(577, 656);
+            this.webView21.TabIndex = 106;
+            this.webView21.Visible = false;
+            this.webView21.ZoomFactor = 1D;
             // 
             // ImagePreviewModal
             // 
@@ -151,8 +169,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(577, 717);
             this.ControlBox = false;
-            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.panelTop);
+            this.Controls.Add(this.webView21);
+            this.Controls.Add(this.pictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ImagePreviewModal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -160,6 +179,7 @@
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,5 +195,6 @@
         private Guna.UI2.WinForms.Guna2ResizeForm guna2ResizeForm1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private FontAwesome.Sharp.IconButton maximizeBtn;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
     }
 }

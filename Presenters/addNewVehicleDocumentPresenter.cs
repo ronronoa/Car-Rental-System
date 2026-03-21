@@ -52,7 +52,11 @@ namespace VehicleManagementSystem.Presenters {
 
         private string GetFinalVehicDocumentPath(string docPath, string plateNum) {
             string subFolderImagePath = Path.Combine(AppConfig.AppData.VehicleImagePath, plateNum);
-            string fileName = _view.DocumentType+"-"+_view.DocumentTitle+Path.GetExtension(docPath);
+
+            string extension = Path.GetExtension(docPath);
+            string cleanTitle = _view.DocumentTitle.Replace(" ", "_");
+            string fileName = $"{_view.DocumentType}-{cleanTitle}-{Guid.NewGuid()}{extension}";
+
             return VehicleManagementSystem.Classes.Helpers.SaveDocumentToAppData(docPath, subFolderImagePath, fileName);
         }
 

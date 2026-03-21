@@ -43,11 +43,11 @@ namespace VehicleManagementSystem.UserControls {
             switch (_document.Extension) {
                 case ".docx":
                 case ".doc":
-                case ".pdf":
                     if (!string.IsNullOrEmpty(fullFilePath)) {
                         System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(fullFilePath) { UseShellExecute = true });
                     }
                     break;
+                case ".pdf":
                 case ".jpg":
                 case ".png":
                 case ".jpeg":
