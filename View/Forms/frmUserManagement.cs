@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using VehicleManagementSystem.Dto;
+using PL_VehicleRental.Services;
 
 namespace PL_VehicleRental.Forms
 {
@@ -24,7 +25,7 @@ namespace PL_VehicleRental.Forms
         private System.Timers.Timer _searchTimer;
 
         private int _currentPage = 1;
-        private int _pageSize = 14;
+        private int _pageSize = 10;
         private int _totalPages = 1;
         private string currentSearch = "";
         private bool _isUpdatingComboBox = false;
@@ -457,6 +458,15 @@ namespace PL_VehicleRental.Forms
 
                 if (success)
                 {
+                    await AuditService.LogAsync(new AuditLog
+                    {
+                        UserId = Session.User.Id,
+                        ActionType = "DELETE",
+                        Description = $"Deleted user account: {userName}",
+                        TableAffected = "users",
+                        RecordId = userId
+                    });
+
                     MessageBox.Show("User deleted successfully.", 
                         "Success", 
                         MessageBoxButtons.OK, 

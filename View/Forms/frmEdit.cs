@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleManagementSystem.Dto;
+using PL_VehicleRental.Services;
 
 namespace PL_VehicleRental.Forms
 {
@@ -245,6 +246,15 @@ namespace PL_VehicleRental.Forms
 
                 if (success)
                 {
+                    await AuditService.LogAsync(new AuditLog
+                    {
+                        UserId = Session.User.Id,
+                        ActionType = "UPDATE",
+                        Description = $"Updated user account: {user.UserName}",
+                        TableAffected = "users",
+                        RecordId = user.Id
+                    });
+
                     MessageBox.Show(
                         "User updated successfully.",
                         "Success",
@@ -376,6 +386,15 @@ namespace PL_VehicleRental.Forms
 
                 if (result.Success)
                 {
+                    await AuditService.LogAsync(new AuditLog
+                    {
+                        UserId = Session.User.Id,
+                        ActionType = "UPDATE",
+                        Description = $"Password reset for user account: {txtUserName.Text}",
+                        TableAffected = "users",
+                        RecordId = result.UserId
+                    });
+
                     MessageBox.Show(
                         $"Password reset successfully!\n\nTemporary Password: {result.TemporaryPassword}\n\nThe user must change this password on their next login.",
                         "Password Reset",

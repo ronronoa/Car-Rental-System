@@ -188,6 +188,7 @@
             this.genderCmb.Size = new System.Drawing.Size(184, 36);
             this.genderCmb.StartIndex = 0;
             this.genderCmb.TabIndex = 5;
+            this.genderCmb.SelectedIndexChanged += new System.EventHandler(this.genderCmb_SelectedIndexChanged);
             // 
             // label4
             // 
