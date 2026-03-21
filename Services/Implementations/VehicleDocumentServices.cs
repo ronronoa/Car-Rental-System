@@ -55,6 +55,39 @@ namespace VehicleManagementSystem.Services.Implementations {
             }
         }
 
+        public void UpdateVehicleDocument(VehicleDocumentDto document) {
+            using (var connection = MySQLConnectionContext.Create()) {
+                string query = @"
+                UPDATE VehicleDocuments 
+                SET 
+                    DocumentTitle = @Title, 
+                    Category = @Category, 
+                    IssuingAuthority = @IssuingAuthority, 
+                    IssueDate = @IssueDate, 
+                    ExpirationDate = @ExpirationDate, 
+                    FilePath = @FilePath, 
+                    FileExtension = @Extension
+                WHERE DocumentID = @DocumentID AND IsActive = 1;";
+
+                // UpdatedAt = NOW()
+
+
+                using (var cmd = new MySqlCommand(query, connection)) {
+                    cmd.Parameters.AddWithValue("@Title", document.Title);
+                    cmd.Parameters.AddWithValue("@Category", document.Category);
+                    cmd.Parameters.AddWithValue("@IssuingAuthority", document.IssuingAuthority);
+                    cmd.Parameters.AddWithValue("@IssueDate", document.IssueDate);
+                    cmd.Parameters.AddWithValue("@ExpirationDate", (object)document.ExpirationDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@FilePath", document.FilePath);
+                    cmd.Parameters.AddWithValue("@Extension", document.Extension);
+                    cmd.Parameters.AddWithValue("@DocumentID", document.DocumentID);
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void DeleteVehicleDocument(int documentId) {
             using (MySqlConnection conn = MySQLConnectionContext.Create()) {
                 conn.Open();

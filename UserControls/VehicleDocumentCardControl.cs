@@ -87,6 +87,7 @@ namespace VehicleManagementSystem.UserControls {
                 DialogResult result = UpdateVehicleDocumentModal.ShowDialog();
 
                 if (result != DialogResult.OK) return;
+                ReloadDocuments?.Invoke();
             }
         }
 

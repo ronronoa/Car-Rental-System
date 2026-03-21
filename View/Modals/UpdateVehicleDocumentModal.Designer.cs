@@ -31,12 +31,12 @@
             this.labelHeader = new System.Windows.Forms.Label();
             this.panelPreview = new Guna.UI2.WinForms.Guna2Panel();
             this.closeImageBtn = new FontAwesome.Sharp.IconButton();
+            this.addImageBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panelFile = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.labelFileName = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.documentPictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.addImageBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2RadioButton2 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.guna2RadioButton1 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.radioPermanent = new Guna.UI2.WinForms.Guna2RadioButton();
@@ -121,9 +121,9 @@
             this.labelHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.labelHeader.Location = new System.Drawing.Point(24, 17);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(317, 24);
+            this.labelHeader.Size = new System.Drawing.Size(77, 24);
             this.labelHeader.TabIndex = 104;
-            this.labelHeader.Text = "Adding new vehicle document to";
+            this.labelHeader.Text = "Update";
             // 
             // panelPreview
             // 
@@ -157,8 +157,30 @@
             this.closeImageBtn.Size = new System.Drawing.Size(37, 30);
             this.closeImageBtn.TabIndex = 115;
             this.closeImageBtn.UseVisualStyleBackColor = false;
-            this.closeImageBtn.Visible = false;
             this.closeImageBtn.Click += new System.EventHandler(this.closeImageBtn_Click);
+            // 
+            // addImageBtn
+            // 
+            this.addImageBtn.BorderColor = System.Drawing.Color.Red;
+            this.addImageBtn.BorderRadius = 10;
+            this.addImageBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.addImageBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.addImageBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.addImageBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.addImageBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addImageBtn.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.addImageBtn.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addImageBtn.ForeColor = System.Drawing.Color.Gray;
+            this.addImageBtn.HoverState.FillColor = System.Drawing.Color.Gainsboro;
+            this.addImageBtn.ImageSize = new System.Drawing.Size(30, 30);
+            this.addImageBtn.Location = new System.Drawing.Point(0, 0);
+            this.addImageBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addImageBtn.Name = "addImageBtn";
+            this.addImageBtn.Size = new System.Drawing.Size(520, 236);
+            this.addImageBtn.TabIndex = 124;
+            this.addImageBtn.Text = "Click here to add documents file.";
+            this.addImageBtn.Visible = false;
+            this.addImageBtn.Click += new System.EventHandler(this.addImageBtn_Click);
             // 
             // panelFile
             // 
@@ -235,28 +257,6 @@
             this.documentPictureBox.TabStop = false;
             this.documentPictureBox.Visible = false;
             // 
-            // addImageBtn
-            // 
-            this.addImageBtn.BorderColor = System.Drawing.Color.Red;
-            this.addImageBtn.BorderRadius = 10;
-            this.addImageBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.addImageBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.addImageBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.addImageBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.addImageBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addImageBtn.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.addImageBtn.Font = new System.Drawing.Font("Arial", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addImageBtn.ForeColor = System.Drawing.Color.Gray;
-            this.addImageBtn.HoverState.FillColor = System.Drawing.Color.Gainsboro;
-            this.addImageBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.addImageBtn.Location = new System.Drawing.Point(0, 0);
-            this.addImageBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.addImageBtn.Name = "addImageBtn";
-            this.addImageBtn.Size = new System.Drawing.Size(520, 236);
-            this.addImageBtn.TabIndex = 124;
-            this.addImageBtn.Text = "Click here to add documents file.";
-            this.addImageBtn.Click += new System.EventHandler(this.addImageBtn_Click);
-            // 
             // guna2RadioButton2
             // 
             this.guna2RadioButton2.AutoSize = true;
@@ -275,6 +275,7 @@
             this.guna2RadioButton2.UncheckedState.BorderThickness = 2;
             this.guna2RadioButton2.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.guna2RadioButton2.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton2.Click += new System.EventHandler(this.Radio_CheckedChanged);
             // 
             // guna2RadioButton1
             // 
@@ -294,6 +295,7 @@
             this.guna2RadioButton1.UncheckedState.BorderThickness = 2;
             this.guna2RadioButton1.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.guna2RadioButton1.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.guna2RadioButton1.Click += new System.EventHandler(this.Radio_CheckedChanged);
             // 
             // radioPermanent
             // 
@@ -313,6 +315,7 @@
             this.radioPermanent.UncheckedState.BorderThickness = 2;
             this.radioPermanent.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.radioPermanent.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.radioPermanent.Click += new System.EventHandler(this.Radio_CheckedChanged);
             // 
             // inputDocumentTitle
             // 
@@ -391,6 +394,7 @@
             this.saveBtn.Size = new System.Drawing.Size(212, 44);
             this.saveBtn.TabIndex = 137;
             this.saveBtn.Text = "Update Document";
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // cancelBtn
             // 
@@ -571,6 +575,7 @@
             this.Controls.Add(this.panelTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UpdateVehicleDocumentModal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateVehicleDocumentModal";
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
