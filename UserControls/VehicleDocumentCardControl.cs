@@ -63,9 +63,23 @@ namespace VehicleManagementSystem.UserControls {
 
                 if (result != DialogResult.OK) return;
 
-                _vehicleDocumentServices.DeleteVehicleDocument(_document.DocumentID);
-                ReloadDocuments();
+                try {
+                    string fullPath = Path.Combine(AppConfig.AppData.RootPath, _document.FilePath);
+
+                    if (File.Exists(fullPath)) {
+                        File.Delete(fullPath);
+                    }
+   
+                    _vehicleDocumentServices.DeleteVehicleDocument(_document.DocumentID);
+                    ReloadDocuments?.Invoke();
+
+                } catch (IOException ex) {
+                    MessageBox.Show("The file is currently in use by another process and cannot be deleted.", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } catch (Exception ex) {
+                    MessageBox.Show($"An error occurred while deleting: {ex.Message}");
+                }
             }
         }
+
     }
 }
