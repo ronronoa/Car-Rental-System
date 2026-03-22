@@ -586,6 +586,20 @@ namespace PL_VehicleRental.Forms
 
         private void txtFullName_TextChanged(object sender, EventArgs e)
         {
+            int cursorPosition = txtFullName.SelectionStart;
+            string text = txtFullName.Text;
+
+            if (!string.IsNullOrEmpty(text) && cursorPosition > 0)
+            {
+                string capitalizedText = char.ToUpper(text[0]) + text.Substring(1).ToLower();
+
+                if(capitalizedText != text)
+                {
+                    txtFullName.Text = capitalizedText;
+                    txtFullName.SelectionStart = cursorPosition;
+                }
+            }
+
             _validator.ValidateControl(txtFullName);
             UpdateAddButtonState();
         }

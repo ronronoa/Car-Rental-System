@@ -353,6 +353,16 @@ namespace VehicleManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_test {
+            get {
+                object obj = ResourceManager.GetObject("logo-test", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logout_icon {
             get {
                 object obj = ResourceManager.GetObject("logout-icon", resourceCulture);
@@ -426,6 +436,16 @@ namespace VehicleManagementSystem.Properties {
         internal static System.Drawing.Bitmap personIcon {
             get {
                 object obj = ResourceManager.GetObject("personIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_modern_silver_toyota_fortuner_suv_studio_shot_png_image_16472540 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-modern-silver-toyota-fortuner-suv-studio-shot-png-image_16472540", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
