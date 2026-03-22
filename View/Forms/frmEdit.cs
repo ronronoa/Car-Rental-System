@@ -35,7 +35,18 @@ namespace PL_VehicleRental.Forms
         private readonly UserService _userService;
         private bool _isImageChanged;
         private bool _hasStartedInitialLoad;
+        private bool _isBindingData;
         private const long MaxFileSize = 2 * 1024 * 1024;
+        
+        private string _originalUserName;
+        private string _originalFullName;
+        private string _originalGender;
+        private string _originalEmail;
+        private string _originalPhoneNumber;
+        private string _originalAddress;
+        private string _originalRole;
+        private string _originalStatus;
+        
         public enum UserStatus
         {
             Active,
@@ -93,8 +104,23 @@ namespace PL_VehicleRental.Forms
             return text.Length == 10 && Regex.IsMatch(text, @"^\d{10}$");
         }
 
+        private bool HasUserDataChanged()
+        {
+            return txtUserName.Text != _originalUserName ||
+                   txtFullName.Text != _originalFullName ||
+                   genderCmb.SelectedItem?.ToString() != _originalGender ||
+                   txtEmail.Text != _originalEmail ||
+                   txtPhone.Text != _originalPhoneNumber ||
+                   txtAddress.Text != _originalAddress ||
+                   roleCmb.SelectedItem?.ToString() != _originalRole ||
+                   statusCmb.SelectedItem?.ToString() != _originalStatus ||
+                   _isImageChanged;
+        }
+
         private void UpdateAddButtonState()
         {
+            if (_isBindingData) return;
+
             bool basicValid =
             IsUsernameInputValid() &&
                 !string.IsNullOrWhiteSpace(txtFullName.Text) &&
@@ -105,33 +131,9 @@ namespace PL_VehicleRental.Forms
                 roleCmb.SelectedIndex != -1 &&
                 statusCmb.SelectedIndex != -1;
 
-            btnSave.Enabled = basicValid;
-        }
+            bool hasChanges = HasUserDataChanged();
 
-        private void SetAsyncError(Control control, Label errorLabel, string message)
-        {
-            if (!(control is Guna2TextBox gunaTxt))
-            {
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(message))
-            {
-                _validator.ValidateControl(control);
-                return;
-            }
-
-            gunaTxt.BorderColor = Color.Red;
-            gunaTxt.HoverState.BorderColor = Color.Red;
-            gunaTxt.FocusedState.BorderColor = Color.Red;
-
-            if (errorLabel != null)
-            {
-                errorLabel.Text = message;
-                errorLabel.Visible = true;
-            }
-
-
+            btnSave.Enabled = basicValid && hasChanges;
         }
 
         protected virtual void OnUserUpdated()
@@ -239,6 +241,8 @@ namespace PL_VehicleRental.Forms
 
         private void BindUser(UserInfoDto user)
         {
+            _isBindingData = true;
+
             roleCmb.Items.Clear();
 
             roleCmb.Items.AddRange(new object[]
@@ -248,7 +252,6 @@ namespace PL_VehicleRental.Forms
                 "Staff",
                 "Mechanic",
                 "HR",
-                "IT",
                 "Finance"
             });
 
@@ -269,6 +272,19 @@ namespace PL_VehicleRental.Forms
             txtPhone.Text = user.PhoneNumber;
             roleCmb.SelectedItem = user.Role;
             statusCmb.SelectedItem = user.Status;
+
+            _originalUserName = user.UserName;
+            _originalFullName = user.FullName;
+            _originalGender = user.Gender;
+            _originalEmail = user.Email;
+            _originalPhoneNumber = user.PhoneNumber;
+            _originalAddress = user.Address;
+            _originalRole = user.Role;
+            _originalStatus = user.Status;
+            _isImageChanged = false;
+
+            _isBindingData = false;
+            UpdateAddButtonState();
 
             if (userImage.Image != null &&
                 userImage.Image != VehicleManagementSystem.Properties.Resources.avatar_default)
@@ -415,6 +431,7 @@ namespace PL_VehicleRental.Forms
 
                     userImage.Image = Image.FromFile(ofd.FileName);
                     _isImageChanged = true;
+                    UpdateAddButtonState();
                 }
             }
         }
@@ -434,6 +451,8 @@ namespace PL_VehicleRental.Forms
         private void resetImg_Click(object sender, EventArgs e)
         {
             userImage.Image = VehicleManagementSystem.Properties.Resources.avatar_default;
+            _isImageChanged = false;
+            UpdateAddButtonState();
         }
 
         private void txtPhone_Load(object sender, EventArgs e)
@@ -482,7 +501,7 @@ namespace PL_VehicleRental.Forms
                     $"Are you sure you want to reset the password for '{txtUserName.Text}'?\n\nA temporary password will be generated and displayed.",
                     "Confirm Password Reset",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                    MessageBoxIcon.Warning);
 
                 if (confirmResult != DialogResult.Yes)
                 {
@@ -545,6 +564,7 @@ namespace PL_VehicleRental.Forms
                 UpdateAddButtonState();
                 return;
             }
+            UpdateAddButtonState();
         }
 
         private void txtFullName_TextChanged(object sender, EventArgs e)
@@ -560,6 +580,7 @@ namespace PL_VehicleRental.Forms
                 UpdateAddButtonState();
                 return;
             }
+            UpdateAddButtonState();
         }
 
         private void txtAddress_TextChanged(object sender, EventArgs e)
@@ -570,7 +591,17 @@ namespace PL_VehicleRental.Forms
 
         private void roleCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
+            UpdateAddButtonState();
+        }
 
+        private void genderCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
+        }
+
+        private void statusCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
         }
     }
 }

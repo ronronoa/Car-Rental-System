@@ -81,9 +81,9 @@
             this.pnlMain.Controls.Add(this.guna2Panel2);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.pnlMain.Padding = new System.Windows.Forms.Padding(8);
             this.pnlMain.Size = new System.Drawing.Size(970, 696);
             this.pnlMain.TabIndex = 0;
             // 
@@ -116,7 +116,7 @@
             this.guna2Panel3.Controls.Add(this.fullNameTxt);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel3.Location = new System.Drawing.Point(8, 196);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(954, 492);
             this.guna2Panel3.TabIndex = 11;
@@ -188,7 +188,7 @@
             "Male",
             "Female"});
             this.genderCmb.Location = new System.Drawing.Point(743, 110);
-            this.genderCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.genderCmb.Margin = new System.Windows.Forms.Padding(2);
             this.genderCmb.Name = "genderCmb";
             this.genderCmb.Size = new System.Drawing.Size(140, 36);
             this.genderCmb.StartIndex = 0;
@@ -229,10 +229,9 @@
             "Staff",
             "Mechanic",
             "HR",
-            "IT",
             "Finance"});
             this.roleCmb.Location = new System.Drawing.Point(125, 310);
-            this.roleCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roleCmb.Margin = new System.Windows.Forms.Padding(2);
             this.roleCmb.Name = "roleCmb";
             this.roleCmb.Size = new System.Drawing.Size(176, 36);
             this.roleCmb.StartIndex = 0;
@@ -258,7 +257,7 @@
             this.addBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addBtn.BackColor = System.Drawing.Color.Transparent;
             this.addBtn.BorderColor = System.Drawing.Color.Transparent;
-            this.addBtn.BorderRadius = 10;
+            this.addBtn.BorderRadius = 5;
             this.addBtn.BorderThickness = 1;
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -269,10 +268,10 @@
             this.addBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.addBtn.ForeColor = System.Drawing.Color.White;
             this.addBtn.Image = global::VehicleManagementSystem.Properties.Resources.person_add;
-            this.addBtn.Location = new System.Drawing.Point(826, 440);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addBtn.Location = new System.Drawing.Point(807, 439);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(105, 37);
+            this.addBtn.Size = new System.Drawing.Size(111, 38);
             this.addBtn.TabIndex = 10;
             this.addBtn.Text = "Add User";
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
@@ -281,21 +280,21 @@
             // 
             this.clearBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.clearBtn.BackColor = System.Drawing.Color.Transparent;
-            this.clearBtn.BorderColor = System.Drawing.Color.Transparent;
-            this.clearBtn.BorderRadius = 10;
+            this.clearBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.clearBtn.BorderRadius = 5;
             this.clearBtn.BorderThickness = 1;
             this.clearBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.clearBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.clearBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.clearBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.clearBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.clearBtn.FillColor = System.Drawing.Color.Transparent;
             this.clearBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.clearBtn.ForeColor = System.Drawing.Color.White;
-            this.clearBtn.Location = new System.Drawing.Point(735, 440);
-            this.clearBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearBtn.ForeColor = System.Drawing.Color.Black;
+            this.clearBtn.Location = new System.Drawing.Point(691, 439);
+            this.clearBtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(88, 37);
+            this.clearBtn.Size = new System.Drawing.Size(101, 35);
             this.clearBtn.TabIndex = 9;
             this.clearBtn.Text = "Clear";
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
@@ -347,7 +346,7 @@
             "Inactive",
             "Suspended"});
             this.statusCmb.Location = new System.Drawing.Point(314, 312);
-            this.statusCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusCmb.Margin = new System.Windows.Forms.Padding(2);
             this.statusCmb.Name = "statusCmb";
             this.statusCmb.Size = new System.Drawing.Size(169, 36);
             this.statusCmb.StartIndex = 0;
@@ -391,7 +390,7 @@
             this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Separator1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.guna2Separator1.Location = new System.Drawing.Point(15, 277);
-            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Separator1.Name = "guna2Separator1";
             this.guna2Separator1.Size = new System.Drawing.Size(903, 8);
             this.guna2Separator1.TabIndex = 0;
@@ -579,7 +578,7 @@
             this.pnlUserImage.Controls.Add(this.userImage);
             this.pnlUserImage.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUserImage.Location = new System.Drawing.Point(8, 62);
-            this.pnlUserImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlUserImage.Margin = new System.Windows.Forms.Padding(2);
             this.pnlUserImage.Name = "pnlUserImage";
             this.pnlUserImage.Size = new System.Drawing.Size(954, 134);
             this.pnlUserImage.TabIndex = 9;
@@ -604,7 +603,7 @@
             this.userImage.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Horizontal;
             this.userImage.ImageRotate = 0F;
             this.userImage.Location = new System.Drawing.Point(425, 4);
-            this.userImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userImage.Margin = new System.Windows.Forms.Padding(2);
             this.userImage.Name = "userImage";
             this.userImage.Size = new System.Drawing.Size(136, 126);
             this.userImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -620,7 +619,7 @@
             this.guna2Panel2.Controls.Add(this.guna2Separator2);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.Location = new System.Drawing.Point(8, 8);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Padding = new System.Windows.Forms.Padding(12, 8, 8, 8);
             this.guna2Panel2.Size = new System.Drawing.Size(954, 54);
@@ -644,7 +643,7 @@
             this.exitBtn.Image = global::VehicleManagementSystem.Properties.Resources.chevron_backward_icon;
             this.exitBtn.ImageSize = new System.Drawing.Size(25, 25);
             this.exitBtn.Location = new System.Drawing.Point(12, 8);
-            this.exitBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(34, 38);
             this.exitBtn.TabIndex = 0;
@@ -670,7 +669,7 @@
             this.guna2Separator2.BackColor = System.Drawing.Color.Transparent;
             this.guna2Separator2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.guna2Separator2.Location = new System.Drawing.Point(15, 45);
-            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Separator2.Name = "guna2Separator2";
             this.guna2Separator2.Size = new System.Drawing.Size(903, 8);
             this.guna2Separator2.TabIndex = 0;
@@ -685,7 +684,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.pnlMain);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(582, 696);
             this.Name = "frmAddUser";
             this.Size = new System.Drawing.Size(970, 696);

@@ -78,7 +78,6 @@ namespace PL_VehicleRental.Forms
                 cmbFilter.Items.Add("Admin");
                 cmbFilter.Items.Add("Staff");
                 cmbFilter.Items.Add("HR");
-                cmbFilter.Items.Add("IT");
                 cmbFilter.Items.Add("Finance");
                 cmbFilter.SelectedIndex = 0;
 

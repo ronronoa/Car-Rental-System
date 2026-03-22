@@ -40,6 +40,11 @@
             this.label = new System.Windows.Forms.Label();
             this.pnlMain = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblAddressError = new System.Windows.Forms.Label();
+            this.lblPhoneError = new System.Windows.Forms.Label();
+            this.lblEmailError = new System.Windows.Forms.Label();
+            this.lblFullNameError = new System.Windows.Forms.Label();
+            this.lblUsernameError = new System.Windows.Forms.Label();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,11 +64,6 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            this.lblUsernameError = new System.Windows.Forms.Label();
-            this.lblFullNameError = new System.Windows.Forms.Label();
-            this.lblEmailError = new System.Windows.Forms.Label();
-            this.lblPhoneError = new System.Windows.Forms.Label();
-            this.lblAddressError = new System.Windows.Forms.Label();
             this.pnlProgress.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -87,7 +87,7 @@
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.progressBar.Location = new System.Drawing.Point(0, 0);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar.Name = "progressBar";
             this.progressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.progressBar.Size = new System.Drawing.Size(970, 10);
@@ -224,9 +224,9 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.FillColor = System.Drawing.Color.White;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.pnlMain.Padding = new System.Windows.Forms.Padding(8);
             this.pnlMain.Size = new System.Drawing.Size(970, 696);
             this.pnlMain.TabIndex = 15;
             this.pnlMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMain_Paint);
@@ -261,10 +261,60 @@
             this.guna2Panel2.Controls.Add(this.label);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel2.Location = new System.Drawing.Point(8, 196);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(954, 492);
             this.guna2Panel2.TabIndex = 29;
+            // 
+            // lblAddressError
+            // 
+            this.lblAddressError.AutoSize = true;
+            this.lblAddressError.Location = new System.Drawing.Point(140, 237);
+            this.lblAddressError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAddressError.Name = "lblAddressError";
+            this.lblAddressError.Size = new System.Drawing.Size(35, 13);
+            this.lblAddressError.TabIndex = 33;
+            this.lblAddressError.Text = "label9";
+            // 
+            // lblPhoneError
+            // 
+            this.lblPhoneError.AutoSize = true;
+            this.lblPhoneError.Location = new System.Drawing.Point(500, 150);
+            this.lblPhoneError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPhoneError.Name = "lblPhoneError";
+            this.lblPhoneError.Size = new System.Drawing.Size(35, 13);
+            this.lblPhoneError.TabIndex = 32;
+            this.lblPhoneError.Text = "label8";
+            // 
+            // lblEmailError
+            // 
+            this.lblEmailError.AutoSize = true;
+            this.lblEmailError.Location = new System.Drawing.Point(140, 150);
+            this.lblEmailError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEmailError.Name = "lblEmailError";
+            this.lblEmailError.Size = new System.Drawing.Size(35, 13);
+            this.lblEmailError.TabIndex = 31;
+            this.lblEmailError.Text = "label7";
+            // 
+            // lblFullNameError
+            // 
+            this.lblFullNameError.AutoSize = true;
+            this.lblFullNameError.Location = new System.Drawing.Point(500, 77);
+            this.lblFullNameError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFullNameError.Name = "lblFullNameError";
+            this.lblFullNameError.Size = new System.Drawing.Size(35, 13);
+            this.lblFullNameError.TabIndex = 30;
+            this.lblFullNameError.Text = "label6";
+            // 
+            // lblUsernameError
+            // 
+            this.lblUsernameError.AutoSize = true;
+            this.lblUsernameError.Location = new System.Drawing.Point(140, 77);
+            this.lblUsernameError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsernameError.Name = "lblUsernameError";
+            this.lblUsernameError.Size = new System.Drawing.Size(35, 13);
+            this.lblUsernameError.TabIndex = 29;
+            this.lblUsernameError.Text = "label5";
             // 
             // guna2Separator2
             // 
@@ -273,7 +323,7 @@
             this.guna2Separator2.BackColor = System.Drawing.Color.Transparent;
             this.guna2Separator2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
             this.guna2Separator2.Location = new System.Drawing.Point(15, 277);
-            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Separator2.Name = "guna2Separator2";
             this.guna2Separator2.Size = new System.Drawing.Size(903, 8);
             this.guna2Separator2.TabIndex = 27;
@@ -357,7 +407,7 @@
             this.btnResetPass.Image = global::VehicleManagementSystem.Properties.Resources.reset_pass;
             this.btnResetPass.ImageOffset = new System.Drawing.Point(-2, 0);
             this.btnResetPass.Location = new System.Drawing.Point(635, 432);
-            this.btnResetPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnResetPass.Margin = new System.Windows.Forms.Padding(2);
             this.btnResetPass.Name = "btnResetPass";
             this.btnResetPass.Size = new System.Drawing.Size(151, 37);
             this.btnResetPass.TabIndex = 23;
@@ -381,7 +431,7 @@
             this.btnSave.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
             this.btnSave.ImageOffset = new System.Drawing.Point(-2, 0);
             this.btnSave.Location = new System.Drawing.Point(800, 432);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(107, 37);
             this.btnSave.TabIndex = 14;
@@ -438,10 +488,11 @@
             "Male",
             "Female"});
             this.genderCmb.Location = new System.Drawing.Point(743, 110);
-            this.genderCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.genderCmb.Margin = new System.Windows.Forms.Padding(2);
             this.genderCmb.Name = "genderCmb";
             this.genderCmb.Size = new System.Drawing.Size(139, 36);
             this.genderCmb.TabIndex = 25;
+            this.genderCmb.SelectedIndexChanged += new System.EventHandler(this.genderCmb_SelectedIndexChanged);
             // 
             // statusCmb
             // 
@@ -455,10 +506,11 @@
             this.statusCmb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.statusCmb.ItemHeight = 30;
             this.statusCmb.Location = new System.Drawing.Point(314, 312);
-            this.statusCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusCmb.Margin = new System.Windows.Forms.Padding(2);
             this.statusCmb.Name = "statusCmb";
             this.statusCmb.Size = new System.Drawing.Size(168, 36);
             this.statusCmb.TabIndex = 16;
+            this.statusCmb.SelectedIndexChanged += new System.EventHandler(this.statusCmb_SelectedIndexChanged);
             // 
             // txtAddress
             // 
@@ -495,7 +547,7 @@
             this.roleCmb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.roleCmb.ItemHeight = 30;
             this.roleCmb.Location = new System.Drawing.Point(125, 310);
-            this.roleCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roleCmb.Margin = new System.Windows.Forms.Padding(2);
             this.roleCmb.Name = "roleCmb";
             this.roleCmb.Size = new System.Drawing.Size(175, 36);
             this.roleCmb.TabIndex = 15;
@@ -508,7 +560,7 @@
             this.pnlUserImage.Controls.Add(this.userImage);
             this.pnlUserImage.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUserImage.Location = new System.Drawing.Point(8, 62);
-            this.pnlUserImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlUserImage.Margin = new System.Windows.Forms.Padding(2);
             this.pnlUserImage.Name = "pnlUserImage";
             this.pnlUserImage.Size = new System.Drawing.Size(954, 134);
             this.pnlUserImage.TabIndex = 28;
@@ -526,7 +578,7 @@
             this.resetImg.ForeColor = System.Drawing.Color.White;
             this.resetImg.Image = global::VehicleManagementSystem.Properties.Resources.close_icon;
             this.resetImg.Location = new System.Drawing.Point(543, 9);
-            this.resetImg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.resetImg.Margin = new System.Windows.Forms.Padding(2);
             this.resetImg.Name = "resetImg";
             this.resetImg.Size = new System.Drawing.Size(19, 17);
             this.resetImg.TabIndex = 22;
@@ -539,7 +591,7 @@
             this.userImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userImage.ImageRotate = 0F;
             this.userImage.Location = new System.Drawing.Point(430, 4);
-            this.userImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userImage.Margin = new System.Windows.Forms.Padding(2);
             this.userImage.Name = "userImage";
             this.userImage.Size = new System.Drawing.Size(136, 126);
             this.userImage.TabIndex = 21;
@@ -554,7 +606,7 @@
             this.guna2Panel1.Controls.Add(this.guna2Separator1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(8, 8);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Padding = new System.Windows.Forms.Padding(12, 8, 8, 8);
             this.guna2Panel1.Size = new System.Drawing.Size(954, 54);
@@ -578,7 +630,7 @@
             this.exitBtn.Image = global::VehicleManagementSystem.Properties.Resources.chevron_backward_icon;
             this.exitBtn.ImageSize = new System.Drawing.Size(25, 25);
             this.exitBtn.Location = new System.Drawing.Point(12, 8);
-            this.exitBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(33, 38);
             this.exitBtn.TabIndex = 9;
@@ -593,63 +645,13 @@
             this.guna2Separator1.Size = new System.Drawing.Size(902, 8);
             this.guna2Separator1.TabIndex = 24;
             // 
-            // lblUsernameError
-            // 
-            this.lblUsernameError.AutoSize = true;
-            this.lblUsernameError.Location = new System.Drawing.Point(140, 77);
-            this.lblUsernameError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsernameError.Name = "lblUsernameError";
-            this.lblUsernameError.Size = new System.Drawing.Size(35, 13);
-            this.lblUsernameError.TabIndex = 29;
-            this.lblUsernameError.Text = "label5";
-            // 
-            // lblFullNameError
-            // 
-            this.lblFullNameError.AutoSize = true;
-            this.lblFullNameError.Location = new System.Drawing.Point(500, 77);
-            this.lblFullNameError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFullNameError.Name = "lblFullNameError";
-            this.lblFullNameError.Size = new System.Drawing.Size(35, 13);
-            this.lblFullNameError.TabIndex = 30;
-            this.lblFullNameError.Text = "label6";
-            // 
-            // lblEmailError
-            // 
-            this.lblEmailError.AutoSize = true;
-            this.lblEmailError.Location = new System.Drawing.Point(140, 150);
-            this.lblEmailError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblEmailError.Name = "lblEmailError";
-            this.lblEmailError.Size = new System.Drawing.Size(35, 13);
-            this.lblEmailError.TabIndex = 31;
-            this.lblEmailError.Text = "label7";
-            // 
-            // lblPhoneError
-            // 
-            this.lblPhoneError.AutoSize = true;
-            this.lblPhoneError.Location = new System.Drawing.Point(500, 150);
-            this.lblPhoneError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPhoneError.Name = "lblPhoneError";
-            this.lblPhoneError.Size = new System.Drawing.Size(35, 13);
-            this.lblPhoneError.TabIndex = 32;
-            this.lblPhoneError.Text = "label8";
-            // 
-            // lblAddressError
-            // 
-            this.lblAddressError.AutoSize = true;
-            this.lblAddressError.Location = new System.Drawing.Point(140, 237);
-            this.lblAddressError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAddressError.Name = "lblAddressError";
-            this.lblAddressError.Size = new System.Drawing.Size(35, 13);
-            this.lblAddressError.TabIndex = 33;
-            this.lblAddressError.Text = "label9";
-            // 
             // frmEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlProgress);
             this.Controls.Add(this.pnlMain);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmEdit";
             this.Size = new System.Drawing.Size(970, 696);
             this.Load += new System.EventHandler(this.frmEdit_Load);
