@@ -16,6 +16,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleManagementSystem.Dto;
+using PL_VehicleRental.Services;
+using PL_VehicleRental.Validation;
+using System.Text.RegularExpressions;
+using Guna.UI2.WinForms;
 
 namespace PL_VehicleRental.Forms
 {
@@ -26,9 +30,23 @@ namespace PL_VehicleRental.Forms
         private readonly int _userId;
         private UserStatus _userStatus;
         private readonly userRepository _repository;
+        private readonly Validator _validator;
+        private bool _isSubmitting;
+        private readonly UserService _userService;
         private bool _isImageChanged;
         private bool _hasStartedInitialLoad;
+        private bool _isBindingData;
         private const long MaxFileSize = 2 * 1024 * 1024;
+        
+        private string _originalUserName;
+        private string _originalFullName;
+        private string _originalGender;
+        private string _originalEmail;
+        private string _originalPhoneNumber;
+        private string _originalAddress;
+        private string _originalRole;
+        private string _originalStatus;
+        
         public enum UserStatus
         {
             Active,
@@ -38,10 +56,84 @@ namespace PL_VehicleRental.Forms
         public frmEdit(int userId)
         {
             InitializeComponent();
+            _validator = new Validator();
+            _userService = new UserService();
             _userId = userId;
             _repository = new userRepository();
             _isImageChanged = false;
             _hasStartedInitialLoad = false;
+
+            ConfigureValidation();
+            UpdateAddButtonState();
+        }
+
+        private void ConfigureValidation()
+        {
+            _validator.Required(txtUserName, "Username is required.", lblUsernameError);
+            _validator.Custom(txtUserName, () => txtUserName.Text.Trim().Length >= 5, "Username must be at least 5 characters.", lblUsernameError);
+            _validator.Custom(txtUserName, () => Regex.IsMatch(txtUserName.Text.Trim(), @"^[a-zA-Z0-9]+$"), "Username can only contain letters and numbers.", lblUsernameError);
+
+            _validator.Required(txtFullName, "Full name is required.", lblFullNameError);
+            _validator.Required(txtEmail, "Email is required.", lblEmailError);
+            _validator.IsEmail(txtEmail, "Invalid email format.", lblEmailError);
+            _validator.Required(txtPhone, "Phone number is required.", lblPhoneError);
+            _validator.IsPhoneNumber(txtPhone, "Phone number must be +639 followed by 9 digits.", lblPhoneError);
+            _validator.Required(txtAddress, "Address is required.", lblAddressError);
+        }
+
+        private bool IsUsernameInputValid()
+        {
+            string username = txtUserName.Text.Trim();
+            return !string.IsNullOrWhiteSpace(username) && username.Length >= 5 && Regex.IsMatch(username, @"^[a-zA-Z0-9]+$");
+        }
+
+        private bool IsEmailInputValid()
+        {
+            string email = txtEmail.Text.Trim();
+            return !string.IsNullOrWhiteSpace(email)
+                && Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+        private bool IsPhoneInputValid()
+        {
+            string text = txtPhone.Text.Trim();
+            if (text.StartsWith("+63"))
+            {
+                text = text.Substring(3);
+            }
+            return text.Length == 10 && Regex.IsMatch(text, @"^\d{10}$");
+        }
+
+        private bool HasUserDataChanged()
+        {
+            return txtUserName.Text != _originalUserName ||
+                   txtFullName.Text != _originalFullName ||
+                   genderCmb.SelectedItem?.ToString() != _originalGender ||
+                   txtEmail.Text != _originalEmail ||
+                   txtPhone.Text != _originalPhoneNumber ||
+                   txtAddress.Text != _originalAddress ||
+                   roleCmb.SelectedItem?.ToString() != _originalRole ||
+                   statusCmb.SelectedItem?.ToString() != _originalStatus ||
+                   _isImageChanged;
+        }
+
+        private void UpdateAddButtonState()
+        {
+            if (_isBindingData) return;
+
+            bool basicValid =
+            IsUsernameInputValid() &&
+                !string.IsNullOrWhiteSpace(txtFullName.Text) &&
+                IsEmailInputValid() &&
+                IsPhoneInputValid() &&
+                !string.IsNullOrWhiteSpace(txtAddress.Text) &&
+                genderCmb.SelectedIndex != -1 &&
+                roleCmb.SelectedIndex != -1 &&
+                statusCmb.SelectedIndex != -1;
+
+            bool hasChanges = HasUserDataChanged();
+
+            btnSave.Enabled = basicValid && hasChanges;
         }
 
         protected virtual void OnUserUpdated()
@@ -149,6 +241,8 @@ namespace PL_VehicleRental.Forms
 
         private void BindUser(UserInfoDto user)
         {
+            _isBindingData = true;
+
             roleCmb.Items.Clear();
 
             roleCmb.Items.AddRange(new object[]
@@ -156,7 +250,9 @@ namespace PL_VehicleRental.Forms
                 "Superadmin",
                 "Admin",
                 "Staff",
-                "Mechanic"
+                "Mechanic",
+                "HR",
+                "Finance"
             });
 
             statusCmb.Items.Clear();
@@ -176,6 +272,19 @@ namespace PL_VehicleRental.Forms
             txtPhone.Text = user.PhoneNumber;
             roleCmb.SelectedItem = user.Role;
             statusCmb.SelectedItem = user.Status;
+
+            _originalUserName = user.UserName;
+            _originalFullName = user.FullName;
+            _originalGender = user.Gender;
+            _originalEmail = user.Email;
+            _originalPhoneNumber = user.PhoneNumber;
+            _originalAddress = user.Address;
+            _originalRole = user.Role;
+            _originalStatus = user.Status;
+            _isImageChanged = false;
+
+            _isBindingData = false;
+            UpdateAddButtonState();
 
             if (userImage.Image != null &&
                 userImage.Image != VehicleManagementSystem.Properties.Resources.avatar_default)
@@ -217,8 +326,13 @@ namespace PL_VehicleRental.Forms
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            if (_isSubmitting) return;
+
+            btnSave.Enabled = false;
+
             try
             {
+                _isSubmitting = true;
                 ToggleLoading(true);
 
                 if (!AuthorizationService.HasPermission(Permission.EditUser))
@@ -245,6 +359,15 @@ namespace PL_VehicleRental.Forms
 
                 if (success)
                 {
+                    await AuditService.LogAsync(new AuditLog
+                    {
+                        UserId = Session.User.Id,
+                        ActionType = "UPDATE",
+                        Description = $"Updated user account: {user.UserName}",
+                        TableAffected = "users",
+                        RecordId = user.Id
+                    });
+
                     MessageBox.Show(
                         "User updated successfully.",
                         "Success",
@@ -269,6 +392,7 @@ namespace PL_VehicleRental.Forms
                     MessageBoxIcon.Error);
             } finally
             {
+                _isSubmitting = false;
                 ToggleLoading(false);
             }
         }
@@ -307,6 +431,7 @@ namespace PL_VehicleRental.Forms
 
                     userImage.Image = Image.FromFile(ofd.FileName);
                     _isImageChanged = true;
+                    UpdateAddButtonState();
                 }
             }
         }
@@ -326,6 +451,8 @@ namespace PL_VehicleRental.Forms
         private void resetImg_Click(object sender, EventArgs e)
         {
             userImage.Image = VehicleManagementSystem.Properties.Resources.avatar_default;
+            _isImageChanged = false;
+            UpdateAddButtonState();
         }
 
         private void txtPhone_Load(object sender, EventArgs e)
@@ -344,6 +471,8 @@ namespace PL_VehicleRental.Forms
                 txtPhone.Text = "+63";
                 txtPhone.SelectionStart = txtPhone.Text.Length;
             }
+            _validator.ValidateControl(txtPhone);
+            UpdateAddButtonState();
         }
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
@@ -351,6 +480,14 @@ namespace PL_VehicleRental.Forms
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+        private void txtPhone_Enter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                txtPhone.Text = "+63";
+                txtPhone.SelectionStart = txtPhone.Text.Length;
             }
         }
 
@@ -364,7 +501,7 @@ namespace PL_VehicleRental.Forms
                     $"Are you sure you want to reset the password for '{txtUserName.Text}'?\n\nA temporary password will be generated and displayed.",
                     "Confirm Password Reset",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                    MessageBoxIcon.Warning);
 
                 if (confirmResult != DialogResult.Yes)
                 {
@@ -376,6 +513,15 @@ namespace PL_VehicleRental.Forms
 
                 if (result.Success)
                 {
+                    await AuditService.LogAsync(new AuditLog
+                    {
+                        UserId = Session.User.Id,
+                        ActionType = "UPDATE",
+                        Description = $"Password reset for user account: {txtUserName.Text}",
+                        TableAffected = "users",
+                        RecordId = result.UserId
+                    });
+
                     MessageBox.Show(
                         $"Password reset successfully!\n\nTemporary Password: {result.TemporaryPassword}\n\nThe user must change this password on their next login.",
                         "Password Reset",
@@ -413,7 +559,49 @@ namespace PL_VehicleRental.Forms
 
         private void txtUserName_TextChanged(object sender, EventArgs e)
         {
+            if (!_validator.ValidateControl(txtUserName))
+            {
+                UpdateAddButtonState();
+                return;
+            }
+            UpdateAddButtonState();
+        }
 
+        private void txtFullName_TextChanged(object sender, EventArgs e)
+        {
+            _validator.ValidateControl(txtFullName);
+            UpdateAddButtonState();
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            if (!_validator.ValidateControl(txtEmail))
+            {
+                UpdateAddButtonState();
+                return;
+            }
+            UpdateAddButtonState();
+        }
+
+        private void txtAddress_TextChanged(object sender, EventArgs e)
+        {
+            _validator.ValidateControl(txtAddress);
+            UpdateAddButtonState();
+        }
+
+        private void roleCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
+        }
+
+        private void genderCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
+        }
+
+        private void statusCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
         }
     }
 }

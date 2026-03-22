@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using VehicleManagementSystem.Classes;
 using VehicleManagementSystem.Dto;
 using VehicleManagementSystem.Forms;
+using VehicleManagementSystem.View.Forms;
 
 namespace VehicleManagementSystem {
 
@@ -135,6 +136,18 @@ namespace VehicleManagementSystem {
             ShowUserMenu(panelUserDetails);
         }
 
+        private void profileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var profileForm = new frmProfile();
+            profileForm.FormClosed += ProfileForm_FormClosed;
+            profileForm.ShowDialog();
+        }
+
+        private void ProfileForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            RefreshUserDisplay();
+        }
+
         private async void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var confirm = MessageBox.Show(
@@ -171,10 +184,22 @@ namespace VehicleManagementSystem {
 
                 string fullPath = Path.Combine(folder, Session.User.UserImagePath ?? "");
 
+                if (pictureUser.Image != null && pictureUser.Image != Properties.Resources.avatar_default)
+                {
+                    try
+                    {
+                        pictureUser.Image.Dispose();
+                    }
+                    catch { }
+                }
+
                 if (!string.IsNullOrWhiteSpace(Session.User.UserImagePath) && File.Exists(fullPath))
                 {
-                    pictureUser.Image = Image.FromFile(fullPath);
-                } 
+                    using (var fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                    {
+                        pictureUser.Image = Image.FromStream(fs);
+                    }
+                }
                 else
                 {
                     pictureUser.Image = Properties.Resources.avatar_default;
@@ -193,6 +218,16 @@ namespace VehicleManagementSystem {
                 labelUserName.Text = $"{Session.User.FullName}";
                 labelRole.Text = $"{Session.User.Role}";
 
+                LoadUserImage();
+            }
+        }
+
+        public void RefreshUserDisplay()
+        {
+            if (Session.User != null)
+            {
+                labelUserName.Text = $"{Session.User.FullName}";
+                labelRole.Text = $"{Session.User.Role}";
                 LoadUserImage();
             }
         }

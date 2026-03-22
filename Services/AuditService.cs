@@ -26,8 +26,9 @@ namespace PL_VehicleRental.Services
                 cmd.Parameters.AddWithValue("@description", log.Description);
                 cmd.Parameters.AddWithValue("@tableAffected", log.TableAffected);
                 cmd.Parameters.AddWithValue("@recordId", log.RecordId);
-                cmd.Parameters.AddWithValue("@oldValues", log.OldValues);
-                cmd.Parameters.AddWithValue("@newValues", log.NewValues);
+                
+                cmd.Parameters.AddWithValue("@oldValues", (object)log.OldValues ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@newValues", (object)log.NewValues ?? DBNull.Value);
 
                 await conn.OpenAsync();
                 await cmd.ExecuteNonQueryAsync();
@@ -55,11 +56,23 @@ namespace PL_VehicleRental.Services
                     {
                         logs.Add(new AuditLog
                         {
-                            UserId = reader.GetInt32("id"),
-                            UserName = reader.GetString("userName"),
-                            ActionType = reader.GetString("actionType"),
-                            Description = reader.GetString("description"),
-                            TableAffected = reader.GetString("tableAffected"),
+                            UserId = reader.GetInt32("id"), 
+                            UserName = reader.IsDBNull(reader.GetOrdinal("userName")) 
+                                        ? "Unknown User" 
+                                        : reader.GetString("userName"),
+                            
+                            ActionType = reader.IsDBNull(reader.GetOrdinal("actionType")) 
+                                        ? string.Empty 
+                                        : reader.GetString("actionType"),
+                            
+                            Description = reader.IsDBNull(reader.GetOrdinal("description")) 
+                                        ? string.Empty 
+                                        : reader.GetString("description"),
+                            
+                            TableAffected = reader.IsDBNull(reader.GetOrdinal("tableAffected")) 
+                                        ? string.Empty 
+                                        : reader.GetString("tableAffected"),
+                            
                             CreatedAt = reader.GetDateTime("createdAt")
                         });
                     }

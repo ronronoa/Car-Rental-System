@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleManagementSystem.Dto;
 using Guna.UI2.WinForms;
+using PL_VehicleRental.Services.Security;
 
 namespace PL_VehicleRental.Forms
 {
@@ -37,8 +38,6 @@ namespace PL_VehicleRental.Forms
         private bool _isSubmitting;
         private const long MaxFileSize = 2 * 1024 * 1024;
         private readonly ToolTip _asyncToolTip;
-        private readonly Color _defaultBorderColor = Color.FromArgb(213, 218, 223);
-        private readonly Color _focusBorderColor = Color.FromArgb(94, 148, 255);
         
         public frmAddUser()
         {
@@ -126,7 +125,7 @@ namespace PL_VehicleRental.Forms
             {
                 text = text.Substring(3);
             }
-            return text.Length == 9 && Regex.IsMatch(text, @"^\d{9}$");
+            return text.Length == 10 && Regex.IsMatch(text, @"^\d{10}$");
         }
 
         private void UpdateAddButtonState()
@@ -141,7 +140,7 @@ namespace PL_VehicleRental.Forms
                 roleCmb.SelectedIndex != -1 &&
                 statusCmb.SelectedIndex != -1;
 
-            addBtn.Enabled = !_isSubmitting && basicValid && _isUsernameAvailable && _isEmailAvailable;
+            addBtn.Enabled = basicValid && _isUsernameAvailable && _isEmailAvailable && !_isSubmitting;
         }
 
         private void SetAsyncError(Control control, Label errorLabel, string message)
@@ -214,6 +213,15 @@ namespace PL_VehicleRental.Forms
                     : null;
 
                 var result = await _userService.CreateUserAsync(dto, imageToSave);
+
+                await AuditService.LogAsync(new AuditLog
+                {
+                    UserId = Session.User.Id,
+                    ActionType = "CREATE",
+                    Description = $"Create a new user account: {dto.UserName}",
+                    TableAffected = "users",
+                    RecordId = result.UserId
+                });
 
                 if (!result.Success)
                 {
@@ -502,6 +510,11 @@ namespace PL_VehicleRental.Forms
         private void userImage_Resize(object sender, EventArgs e)
         {
 
+        }
+
+        private void genderCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateAddButtonState();
         }
     }
 }
