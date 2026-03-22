@@ -12,6 +12,7 @@ using System.Drawing;
 using VehicleManagementSystem.Helpers;
 using System.Runtime.InteropServices;
 using VehicleManagementSystem.Models;
+using System.IO;
 
 namespace PL_VehicleRental.DAL.Repositories
 {
@@ -319,8 +320,8 @@ namespace PL_VehicleRental.DAL.Repositories
                                 Id = reader.GetInt32("id"),
                                 UserName = reader.GetString("userName"),
                                 FullName = reader.GetString("fullName"),
-                                Email = reader.GetString("email"),
-                                Address = reader.GetString("address"),
+                                Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString("email"),
+                                Address = reader.IsDBNull(reader.GetOrdinal("address")) ? null : reader.GetString("address"),
                                 Role = reader.GetString("role"),
                                 Status = reader.GetString("status")
                             });
@@ -372,50 +373,179 @@ namespace PL_VehicleRental.DAL.Repositories
                 WHERE id = @Id";
             }
 
+                try
+                {
+                    using (MySqlConnection conn = MySQLConnectionContext.Create())
+                    {
+                        await conn.OpenAsync();
+
+                        const string selectQuery = "SELECT imagePath FROM users WHERE id = @Id";
+
+                        using (var selectCmd = new MySqlCommand(selectQuery, conn))
+                        {
+                            selectCmd.Parameters.AddWithValue("@Id", user.Id);
+                            var result = await selectCmd.ExecuteScalarAsync();
+                            oldImagePath = result == DBNull.Value ? null : result?.ToString();
+                        }
+
+                        if (user.isImageChanged && newImage != null)
+                        {
+                            try
+                            {
+                                newImagePath = imageService.Save(newImage);
+                            }
+                            catch (IOException ioEx)
+                            {
+                                throw new InvalidOperationException("Failed to save the profile image. The image file may be in use by another application.", ioEx);
+                            }
+                            catch (Exception imgEx)
+                            {
+                                throw new InvalidOperationException($"An error occurred while processing the image: {imgEx.Message}", imgEx);
+                            }
+                        }
+
+                        using (var cmd = new MySqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Id", user.Id);
+                            cmd.Parameters.AddWithValue("@Username", user.UserName);
+                            cmd.Parameters.AddWithValue("@Fullname", user.FullName);
+                            cmd.Parameters.AddWithValue("@Gender", user.Gender);
+                            cmd.Parameters.AddWithValue("@Email", user.Email);
+                            cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
+                            cmd.Parameters.AddWithValue("@Address", user.Address);
+                            cmd.Parameters.AddWithValue("@Role", user.Role);
+                            cmd.Parameters.AddWithValue("@Status", user.Status);
+
+                            if (user.isImageChanged)
+                            {
+                                cmd.Parameters.AddWithValue("@ImagePath", (object)newImagePath ?? DBNull.Value);
+                            }
+
+                            int rows = await cmd.ExecuteNonQueryAsync();
+
+                            if (rows > 0 && user.isImageChanged && oldImagePath != null)
+                            {
+                                bool deleteSuccess = imageService.Delete(oldImagePath);
+                                if (!deleteSuccess)
+                                {
+                                    Console.WriteLine($"Warning: Could not delete old image file: {oldImagePath}");
+                                }
+                            }
+
+                            return rows > 0;
+                        }
+                    }
+                }
+                catch (MySqlException dbEx)
+                {
+                    throw new InvalidOperationException($"Database error while updating user: {dbEx.Message}", dbEx);
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException($"An unexpected error occurred while updating the user: {ex.Message}", ex);
+                }
+        }
+
+        public async Task<bool> UpdateUserProfileAsync(UserInfoDto user, Image newImage = null)
+        {
+            var imageService = new UserImageService();
+
+            string newImagePath = null;
+            string oldImagePath = null;
+            string query;
+
+            if (user.isImageChanged)
+            {
+                query = @"
+                UPDATE users 
+                SET
+                    userName = @Username,
+                    fullName = @Fullname,
+                    role = @Role,
+                    status = @Status,
+                    imagePath = @ImagePath
+                WHERE id = @Id";
+            }
+            else
+            {
+                query = @"
+                UPDATE users 
+                SET
+                    userName = @Username,
+                    fullName = @Fullname,
+                    role = @Role,
+                    status = @Status
+                WHERE id = @Id";
+            }
+
+            try
+            {
                 using (MySqlConnection conn = MySQLConnectionContext.Create())
                 {
                     await conn.OpenAsync();
 
-                const string selectQuery = "SELECT imagePath FROM users WHERE id = @Id";
+                    const string selectQuery = "SELECT imagePath FROM users WHERE id = @Id";
 
-                using (var selectCmd = new MySqlCommand(selectQuery, conn))
-                {
-                    selectCmd.Parameters.AddWithValue("@Id", user.Id);
-                    var result = await selectCmd.ExecuteScalarAsync();
-                    oldImagePath = result == DBNull.Value ? null : result?.ToString();
-                }
+                    using (var selectCmd = new MySqlCommand(selectQuery, conn))
+                    {
+                        selectCmd.Parameters.AddWithValue("@Id", user.Id);
+                        var result = await selectCmd.ExecuteScalarAsync();
+                        oldImagePath = result == DBNull.Value ? null : result?.ToString();
+                    }
 
-                if (user.isImageChanged && newImage != null)
-                {
-                    newImagePath = imageService.Save(newImage);
-                }
+                    if (user.isImageChanged && newImage != null)
+                    {
+                        try
+                        {
+                            newImagePath = imageService.Save(newImage);
+                            user.ImagePath = newImagePath;
+                        }
+                        catch (IOException ioEx)
+                        {
+                            throw new InvalidOperationException("Failed to save the profile image. The image file may be in use by another application.", ioEx);
+                        }
+                        catch (Exception imgEx)
+                        {
+                            throw new InvalidOperationException($"An error occurred while processing the image: {imgEx.Message}", imgEx);
+                        }
+                    }
 
-                using (var cmd = new MySqlCommand(query, conn))
+                    using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Id", user.Id);
-                        cmd.Parameters.AddWithValue("@Username", user.UserName);
-                        cmd.Parameters.AddWithValue("@Fullname", user.FullName);
-                        cmd.Parameters.AddWithValue("@Gender", user.Gender);
-                        cmd.Parameters.AddWithValue("@Email", user.Email);
-                        cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
-                        cmd.Parameters.AddWithValue("@Address", user.Address);
-                        cmd.Parameters.AddWithValue("@Role", user.Role);
-                        cmd.Parameters.AddWithValue("@Status", user.Status);
+                        cmd.Parameters.AddWithValue("@Username", user.UserName ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@Fullname", user.FullName ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@Role", user.Role ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@Status", user.Status ?? string.Empty);
 
-                    if (user.isImageChanged)
-                    {
-                        cmd.Parameters.AddWithValue("@ImagePath", (object)newImagePath ?? DBNull.Value);
-                    }
+                        if (user.isImageChanged)
+                        {
+                            cmd.Parameters.AddWithValue("@ImagePath", (object)newImagePath ?? DBNull.Value);
+                        }
 
-                    int rows = await cmd.ExecuteNonQueryAsync();
+                        int rows = await cmd.ExecuteNonQueryAsync();
 
-                    if (rows > 0 && user.isImageChanged && oldImagePath != null)
-                    {
-                        imageService.Delete(oldImagePath);
-                    }
-                    return rows > 0;
+                        if (rows > 0 && user.isImageChanged && oldImagePath != null)
+                        {
+                            bool deleteSuccess = imageService.Delete(oldImagePath);
+                            if (!deleteSuccess)
+                            {
+                                Console.WriteLine($"Warning: Could not delete old image file: {oldImagePath}");
+                            }
+                        }
+
+                        return rows > 0;
                     }
                 }
+            }
+            catch (MySqlException dbEx)
+            {
+                throw new InvalidOperationException($"Database error while updating profile: {dbEx.Message}", dbEx);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"An unexpected error occurred while updating your profile: {ex.Message}", ex);
+            }
         }
 
         public async Task<bool> DeleteUserAsync(int userId)

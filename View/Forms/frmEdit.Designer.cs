@@ -50,8 +50,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnResetPass = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.genderCmb = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -59,17 +57,19 @@
             this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
             this.roleCmb = new Guna.UI2.WinForms.Guna2ComboBox();
             this.pnlUserImage = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.btnResetPass = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.resetImg = new Guna.UI2.WinForms.Guna2Button();
             this.userImage = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.pnlProgress.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.pnlUserImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlProgress
@@ -389,55 +389,6 @@
             this.txtPhone.Enter += new System.EventHandler(this.txtPhone_Enter);
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
-            // btnResetPass
-            // 
-            this.btnResetPass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnResetPass.BackColor = System.Drawing.Color.White;
-            this.btnResetPass.BorderColor = System.Drawing.Color.Transparent;
-            this.btnResetPass.BorderRadius = 5;
-            this.btnResetPass.BorderThickness = 2;
-            this.btnResetPass.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResetPass.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnResetPass.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnResetPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnResetPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnResetPass.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(75)))), ((int)(((byte)(43)))));
-            this.btnResetPass.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetPass.ForeColor = System.Drawing.Color.White;
-            this.btnResetPass.Image = global::VehicleManagementSystem.Properties.Resources.reset_pass;
-            this.btnResetPass.ImageOffset = new System.Drawing.Point(-2, 0);
-            this.btnResetPass.Location = new System.Drawing.Point(635, 432);
-            this.btnResetPass.Margin = new System.Windows.Forms.Padding(2);
-            this.btnResetPass.Name = "btnResetPass";
-            this.btnResetPass.Size = new System.Drawing.Size(151, 37);
-            this.btnResetPass.TabIndex = 23;
-            this.btnResetPass.Text = "Reset Password";
-            this.btnResetPass.Click += new System.EventHandler(this.btnResetPass_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BorderColor = System.Drawing.Color.Transparent;
-            this.btnSave.BorderRadius = 5;
-            this.btnSave.BorderThickness = 2;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.btnSave.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
-            this.btnSave.ImageOffset = new System.Drawing.Point(-2, 0);
-            this.btnSave.Location = new System.Drawing.Point(800, 432);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(107, 37);
-            this.btnSave.TabIndex = 14;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -565,6 +516,78 @@
             this.pnlUserImage.Size = new System.Drawing.Size(954, 134);
             this.pnlUserImage.TabIndex = 28;
             // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.White;
+            this.guna2Panel1.Controls.Add(this.exitBtn);
+            this.guna2Panel1.Controls.Add(this.label1);
+            this.guna2Panel1.Controls.Add(this.guna2Separator1);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel1.Location = new System.Drawing.Point(8, 8);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(12, 8, 8, 8);
+            this.guna2Panel1.Size = new System.Drawing.Size(954, 54);
+            this.guna2Panel1.TabIndex = 27;
+            // 
+            // guna2Separator1
+            // 
+            this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Separator1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.guna2Separator1.Location = new System.Drawing.Point(15, 45);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(902, 8);
+            this.guna2Separator1.TabIndex = 24;
+            // 
+            // btnResetPass
+            // 
+            this.btnResetPass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResetPass.BackColor = System.Drawing.Color.White;
+            this.btnResetPass.BorderColor = System.Drawing.Color.Transparent;
+            this.btnResetPass.BorderRadius = 5;
+            this.btnResetPass.BorderThickness = 2;
+            this.btnResetPass.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResetPass.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnResetPass.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnResetPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnResetPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnResetPass.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(75)))), ((int)(((byte)(43)))));
+            this.btnResetPass.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetPass.ForeColor = System.Drawing.Color.White;
+            this.btnResetPass.Image = global::VehicleManagementSystem.Properties.Resources.reset_pass;
+            this.btnResetPass.ImageOffset = new System.Drawing.Point(-2, 0);
+            this.btnResetPass.Location = new System.Drawing.Point(635, 432);
+            this.btnResetPass.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetPass.Name = "btnResetPass";
+            this.btnResetPass.Size = new System.Drawing.Size(151, 37);
+            this.btnResetPass.TabIndex = 23;
+            this.btnResetPass.Text = "Reset Password";
+            this.btnResetPass.Click += new System.EventHandler(this.btnResetPass_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BorderColor = System.Drawing.Color.Transparent;
+            this.btnSave.BorderRadius = 5;
+            this.btnSave.BorderThickness = 2;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.btnSave.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
+            this.btnSave.ImageOffset = new System.Drawing.Point(-2, 0);
+            this.btnSave.Location = new System.Drawing.Point(800, 432);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(107, 37);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // resetImg
             // 
             this.resetImg.BackColor = System.Drawing.Color.Transparent;
@@ -598,20 +621,6 @@
             this.userImage.TabStop = false;
             this.userImage.Click += new System.EventHandler(this.userImage_Click);
             // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.White;
-            this.guna2Panel1.Controls.Add(this.exitBtn);
-            this.guna2Panel1.Controls.Add(this.label1);
-            this.guna2Panel1.Controls.Add(this.guna2Separator1);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.Location = new System.Drawing.Point(8, 8);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(12, 8, 8, 8);
-            this.guna2Panel1.Size = new System.Drawing.Size(954, 54);
-            this.guna2Panel1.TabIndex = 27;
-            // 
             // exitBtn
             // 
             this.exitBtn.BackColor = System.Drawing.Color.Transparent;
@@ -636,15 +645,6 @@
             this.exitBtn.TabIndex = 9;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
-            // guna2Separator1
-            // 
-            this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Separator1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.guna2Separator1.Location = new System.Drawing.Point(15, 45);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(902, 8);
-            this.guna2Separator1.TabIndex = 24;
-            // 
             // frmEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -660,9 +660,9 @@
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.pnlUserImage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -294,7 +294,7 @@
             this.clearBtn.Location = new System.Drawing.Point(691, 439);
             this.clearBtn.Margin = new System.Windows.Forms.Padding(2);
             this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(101, 35);
+            this.clearBtn.Size = new System.Drawing.Size(101, 38);
             this.clearBtn.TabIndex = 9;
             this.clearBtn.Text = "Clear";
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);

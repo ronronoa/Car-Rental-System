@@ -98,6 +98,7 @@ namespace PL_VehicleRental.Forms
                     Id = user.Id,
                     UserName = user.UserName,
                     FullName = user.FullName,
+                    Status = user.Status,
                     Role = parsedRole,
                     UserImagePath = user.ImagePath,
                 };

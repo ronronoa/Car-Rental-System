@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,8 +57,9 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlMain = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.userImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
+            this.userImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlProgress.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -120,6 +122,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.13526F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.13147F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.13481F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 305);
             this.tableLayoutPanel1.TabIndex = 19;
             // 
@@ -397,7 +400,8 @@
             // 
             // exitBtn
             // 
-            this.exitBtn.BorderThickness = 2;
+            this.exitBtn.BorderThickness = 1;
+            this.exitBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exitBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.exitBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.exitBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -441,7 +445,7 @@
             // guna2Panel2
             // 
             this.guna2Panel2.Controls.Add(this.exitBtn);
-            this.guna2Panel2.Location = new System.Drawing.Point(370, 5);
+            this.guna2Panel2.Location = new System.Drawing.Point(365, 5);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(39, 33);
             this.guna2Panel2.TabIndex = 9;
@@ -449,8 +453,7 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
-            this.pnlMain.BorderColor = System.Drawing.Color.Silver;
-            this.pnlMain.BorderThickness = 2;
+            this.pnlMain.BorderColor = System.Drawing.Color.Transparent;
             this.pnlMain.Controls.Add(this.guna2Separator2);
             this.pnlMain.Controls.Add(this.guna2Separator1);
             this.pnlMain.Controls.Add(this.tableLayoutPanel1);
@@ -481,6 +484,21 @@
             this.guna2Panel1.Size = new System.Drawing.Size(396, 153);
             this.guna2Panel1.TabIndex = 18;
             // 
+            // guna2Separator3
+            // 
+            this.guna2Separator3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.guna2Separator3.Location = new System.Drawing.Point(12, 34);
+            this.guna2Separator3.Name = "guna2Separator3";
+            this.guna2Separator3.Size = new System.Drawing.Size(200, 10);
+            this.guna2Separator3.TabIndex = 8;
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 20;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // userImage
             // 
             this.userImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -491,14 +509,6 @@
             this.userImage.Size = new System.Drawing.Size(100, 100);
             this.userImage.TabIndex = 7;
             this.userImage.TabStop = false;
-            // 
-            // guna2Separator3
-            // 
-            this.guna2Separator3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.guna2Separator3.Location = new System.Drawing.Point(12, 34);
-            this.guna2Separator3.Name = "guna2Separator3";
-            this.guna2Separator3.Size = new System.Drawing.Size(200, 10);
-            this.guna2Separator3.TabIndex = 8;
             // 
             // frmInfo
             // 
@@ -558,5 +568,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator3;
         private Guna.UI2.WinForms.Guna2PictureBox userImage;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }
