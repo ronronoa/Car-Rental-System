@@ -121,8 +121,11 @@
   <data name="user_plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-plus (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="passwordIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\passwordicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="auto-transmission-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\auto-transmission-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="personIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\personIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coming-soon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coming-soon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -132,6 +135,9 @@
   </data>
   <data name="showPassIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\showPassIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="deleteIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_24dp_FF4433_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="engine-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\engine-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,14 +151,14 @@
   <data name="gear-box" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gear-box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="document" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="inspection" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\inspection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clock-time" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clock-time.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="close-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close_small_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,8 +175,8 @@
   <data name="userIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\userIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="auto-transmission-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\auto-transmission-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrow-dropdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_drop_down_24dp_000000_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,6 +187,9 @@
   <data name="add-circle-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add-circle-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="closeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\closeIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="car-engine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\car-engine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -190,14 +199,23 @@
   <data name="account-circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\account-circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="closeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\closeIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="passwordIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\passwordicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="editIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_square_24dp_3333FF_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="magnifying-glass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\magnifying-glass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="personIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\personIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logout-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logout_24dp_FF4433_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loading.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lockIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lockIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,17 +241,14 @@
   <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="infoIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\infoIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="car-gear-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\car-gear-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coming-soon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coming-soon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\loading.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="infoIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\infoIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gas-station" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gas-station.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,22 +256,16 @@
   <data name="person-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\person_add_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="clock-time" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clock-time.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="overdue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\overdue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="document" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="resend (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\resend (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="deleteIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete_24dp_FF4433_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="overdue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\overdue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="editIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit_square_24dp_3333FF_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logout-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logout_24dp_FF4433_FILL0_wght400_GRAD0_opsz24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -8,9 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleManagementSystem.Dto;
+using VehicleManagementSystem.View.Modals;
 
 namespace VehicleManagementSystem.UserControls {
     public partial class MaintenanceCardControl : UserControl {
+        VehicleMaintenanceScheduleDto _maintenanceSchedule;
+
         public MaintenanceCardControl() {
             InitializeComponent();
         }
@@ -19,6 +22,8 @@ namespace VehicleManagementSystem.UserControls {
             if (maintenanceSchedule == null) {
                 return;
             }
+
+            _maintenanceSchedule = maintenanceSchedule;
 
             int mileageInt = (int)maintenanceSchedule.CurrentVehicleMileage;
             string currentStatus = maintenanceSchedule.IsUpcoming ? "Upcoming" :
@@ -90,7 +95,7 @@ namespace VehicleManagementSystem.UserControls {
                 parts.Add($"{maintenanceSchedule.MileageInterval.Value:N0} km");
 
             if (maintenanceSchedule.MonthInterval.HasValue)
-                parts.Add($"{maintenanceSchedule.MonthInterval.Value} months");
+                parts.Add($"{maintenanceSchedule.MonthInterval.Value} month/s");
 
             if (parts.Count == 0)
                 return "—";
@@ -98,5 +103,10 @@ namespace VehicleManagementSystem.UserControls {
             return "Every " + string.Join(" or ", parts);
         }
 
+        private void Card_Click(object sender, EventArgs e) {
+            using(var viewCardModal = new ViewVehicleMaintenanceModal(_maintenanceSchedule)) {
+                DialogResult dialogResult = viewCardModal.ShowDialog();
+            }
+        }
     }
 }

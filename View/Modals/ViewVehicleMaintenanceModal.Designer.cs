@@ -44,12 +44,20 @@
             this.panelPreview = new Guna.UI2.WinForms.Guna2Panel();
             this.maintenanceCardControl = new VehicleManagementSystem.UserControls.MaintenanceCardControl();
             this.cancelBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelMaintenanceType = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.labelScheduleType = new System.Windows.Forms.Label();
             this.saveBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.closeBtn = new FontAwesome.Sharp.IconButton();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.panelTop.SuspendLayout();
             this.panelIntervalSettings.SuspendLayout();
             this.panelDueSettings.SuspendLayout();
             this.panelPreview.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -62,14 +70,16 @@
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.White;
+            this.panelTop.Controls.Add(this.guna2Button1);
             this.panelTop.Controls.Add(this.guna2Panel2);
-            this.panelTop.Controls.Add(this.closeBtn);
+            this.panelTop.Controls.Add(this.btnDelete);
+            this.panelTop.Controls.Add(this.btnEdit);
             this.panelTop.Controls.Add(this.labelHeader);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(579, 71);
+            this.panelTop.Size = new System.Drawing.Size(575, 81);
             this.panelTop.TabIndex = 104;
             // 
             // guna2Panel2
@@ -78,10 +88,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel2.BorderRadius = 5;
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.guna2Panel2.Location = new System.Drawing.Point(28, 52);
+            this.guna2Panel2.Location = new System.Drawing.Point(29, 59);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(470, 4);
+            this.guna2Panel2.Size = new System.Drawing.Size(519, 4);
             this.guna2Panel2.TabIndex = 104;
             // 
             // labelHeader
@@ -90,7 +100,7 @@
             this.labelHeader.BackColor = System.Drawing.Color.Transparent;
             this.labelHeader.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
-            this.labelHeader.Location = new System.Drawing.Point(24, 17);
+            this.labelHeader.Location = new System.Drawing.Point(24, 22);
             this.labelHeader.Name = "labelHeader";
             this.labelHeader.Size = new System.Drawing.Size(248, 24);
             this.labelHeader.TabIndex = 104;
@@ -103,7 +113,7 @@
             this.panelIntervalSettings.Controls.Add(this.inputMilleageInterval);
             this.panelIntervalSettings.Controls.Add(this.label3);
             this.panelIntervalSettings.Controls.Add(this.inputMonthlyInterval);
-            this.panelIntervalSettings.Location = new System.Drawing.Point(2, 79);
+            this.panelIntervalSettings.Location = new System.Drawing.Point(0, 194);
             this.panelIntervalSettings.Name = "panelIntervalSettings";
             this.panelIntervalSettings.Size = new System.Drawing.Size(577, 141);
             this.panelIntervalSettings.TabIndex = 157;
@@ -202,7 +212,7 @@
             this.panelDueSettings.Controls.Add(this.inputDueMileige);
             this.panelDueSettings.Controls.Add(this.inputDueDate);
             this.panelDueSettings.Controls.Add(this.label12);
-            this.panelDueSettings.Location = new System.Drawing.Point(2, 86);
+            this.panelDueSettings.Location = new System.Drawing.Point(0, 201);
             this.panelDueSettings.Name = "panelDueSettings";
             this.panelDueSettings.Size = new System.Drawing.Size(577, 134);
             this.panelDueSettings.TabIndex = 158;
@@ -268,7 +278,7 @@
             this.inputDueDate.FillColor = System.Drawing.Color.White;
             this.inputDueDate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.inputDueDate.Location = new System.Drawing.Point(297, 61);
+            this.inputDueDate.Location = new System.Drawing.Point(297, 66);
             this.inputDueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inputDueDate.MaxDate = new System.DateTime(2219, 7, 15, 0, 0, 0, 0);
             this.inputDueDate.MinDate = new System.DateTime(1925, 1, 1, 0, 0, 0, 0);
@@ -300,7 +310,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.label6.Location = new System.Drawing.Point(32, 252);
+            this.label6.Location = new System.Drawing.Point(29, 338);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 23);
             this.label6.TabIndex = 160;
@@ -312,7 +322,7 @@
             this.panelPreview.BorderRadius = 15;
             this.panelPreview.Controls.Add(this.maintenanceCardControl);
             this.panelPreview.FillColor = System.Drawing.SystemColors.Control;
-            this.panelPreview.Location = new System.Drawing.Point(36, 278);
+            this.panelPreview.Location = new System.Drawing.Point(33, 364);
             this.panelPreview.Name = "panelPreview";
             this.panelPreview.Size = new System.Drawing.Size(507, 236);
             this.panelPreview.TabIndex = 159;
@@ -338,14 +348,84 @@
             this.cancelBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.cancelBtn.FillColor = System.Drawing.Color.Transparent;
             this.cancelBtn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelBtn.ForeColor = System.Drawing.Color.DarkGray;
+            this.cancelBtn.ForeColor = System.Drawing.Color.Black;
             this.cancelBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.cancelBtn.Location = new System.Drawing.Point(228, 540);
+            this.cancelBtn.Location = new System.Drawing.Point(229, 617);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(105, 44);
             this.cancelBtn.TabIndex = 161;
             this.cancelBtn.Text = "Cancel";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.07692F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.92308F));
+            this.tableLayoutPanel1.Controls.Add(this.labelMaintenanceType, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelScheduleType, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(28, 78);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 101);
+            this.tableLayoutPanel1.TabIndex = 165;
+            // 
+            // labelMaintenanceType
+            // 
+            this.labelMaintenanceType.AutoEllipsis = true;
+            this.labelMaintenanceType.AutoSize = true;
+            this.labelMaintenanceType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelMaintenanceType.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMaintenanceType.Location = new System.Drawing.Point(174, 50);
+            this.labelMaintenanceType.Name = "labelMaintenanceType";
+            this.labelMaintenanceType.Size = new System.Drawing.Size(343, 51);
+            this.labelMaintenanceType.TabIndex = 133;
+            this.labelMaintenanceType.Text = "label6";
+            this.labelMaintenanceType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.Gray;
+            this.label5.Location = new System.Drawing.Point(3, 66);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 19);
+            this.label5.TabIndex = 127;
+            this.label5.Text = "Status :";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(3, 15);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 19);
+            this.label10.TabIndex = 130;
+            this.label10.Text = "Priority Label :";
+            // 
+            // labelScheduleType
+            // 
+            this.labelScheduleType.AutoEllipsis = true;
+            this.labelScheduleType.AutoSize = true;
+            this.labelScheduleType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelScheduleType.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScheduleType.Location = new System.Drawing.Point(174, 0);
+            this.labelScheduleType.Name = "labelScheduleType";
+            this.labelScheduleType.Size = new System.Drawing.Size(343, 50);
+            this.labelScheduleType.TabIndex = 132;
+            this.labelScheduleType.Text = "label4";
+            this.labelScheduleType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // saveBtn
             // 
@@ -361,38 +441,81 @@
             this.saveBtn.ForeColor = System.Drawing.Color.White;
             this.saveBtn.Image = global::VehicleManagementSystem.Properties.Resources.save_icon;
             this.saveBtn.ImageSize = new System.Drawing.Size(30, 30);
-            this.saveBtn.Location = new System.Drawing.Point(339, 540);
+            this.saveBtn.Location = new System.Drawing.Point(350, 617);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(204, 44);
+            this.saveBtn.Size = new System.Drawing.Size(191, 44);
             this.saveBtn.TabIndex = 162;
             this.saveBtn.Text = "Save Schedule";
             // 
-            // closeBtn
+            // guna2Button1
             // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.BackColor = System.Drawing.Color.White;
-            this.closeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeBtn.ForeColor = System.Drawing.Color.White;
-            this.closeBtn.IconChar = FontAwesome.Sharp.IconChar.Remove;
-            this.closeBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
-            this.closeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.closeBtn.IconSize = 28;
-            this.closeBtn.Location = new System.Drawing.Point(519, 11);
-            this.closeBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(48, 40);
-            this.closeBtn.TabIndex = 11;
-            this.closeBtn.UseVisualStyleBackColor = false;
+            this.guna2Button1.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.close;
+            this.guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.guna2Button1.BorderColor = System.Drawing.Color.Silver;
+            this.guna2Button1.BorderRadius = 10;
+            this.guna2Button1.BorderThickness = 3;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.guna2Button1.Location = new System.Drawing.Point(500, 11);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(48, 42);
+            this.guna2Button1.TabIndex = 165;
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.delete;
+            this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDelete.BorderColor = System.Drawing.Color.Silver;
+            this.btnDelete.BorderRadius = 10;
+            this.btnDelete.BorderThickness = 3;
+            this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDelete.FillColor = System.Drawing.Color.Transparent;
+            this.btnDelete.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.btnDelete.Location = new System.Drawing.Point(385, 11);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(48, 42);
+            this.btnDelete.TabIndex = 164;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackgroundImage = global::VehicleManagementSystem.Properties.Resources.edit;
+            this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEdit.BorderColor = System.Drawing.Color.Silver;
+            this.btnEdit.BorderRadius = 10;
+            this.btnEdit.BorderThickness = 3;
+            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEdit.FillColor = System.Drawing.Color.Transparent;
+            this.btnEdit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(132)))), ((int)(((byte)(191)))));
+            this.btnEdit.Location = new System.Drawing.Point(442, 9);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(49, 44);
+            this.btnEdit.TabIndex = 163;
             // 
             // ViewVehicleMaintenanceModal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(579, 608);
+            this.ClientSize = new System.Drawing.Size(575, 681);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.label6);
@@ -402,6 +525,7 @@
             this.Controls.Add(this.panelIntervalSettings);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ViewVehicleMaintenanceModal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewVehicleMaintenanceModal";
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
@@ -410,6 +534,8 @@
             this.panelDueSettings.ResumeLayout(false);
             this.panelDueSettings.PerformLayout();
             this.panelPreview.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,7 +546,6 @@
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2Panel panelTop;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private FontAwesome.Sharp.IconButton closeBtn;
         private System.Windows.Forms.Label labelHeader;
         private Guna.UI2.WinForms.Guna2Panel panelIntervalSettings;
         private System.Windows.Forms.Label label2;
@@ -439,5 +564,13 @@
         private UserControls.MaintenanceCardControl maintenanceCardControl;
         private Guna.UI2.WinForms.Guna2Button saveBtn;
         private Guna.UI2.WinForms.Guna2Button cancelBtn;
+        private Guna.UI2.WinForms.Guna2Button btnDelete;
+        private Guna.UI2.WinForms.Guna2Button btnEdit;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label labelMaintenanceType;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelScheduleType;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
