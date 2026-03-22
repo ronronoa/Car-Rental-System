@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VehicleManagementSystem.Data;
 using VehicleManagementSystem.Dto;
 
 namespace VehicleManagementSystem.View.Modals {
@@ -42,5 +44,45 @@ namespace VehicleManagementSystem.View.Modals {
         private void guna2Button1_Click(object sender, EventArgs e) {
             this.Close();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e) {
+
+            var result = MessageBox.Show($"Are you sure you want to stop tracking '{_schedule.MaintenanceName}' for this vehicle?",
+                                         "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes) {
+                try {
+                    UpdateScheduleActiveStatus(_schedule.ScheduleID, 0);
+
+
+                    MessageBox.Show("Task removed from active maintenance.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                } catch (Exception ex) {
+                    MessageBox.Show($"Error removing task: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void UpdateScheduleActiveStatus(int scheduleId, int isActive) {
+            using (MySqlConnection conn = MySQLConnectionContext.Create()) {
+                string sql = "UPDATE VehicleMaintenanceSchedules SET IsActive = @isActive WHERE ScheduleID = @id";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn)) {
+                    cmd.Parameters.AddWithValue("@isActive", isActive);
+                    cmd.Parameters.AddWithValue("@id", scheduleId);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

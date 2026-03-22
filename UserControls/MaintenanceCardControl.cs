@@ -18,6 +18,12 @@ namespace VehicleManagementSystem.UserControls {
             InitializeComponent();
         }
 
+        private Action _reloadDisplay;
+
+        public void BindAction(Action ReloadDisplay) {
+            _reloadDisplay = ReloadDisplay;
+        }
+
         public void Bind(VehicleMaintenanceScheduleDto maintenanceSchedule) {
             if (maintenanceSchedule == null) {
                 return;
@@ -106,6 +112,12 @@ namespace VehicleManagementSystem.UserControls {
         private void Card_Click(object sender, EventArgs e) {
             using(var viewCardModal = new ViewVehicleMaintenanceModal(_maintenanceSchedule)) {
                 DialogResult dialogResult = viewCardModal.ShowDialog();
+
+                if (dialogResult != DialogResult.OK) return;
+
+                if(_reloadDisplay == null) return;
+
+                _reloadDisplay();
             }
         }
     }

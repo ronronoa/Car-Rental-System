@@ -87,6 +87,7 @@ namespace VehicleManagementSystem.UserControls {
 
                 var card = new MaintenanceCardControl();
                 card.Bind(vehicleMaintenanceSchedule);
+                card.BindAction(LoadAllData);
                 card.Dock = DockStyle.Fill;
                 card.Margin = new Padding(10);
 
@@ -102,14 +103,18 @@ namespace VehicleManagementSystem.UserControls {
             tableMain.ResumeLayout();
         }
 
+        public void LoadAllData() {
+            _presenter.LoadDashboard();
+            _presenter.LoadMaintenance();
+        }
+
         private void addNewVehBtn_Click(object sender, EventArgs e) {
             using(var addVehicleMaintenanceForm = new AddNewVehicleMaintenanceModal(_vehicle)) {
                 DialogResult dialogResult = addVehicleMaintenanceForm.ShowDialog();
 
                 if (dialogResult != DialogResult.OK) return;
 
-                _presenter.LoadDashboard();
-                _presenter.LoadMaintenance();
+                LoadAllData();
             }
             
         }
