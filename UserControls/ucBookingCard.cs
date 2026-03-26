@@ -30,7 +30,7 @@ namespace VehicleManagementSystem.UserControls {
             if (booking.Status != "Completed"){
                 lblPrice.Text = $"Total: {booking.ProjectedPrice:C2}";
             } else if (booking.Status == "Completed"){
-                lblPrice.Text = $"Total: {booking.ProjectedPrice:C2}";
+                lblPrice.Text = $"Total: {booking.TotalPrice:C2}";
             } else { 
                 lblPrice.Text = "Something went wrong";
             }
