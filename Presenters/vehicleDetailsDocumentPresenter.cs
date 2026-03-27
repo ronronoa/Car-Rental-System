@@ -19,13 +19,40 @@ namespace VehicleManagementSystem.Presenters {
             _services = services;
         }
 
-        public void LoadAllDocuments() {
+        public async void LoadAllDocuments() {
             try {
-                var documents = _services.GetDocumentsByPlateNumber(_view.VehiclePlateNum);
-                if (documents.Count > 0) _view.DisplayDocuments(documents);
+                var documents = await _services.GetDocumentsByPlateNumber(_view.VehiclePlateNum);
+                if (documents.Count > 0) {
+                    _view.ToggleNoDocumentDisplay(true);
+                    _view.DisplayDocuments(documents);
+                } else {
+                    _view.ToggleNoDocumentDisplay(false);
+                }
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
             }
         }
+
+
+        public async void LoadSearchDocument() {
+            if (string.IsNullOrWhiteSpace(_view.SearchInput)) {
+                _view.ToggleNoDocumentDisplay(true);
+                LoadAllDocuments();
+                return;
+            }
+
+            try {
+                var documents = await _services.GetSearchedVehicleDocument(_view.SearchInput, _view.VehiclePlateNum);
+                if (documents.Count > 0) {
+                    _view.ToggleNoDocumentDisplay(true);
+                    _view.DisplayDocuments(documents);
+                } else {
+                    _view.ToggleNoDocumentDisplay(false);
+                }
+            } catch (Exception ex) {
+                _view.ShowError(ex.Message);
+            }
+        }
+
     }
 }

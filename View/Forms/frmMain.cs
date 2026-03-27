@@ -1,17 +1,16 @@
 ﻿using ActivityLogs;
-using Dshboard;
 using PL_VehicleRental.Forms;
 using PL_VehicleRental.Services;
 using PL_VehicleRental.Services.Security;
 using System;
 using System.Drawing;
 using System.IO;
-using System.Web.Configuration;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using VehicleManagementSystem.Classes;
 using VehicleManagementSystem.Dto;
 using VehicleManagementSystem.Forms;
+using VehicleManagementSystem.Services.Security;
+using VehicleManagementSystem.View.Forms;
 
 namespace VehicleManagementSystem {
 
@@ -28,8 +27,8 @@ namespace VehicleManagementSystem {
 
         private void LoadDefaultView() {
             //WindowActions.ToggleMaximize(maximizeBtn);
-            NavigationHelper.OpenForm(new frmVehicleManagement());
-            MenuHandler.ActivateButton(vehManagementBtn);
+            NavigationHelper.OpenForm(new frmDashboard());
+            MenuHandler.ActivateButton(dashboardBtn);
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
@@ -61,8 +60,8 @@ namespace VehicleManagementSystem {
 
             panelHeader.Controls.Add(labelComponent);
 
-            labelComponent.Visible = true;
-            labelComponent.BringToFront();
+            //labelComponent.Visible = true;
+            //labelComponent.BringToFront();
         }
 
         public void RemoveHeaderLabel() {
@@ -89,7 +88,7 @@ namespace VehicleManagementSystem {
             RemoveHeaderLabel();
             MenuHandler.ActivateButton(sender);
             labelPage.Text = AppConfig.Titles.Dashboard;
-            NavigationHelper.OpenForm(new DashBoardForm());
+            NavigationHelper.OpenForm(new frmDashboard());
         }
 
         private void userManagementBtn_Click(object sender, EventArgs e) {
@@ -113,13 +112,64 @@ namespace VehicleManagementSystem {
             NavigationHelper.OpenForm(new frmMaintenanceManagement());
         }
 
-        private void ShowUserMenu(Control control)
-        {
+        private void bookingsBtn_Click(object sender, EventArgs e) {
+            RemoveHeaderLabel();
+            MenuHandler.ActivateButton(sender);
+            labelPage.Text = AppConfig.Titles.Bookings;
+            NavigationHelper.OpenForm(new frmBookings());
+        }
+
+        private void outboundBtn_Click(object sender, EventArgs e) {
+            RemoveHeaderLabel();
+            MenuHandler.ActivateButton(sender);
+            labelPage.Text = AppConfig.Titles.OutBound;
+            NavigationHelper.OpenForm(new frmOutbound());
+        }
+
+        private void inboundBtn_Click(object sender, EventArgs e) {
+            RemoveHeaderLabel();
+            MenuHandler.ActivateButton(sender);
+            labelPage.Text = AppConfig.Titles.InBound;
+            NavigationHelper.OpenForm(new frmInbound());
+        }
+
+        private void maintenanceBtn_Click(object sender, EventArgs e) {
+            RemoveHeaderLabel();
+            MenuHandler.ActivateButton(sender);
+            labelPage.Text = AppConfig.Titles.MaintenanceManagement;
+            NavigationHelper.OpenForm(new frmMaintenanceManagement());
+        }
+
+        private void ShowUserMenu(Control control) {
+            userMenuStrip.AutoSize = false;
+            userMenuStrip.Width = control.Width;
+            userMenuStrip.Height = 85;
+
+            foreach (ToolStripItem item in userMenuStrip.Items)
+            {
+                item.AutoSize = false;
+                item.Width = userMenuStrip.Width - 10;
+                item.Height = 35;
+                item.Margin = new Padding(2);
+                item.Padding = new Padding(5, 10, 5, 10);
+            }
+
             userMenuStrip.Show(control, new Point(0, control.Height));
         }
-        private void menuBtn_Click(object sender, EventArgs e)
-        {
+
+        private void menuBtn_Click(object sender, EventArgs e) {
             ShowUserMenu(panelUserDetails);
+        }
+
+        private void profileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var profileForm = new frmProfile();
+            profileForm.FormClosed += ProfileForm_FormClosed;
+            profileForm.ShowDialog();
+        }
+
+        private void ProfileForm_FormClosed(object sender, FormClosedEventArgs e) {
+            RefreshUserDisplay();
         }
 
         private async void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -158,10 +208,22 @@ namespace VehicleManagementSystem {
 
                 string fullPath = Path.Combine(folder, Session.User.UserImagePath ?? "");
 
+                if (pictureUser.Image != null && pictureUser.Image != Properties.Resources.avatar_default)
+                {
+                    try
+                    {
+                        pictureUser.Image.Dispose();
+                    }
+                    catch { }
+                }
+
                 if (!string.IsNullOrWhiteSpace(Session.User.UserImagePath) && File.Exists(fullPath))
                 {
-                    pictureUser.Image = Image.FromFile(fullPath);
-                } 
+                    using (var fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                    {
+                        pictureUser.Image = Image.FromStream(fs);
+                    }
+                }
                 else
                 {
                     pictureUser.Image = Properties.Resources.avatar_default;
@@ -182,6 +244,23 @@ namespace VehicleManagementSystem {
 
                 LoadUserImage();
             }
+        }
+
+        public void RefreshUserDisplay()
+        {
+            if (Session.User != null)
+            {
+                labelUserName.Text = $"{Session.User.FullName}";
+                labelRole.Text = $"{Session.User.Role}";
+                LoadUserImage();
+            }
+        }
+
+        public void ApplyRoleBasedUI()
+        {
+            userManagementBtn.Visible = PermissionService.HasPermission(Permission.ManageUsers);
+            //vehManagementBtn.Visible = PermissionService.HasPermission(Permission.ManageVehicles);
+            activityLogsBtn.Visible = PermissionService.HasPermission(Permission.ViewReports);
         }
 
         //protected override CreateParams CreateParams {
@@ -209,6 +288,9 @@ namespace VehicleManagementSystem {
         private void frmMain_Load(object sender, EventArgs e)
         {
             LoadCurrentUser();
+            ApplyRoleBasedUI();
         }
+
+        
     }
 }

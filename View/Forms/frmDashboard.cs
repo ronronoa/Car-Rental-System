@@ -9,10 +9,10 @@ using LiveCharts.WinForms;
 using MySql.Data.MySqlClient;
 using PL_VehicleRental.Services.Security;
 using VehicleManagementSystem.Dto;
+using MySqlConnector;
 
-namespace Dshboard
-{
-    public partial class DashBoardForm : Form
+namespace VehicleManagementSystem {
+    public partial class frmDashboard : Form
     {
         string connStr = "server=mysql-car-rental-ravenakira22-d25a.j.aivencloud.com;port=10681;database=testDb;uid=avnadmin;pwd=AVNS_KkSsK8DVbXftqWP322A;";
 
@@ -22,7 +22,7 @@ namespace Dshboard
         private int lastBookingId = 0;
         private int lastVehicleCount = 0;
 
-        public DashBoardForm()
+        public frmDashboard()
         {
             InitializeComponent();
             this.MinimumSize = new Size(900, 600);

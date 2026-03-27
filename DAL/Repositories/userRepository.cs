@@ -12,6 +12,7 @@ using System.Drawing;
 using VehicleManagementSystem.Helpers;
 using System.Runtime.InteropServices;
 using VehicleManagementSystem.Models;
+using System.IO;
 
 namespace PL_VehicleRental.DAL.Repositories
 {
@@ -68,6 +69,24 @@ namespace PL_VehicleRental.DAL.Repositories
             }
         }
 
+        public async Task<bool> EmailExistsAsync(string email)
+        {
+            using (var conn = MySQLConnectionContext.Create())
+            {
+                await conn.OpenAsync();
+
+                const string query = @"SELECT COUNT(*) FROM users WHERE email = @email";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    int count = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+                    return count > 0;
+                }
+            }
+        }
+
         public async Task<CreateUserResult> InsertAsync(UserInfoDto dto, string userImage)
         {
             string tempPassword = PasswordHelper.GenerateTemporaryPassword();
@@ -76,14 +95,15 @@ namespace PL_VehicleRental.DAL.Repositories
             {
                 await conn.OpenAsync();
 
-                const string sql = @"INSERT INTO users (userName, fullName, email, phoneNumber, address, role, status, passwordHash, isDefaultPassword, isDeleted, imagePath)
-                                     VALUES (@userName, @fullName, @email, @phoneNumber, @address, @role, @status, @passwordHash, 1, 0, @ImagePath);
+                const string sql = @"INSERT INTO users (userName, fullName, gender, email, phoneNumber, address, role, status, passwordHash, isDefaultPassword, isDeleted, imagePath)
+                                     VALUES (@userName, @fullName, @gender, @email, @phoneNumber, @address, @role, @status, @passwordHash, 1, 0, @ImagePath);
                                      SELECT LAST_INSERT_ID();";
 
                 using (var cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@userName", dto.UserName);
                     cmd.Parameters.AddWithValue("@fullName", dto.FullName);
+                    cmd.Parameters.AddWithValue("@gender", dto.Gender);
                     cmd.Parameters.AddWithValue("@email", dto.Email);
                     cmd.Parameters.AddWithValue("@phoneNumber", dto.PhoneNumber);
                     cmd.Parameters.AddWithValue("@address", dto.Address);
@@ -110,7 +130,7 @@ namespace PL_VehicleRental.DAL.Repositories
             {
                 await conn.OpenAsync();
 
-                const string sql = @"SELECT id, userName, fullName, email, address, role, status, passwordHash, isDefaultPassword, imagePath
+                const string sql = @"SELECT id, userName, fullName, gender, email, address, role, status, passwordHash, isDefaultPassword, imagePath
                                      FROM users WHERE (userName = @input OR email = @input) AND status = 'Active'";
 
                 using (var cmd = new MySqlCommand(sql, conn))
@@ -129,6 +149,7 @@ namespace PL_VehicleRental.DAL.Repositories
                             Id = reader.GetInt32("id"),
                             UserName = reader.GetString("userName"),
                             FullName = reader.GetString("fullName"),
+                            Gender = reader.IsDBNull(reader.GetOrdinal("gender")) ? null : reader.GetString("gender"),
                             Email = reader.GetString("email"),
                             Address = reader.GetString("address"),
                             Role = reader.GetString("role"),
@@ -204,7 +225,7 @@ namespace PL_VehicleRental.DAL.Repositories
             }
         }
 
-        public async Task<(List<UserInfoDto> Users, int TotalCount)> GetPagedUsersAsync(string search, int pageNumber, int pageSize, string currentUserRole)
+        public async Task<(List<UserInfoDto> Users, int TotalCount)> GetPagedUsersAsync(string search, int pageNumber, int pageSize, string currentUserRole, string statusFilter = null)
         {
             var users = new List<UserInfoDto>();
             int totalCount = 0;
@@ -213,22 +234,37 @@ namespace PL_VehicleRental.DAL.Repositories
             {
                 await conn.OpenAsync();
 
-                string searchParam = $"%{search}%";
+                string searchParam = string.IsNullOrWhiteSpace(search) ? null : $"%{search}%";
+                bool hasSearch = !string.IsNullOrWhiteSpace(search);
 
-                string whereClause = @"
-                                        WHERE
+                string baseWhereClause = @"
                                         (
                                             (@CurrentUserRole = 'Superadmin' AND isDeleted = 0)
                                             OR
                                             (@CurrentUserRole != 'Superadmin' AND isDeleted = 0 AND status = 'Active')
-                                        )
-                                        AND (
+                                        )";
+
+                string searchClause = @"
+                                        (
+                                             @Search IS NULL OR
                                              userName LIKE @Search
                                              OR fullName LIKE @Search
                                              OR email LIKE @Search
                                              OR address LIKE @Search
-                                             )";
+                                        )";
 
+                string filterClause = string.Empty;
+                if (!string.IsNullOrEmpty(statusFilter))
+                {
+                    filterClause = " AND (status = @StatusFilter OR role = @StatusFilter)";
+                }
+
+                string whereClause = $"WHERE {baseWhereClause}";
+                if (hasSearch)
+                {
+                    whereClause += $" AND {searchClause}";
+                }
+                whereClause += filterClause;
 
                 string countQuery = $@"
                                     SELECT COUNT(*) 
@@ -237,9 +273,20 @@ namespace PL_VehicleRental.DAL.Repositories
 
                 using (var countCmd = new MySqlCommand(countQuery, conn))
                 {
-                    countCmd.Parameters.AddWithValue("@Search", searchParam);
                     countCmd.Parameters.AddWithValue("@CurrentUserRole", currentUserRole);
+
+                    if (hasSearch)
+                    {
+                        countCmd.Parameters.AddWithValue("@Search", searchParam ?? (object)DBNull.Value);
+                    }
+
+                    if (!string.IsNullOrEmpty(statusFilter))
+                    {
+                        countCmd.Parameters.AddWithValue("@StatusFilter", statusFilter);
+                    }
+
                     totalCount = Convert.ToInt32(await countCmd.ExecuteScalarAsync());
+                    Console.WriteLine($"Total count - Search: '{search}', Filter: '{statusFilter}', Count: {totalCount}");
                 }
 
                 string dataQuery = $@"
@@ -250,10 +297,19 @@ namespace PL_VehicleRental.DAL.Repositories
 
                 using (var cmd = new MySqlCommand(dataQuery, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Search", searchParam);
                     cmd.Parameters.AddWithValue("@CurrentUserRole", currentUserRole);
                     cmd.Parameters.AddWithValue("PageSize", pageSize);
                     cmd.Parameters.AddWithValue("Offset", (pageNumber - 1) * pageSize);
+
+                    if (hasSearch)
+                    {
+                        cmd.Parameters.AddWithValue("@Search", (object)searchParam ?? DBNull.Value);
+                    }
+
+                    if (!string.IsNullOrEmpty(statusFilter))
+                    {
+                        cmd.Parameters.AddWithValue("@StatusFilter", statusFilter ?? (object)DBNull.Value);
+                    }
 
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
@@ -264,8 +320,8 @@ namespace PL_VehicleRental.DAL.Repositories
                                 Id = reader.GetInt32("id"),
                                 UserName = reader.GetString("userName"),
                                 FullName = reader.GetString("fullName"),
-                                Email = reader.GetString("email"),
-                                Address = reader.GetString("address"),
+                                Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString("email"),
+                                Address = reader.IsDBNull(reader.GetOrdinal("address")) ? null : reader.GetString("address"),
                                 Role = reader.GetString("role"),
                                 Status = reader.GetString("status")
                             });
@@ -292,6 +348,7 @@ namespace PL_VehicleRental.DAL.Repositories
                 SET
                     userName = @Username,
                     fullName = @Fullname,
+                    gender = @Gender,
                     email = @Email,
                     phoneNumber = @PhoneNumber,
                     address = @Address,
@@ -307,6 +364,7 @@ namespace PL_VehicleRental.DAL.Repositories
                 SET
                     userName = @Username,
                     fullName = @Fullname,
+                    gender = @Gender,
                     email = @Email,
                     phoneNumber = @PhoneNumber,
                     address = @Address,
@@ -315,49 +373,179 @@ namespace PL_VehicleRental.DAL.Repositories
                 WHERE id = @Id";
             }
 
+                try
+                {
+                    using (MySqlConnection conn = MySQLConnectionContext.Create())
+                    {
+                        await conn.OpenAsync();
+
+                        const string selectQuery = "SELECT imagePath FROM users WHERE id = @Id";
+
+                        using (var selectCmd = new MySqlCommand(selectQuery, conn))
+                        {
+                            selectCmd.Parameters.AddWithValue("@Id", user.Id);
+                            var result = await selectCmd.ExecuteScalarAsync();
+                            oldImagePath = result == DBNull.Value ? null : result?.ToString();
+                        }
+
+                        if (user.isImageChanged && newImage != null)
+                        {
+                            try
+                            {
+                                newImagePath = imageService.Save(newImage);
+                            }
+                            catch (IOException ioEx)
+                            {
+                                throw new InvalidOperationException("Failed to save the profile image. The image file may be in use by another application.", ioEx);
+                            }
+                            catch (Exception imgEx)
+                            {
+                                throw new InvalidOperationException($"An error occurred while processing the image: {imgEx.Message}", imgEx);
+                            }
+                        }
+
+                        using (var cmd = new MySqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Id", user.Id);
+                            cmd.Parameters.AddWithValue("@Username", user.UserName);
+                            cmd.Parameters.AddWithValue("@Fullname", user.FullName);
+                            cmd.Parameters.AddWithValue("@Gender", user.Gender);
+                            cmd.Parameters.AddWithValue("@Email", user.Email);
+                            cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
+                            cmd.Parameters.AddWithValue("@Address", user.Address);
+                            cmd.Parameters.AddWithValue("@Role", user.Role);
+                            cmd.Parameters.AddWithValue("@Status", user.Status);
+
+                            if (user.isImageChanged)
+                            {
+                                cmd.Parameters.AddWithValue("@ImagePath", (object)newImagePath ?? DBNull.Value);
+                            }
+
+                            int rows = await cmd.ExecuteNonQueryAsync();
+
+                            if (rows > 0 && user.isImageChanged && oldImagePath != null)
+                            {
+                                bool deleteSuccess = imageService.Delete(oldImagePath);
+                                if (!deleteSuccess)
+                                {
+                                    Console.WriteLine($"Warning: Could not delete old image file: {oldImagePath}");
+                                }
+                            }
+
+                            return rows > 0;
+                        }
+                    }
+                }
+                catch (MySqlException dbEx)
+                {
+                    throw new InvalidOperationException($"Database error while updating user: {dbEx.Message}", dbEx);
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException($"An unexpected error occurred while updating the user: {ex.Message}", ex);
+                }
+        }
+
+        public async Task<bool> UpdateUserProfileAsync(UserInfoDto user, Image newImage = null)
+        {
+            var imageService = new UserImageService();
+
+            string newImagePath = null;
+            string oldImagePath = null;
+            string query;
+
+            if (user.isImageChanged)
+            {
+                query = @"
+                UPDATE users 
+                SET
+                    userName = @Username,
+                    fullName = @Fullname,
+                    role = @Role,
+                    status = @Status,
+                    imagePath = @ImagePath
+                WHERE id = @Id";
+            }
+            else
+            {
+                query = @"
+                UPDATE users 
+                SET
+                    userName = @Username,
+                    fullName = @Fullname,
+                    role = @Role,
+                    status = @Status
+                WHERE id = @Id";
+            }
+
+            try
+            {
                 using (MySqlConnection conn = MySQLConnectionContext.Create())
                 {
                     await conn.OpenAsync();
 
-                const string selectQuery = "SELECT imagePath FROM users WHERE id = @Id";
+                    const string selectQuery = "SELECT imagePath FROM users WHERE id = @Id";
 
-                using (var selectCmd = new MySqlCommand(selectQuery, conn))
-                {
-                    selectCmd.Parameters.AddWithValue("@Id", user.Id);
-                    var result = await selectCmd.ExecuteScalarAsync();
-                    oldImagePath = result == DBNull.Value ? null : result?.ToString();
-                }
+                    using (var selectCmd = new MySqlCommand(selectQuery, conn))
+                    {
+                        selectCmd.Parameters.AddWithValue("@Id", user.Id);
+                        var result = await selectCmd.ExecuteScalarAsync();
+                        oldImagePath = result == DBNull.Value ? null : result?.ToString();
+                    }
 
-                if (user.isImageChanged && newImage != null)
-                {
-                    newImagePath = imageService.Save(newImage);
-                }
+                    if (user.isImageChanged && newImage != null)
+                    {
+                        try
+                        {
+                            newImagePath = imageService.Save(newImage);
+                            user.ImagePath = newImagePath;
+                        }
+                        catch (IOException ioEx)
+                        {
+                            throw new InvalidOperationException("Failed to save the profile image. The image file may be in use by another application.", ioEx);
+                        }
+                        catch (Exception imgEx)
+                        {
+                            throw new InvalidOperationException($"An error occurred while processing the image: {imgEx.Message}", imgEx);
+                        }
+                    }
 
-                using (var cmd = new MySqlCommand(query, conn))
+                    using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Id", user.Id);
-                        cmd.Parameters.AddWithValue("@Username", user.UserName);
-                        cmd.Parameters.AddWithValue("@Fullname", user.FullName);
-                        cmd.Parameters.AddWithValue("@Email", user.Email);
-                        cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
-                        cmd.Parameters.AddWithValue("@Address", user.Address);
-                        cmd.Parameters.AddWithValue("@Role", user.Role);
-                        cmd.Parameters.AddWithValue("@Status", user.Status);
+                        cmd.Parameters.AddWithValue("@Username", user.UserName ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@Fullname", user.FullName ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@Role", user.Role ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@Status", user.Status ?? string.Empty);
 
-                    if (user.isImageChanged)
-                    {
-                        cmd.Parameters.AddWithValue("@ImagePath", (object)newImagePath ?? DBNull.Value);
-                    }
+                        if (user.isImageChanged)
+                        {
+                            cmd.Parameters.AddWithValue("@ImagePath", (object)newImagePath ?? DBNull.Value);
+                        }
 
-                    int rows = await cmd.ExecuteNonQueryAsync();
+                        int rows = await cmd.ExecuteNonQueryAsync();
 
-                    if (rows > 0 && user.isImageChanged && oldImagePath != null)
-                    {
-                        imageService.Delete(oldImagePath);
-                    }
-                    return rows > 0;
+                        if (rows > 0 && user.isImageChanged && oldImagePath != null)
+                        {
+                            bool deleteSuccess = imageService.Delete(oldImagePath);
+                            if (!deleteSuccess)
+                            {
+                                Console.WriteLine($"Warning: Could not delete old image file: {oldImagePath}");
+                            }
+                        }
+
+                        return rows > 0;
                     }
                 }
+            }
+            catch (MySqlException dbEx)
+            {
+                throw new InvalidOperationException($"Database error while updating profile: {dbEx.Message}", dbEx);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"An unexpected error occurred while updating your profile: {ex.Message}", ex);
+            }
         }
 
         public async Task<bool> DeleteUserAsync(int userId)

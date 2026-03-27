@@ -67,7 +67,10 @@ namespace PL_VehicleRental.Forms
 
                     using (var changePassForm = new frmChangePassword(user.UserName))
                     {
-                        changePassForm.ShowDialog();
+                        if (changePassForm.ShowDialog() != DialogResult.OK)
+                        {
+                            return;
+                        }
                     }
 
                     usernameTxt.Clear();
@@ -95,18 +98,19 @@ namespace PL_VehicleRental.Forms
                     Id = user.Id,
                     UserName = user.UserName,
                     FullName = user.FullName,
+                    Status = user.Status,
                     Role = parsedRole,
                     UserImagePath = user.ImagePath,
                 };
 
-                await AuditService.LogAsync(new AuditLog
-                {
-                    UserId = user.Id,
-                    ActionType = "LOGIN",
-                    Description = "User logged in",
-                    TableAffected = "users",
-                    RecordId = user.Id
-                });
+                //await AuditService.LogAsync(new AuditLog
+                //{
+                //    UserId = user.Id,
+                //    ActionType = "LOGIN",
+                //    Description = "User logged in",
+                //    TableAffected = "users",
+                //    RecordId = user.Id
+                //});
 
                 Console.WriteLine($"'{user.ImagePath}'");
                 Console.WriteLine($"Logged in user: '{user.Id}' - '{user.UserName}'");
@@ -142,9 +146,31 @@ namespace PL_VehicleRental.Forms
             //passwordTxt.UseSystemPasswordChar = true;
         }
 
+
+
         private void frmLogin_KeyDown(object sender, KeyEventArgs e)
         {
             
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x115 || m.Msg == 0x114)
+            {
+                if ((m.WParam.ToInt32() & 0xFFFF) == 5)
+                {
+                    m.WParam = (IntPtr)((m.WParam.ToInt32() & ~0xFFFF) | 4);
+                }
+            }
+            base.WndProc(ref m);
+        }
+
+        private void lblLogin_Click(object sender, EventArgs e) {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e) {
+
         }
     }
 }

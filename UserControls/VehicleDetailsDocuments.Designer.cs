@@ -27,11 +27,12 @@
             this.searchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.addNewVehBtn = new Guna.UI2.WinForms.Guna2Button();
             this.tableHeader = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.labelNoDocument = new System.Windows.Forms.Label();
             this.tableHeader.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +51,7 @@
             this.tableMain.RowCount = 2;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableMain.Size = new System.Drawing.Size(1109, 140);
+            this.tableMain.Size = new System.Drawing.Size(1109, 94);
             this.tableMain.TabIndex = 11;
             // 
             // searchBox
@@ -77,6 +78,7 @@
             this.searchBox.SelectedText = "";
             this.searchBox.Size = new System.Drawing.Size(354, 48);
             this.searchBox.TabIndex = 10;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // addNewVehBtn
             // 
@@ -104,17 +106,19 @@
             this.tableHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableHeader.BackColor = System.Drawing.Color.Transparent;
-            this.tableHeader.ColumnCount = 5;
-            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableHeader.ColumnCount = 6;
+            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
-            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 352F));
-            this.tableHeader.Controls.Add(this.label9, 4, 0);
-            this.tableHeader.Controls.Add(this.label8, 3, 0);
-            this.tableHeader.Controls.Add(this.label7, 2, 0);
+            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
+            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+            this.tableHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableHeader.Controls.Add(this.label1, 2, 0);
             this.tableHeader.Controls.Add(this.label6, 1, 0);
             this.tableHeader.Controls.Add(this.label5, 0, 0);
+            this.tableHeader.Controls.Add(this.label9, 5, 0);
+            this.tableHeader.Controls.Add(this.label8, 4, 0);
+            this.tableHeader.Controls.Add(this.label7, 3, 0);
             this.tableHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tableHeader.Location = new System.Drawing.Point(3, 95);
             this.tableHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -124,44 +128,18 @@
             this.tableHeader.Size = new System.Drawing.Size(1109, 43);
             this.tableHeader.TabIndex = 13;
             // 
-            // label9
+            // label1
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label9.AutoEllipsis = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(760, 7);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(214, 28);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Actions";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoEllipsis = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(600, 7);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(154, 28);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Status";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label7.AutoEllipsis = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(449, 7);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(145, 28);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Expiration Date";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoEllipsis = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(490, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 28);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Extension";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
@@ -169,7 +147,7 @@
             this.label6.AutoEllipsis = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(137, 7);
+            this.label6.Location = new System.Drawing.Point(169, 7);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(214, 28);
             this.label6.TabIndex = 3;
@@ -189,12 +167,52 @@
             this.label5.Text = "Type";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label9.AutoEllipsis = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label9.Location = new System.Drawing.Point(878, 7);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(214, 28);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Actions";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoEllipsis = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label8.Location = new System.Drawing.Point(741, 7);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(131, 28);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Status";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.AutoEllipsis = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(587, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(145, 28);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Expiration Date";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // labelNoDocument
             // 
+            this.labelNoDocument.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelNoDocument.AutoSize = true;
             this.labelNoDocument.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNoDocument.ForeColor = System.Drawing.Color.DarkGray;
-            this.labelNoDocument.Location = new System.Drawing.Point(163, 311);
+            this.labelNoDocument.Location = new System.Drawing.Point(162, 368);
             this.labelNoDocument.Name = "labelNoDocument";
             this.labelNoDocument.Size = new System.Drawing.Size(764, 24);
             this.labelNoDocument.TabIndex = 14;
@@ -214,7 +232,7 @@
             this.Controls.Add(this.addNewVehBtn);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "VehicleDetailsDocuments";
-            this.Size = new System.Drawing.Size(1113, 1133);
+            this.Size = new System.Drawing.Size(1113, 1051);
             this.Load += new System.EventHandler(this.VehicleDetailsDocuments_Load);
             this.tableHeader.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -233,5 +251,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelNoDocument;
+        private System.Windows.Forms.Label label1;
     }
 }

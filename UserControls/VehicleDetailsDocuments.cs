@@ -18,6 +18,10 @@ namespace VehicleManagementSystem.UserControls {
         private VehicleDto _vehicle;
         private vehicleDetailsDocumentPresenter _presenter;
 
+        private Timer _searchTimer;
+
+        public string SearchInput => searchBox.Text.ToLower();
+
         public string VehiclePlateNum => _vehicle.LicensePlate;
 
         public VehicleDetailsDocuments(VehicleDto vehicle) {
@@ -30,23 +34,31 @@ namespace VehicleManagementSystem.UserControls {
             MessageBox.Show(error, "Error");
         }
 
+        public void ToggleNoDocumentDisplay(bool IsNotVisible) {
+            tableMain.Visible = IsNotVisible;
+            tableHeader.Visible = IsNotVisible;
+            labelNoDocument.Visible = !IsNotVisible;
+        }
+
         public void DisplayDocuments(List<VehicleDocumentDto> documents) {
             tableMain.SuspendLayout();
-            const int DocumentCardHeight = 84;
+            const int DocumentCardHeight = 85;
+            const int BottomPadding = 10;
+            int TableMainHeight = DocumentCardHeight * documents.Count;
 
             tableMain.Controls.Clear();
             tableMain.RowStyles.Clear();
             tableMain.RowCount = 0;
-            tableMain.Height = DocumentCardHeight * documents.Count;
+            tableMain.Height = TableMainHeight;
+            this.Height += (TableMainHeight + BottomPadding);
 
             int col = 0;
             int row = 0;
 
             foreach (var document in documents) {
                 var card = new VehicleDocumentCardControl();
-                card.Bind(document);
+                card.Bind(document, _presenter.LoadAllDocuments);
                 card.Dock = DockStyle.Fill;
-                //card.Margin = new Padding(10);
 
                 tableMain.Controls.Add(card, col, row);
 
@@ -57,16 +69,33 @@ namespace VehicleManagementSystem.UserControls {
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e) {
-
+            _searchTimer.Stop();
+            _searchTimer.Start();
         }
 
         private void addNewVehBtn_Click(object sender, EventArgs e) {
-            var addVehicleDocumentForm = new AddNewVehicleDocumentModal(_vehicle.LicensePlate);
-            addVehicleDocumentForm.ShowDialog();
+            using (var addVehicleDocumentForm = new AddNewVehicleDocumentModal(_vehicle.LicensePlate)) {
+                DialogResult result = addVehicleDocumentForm.ShowDialog();
+
+                if (result != DialogResult.OK) return;
+
+                _presenter.LoadAllDocuments();
+                if(!tableMain.Visible) ToggleNoDocumentDisplay(true); 
+            }
         }
 
         private void VehicleDetailsDocuments_Load(object sender, EventArgs e) {
             _presenter.LoadAllDocuments();
+            _searchTimer = new Timer();
+            _searchTimer.Interval = 350; // 0.35 seconds
+            _searchTimer.Tick += SearchTimer_Tick;
         }
+
+        private void SearchTimer_Tick(object sender, EventArgs e) {
+            _searchTimer.Stop(); 
+            _presenter.LoadSearchDocument();
+        }
+
     }
 }
+

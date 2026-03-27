@@ -68,7 +68,7 @@ namespace PL_VehicleRental.Forms
         private async Task<UserInfoDto> GetUserByIdAsync(int userId)
         {
             const string query = @"
-                                SELECT id, userName, fullName, email, phoneNumber, address, role, status, imagePath
+                                SELECT id, userName, fullName, gender, email, phoneNumber, address, role, status, imagePath, created_at
                                 FROM users
                                 WHERE id = @id";
 
@@ -91,6 +91,7 @@ namespace PL_VehicleRental.Forms
                         Id = reader.GetInt32("id"),
                         UserName = reader.GetString("userName"),
                         FullName = reader.GetString("fullName"),
+                        Gender = reader.IsDBNull(reader.GetOrdinal("gender")) ? null : reader.GetString("gender"),
                         Email = reader.GetString("email"),
                         PhoneNumber = reader.IsDBNull(reader.GetOrdinal("phoneNumber")) ? "N/A" : reader.GetString("phoneNumber"),
                         Address = reader.GetString("address"),
@@ -98,7 +99,8 @@ namespace PL_VehicleRental.Forms
                         Role = reader.GetString("role"),
                         ImagePath = reader.IsDBNull(reader.GetOrdinal("imagePath"))
                         ? null
-                        : reader.GetString("imagePath")
+                        : reader.GetString("imagePath"),
+                        CreatedAt = reader.GetDateTime("created_at")
                     };
                 }
             }
@@ -108,11 +110,13 @@ namespace PL_VehicleRental.Forms
         {
             lblUsername.Text = user.UserName;
             lblFullName.Text = user.FullName;
+            lblGender.Text = user.Gender;
             lblEmail.Text = user.Email;
             lblPhone.Text = user.PhoneNumber;
             lblAddress.Text = user.Address;
             lblRole.Text = user.Role;
             lblStatus.Text = user.Status;
+            lblCreated.Text = user.CreatedAt.ToString();
 
             if (userImage.Image != null && userImage.Image != VehicleManagementSystem.Properties.Resources.avatar_default)
                 userImage.Image.Dispose();

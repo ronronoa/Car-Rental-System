@@ -14,23 +14,26 @@ namespace VehicleManagementSystem.Presenters {
             _vehicleServices = vehicleServices;
         }
 
-        public void LoadAllVehicles() {
+        public async void LoadAllVehicles() {
             try {
-                var vehicles = _vehicleServices.GetAllVehicles();
+                _view.SetLoadingState(true);
+                var vehicles = await _vehicleServices.GetAllActiveVehicles();
                 _view.DisplayVehicles(vehicles);
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
+            } finally {
+                _view.SetLoadingState(false);
             }
         }
 
-        public void LoadSearchedVehicle() {
+        public async void LoadSearchedVehicle() {
             if (string.IsNullOrWhiteSpace(_view.SearchQuery)) {
                 LoadAllVehicles();
                 return;
             }
 
             try {
-                var vehicles = _vehicleServices.GetSearchedVehicle(_view.SearchQuery);
+                var vehicles = await _vehicleServices.GetSearchedVehicle(_view.SearchQuery);
                 _view.DisplayVehicles(vehicles);
             } catch (Exception ex) {
                 _view.ShowError(ex.Message);
